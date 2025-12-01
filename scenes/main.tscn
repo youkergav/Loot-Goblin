@@ -140,7 +140,7 @@ material = SubResource("ShaderMaterial_tipki")
 position = Vector2(72, 178)
 
 [node name="WorldItemSword" parent="World" instance=ExtResource("2_jyhfs")]
-position = Vector2(125, 169)
+position = Vector2(202, 198)
 item_data = ExtResource("3_tefeu")
 
 [node name="WorldItemShield" parent="World" instance=ExtResource("2_jyhfs")]
@@ -148,11 +148,11 @@ position = Vector2(316, 103)
 item_data = ExtResource("5_trceg")
 
 [node name="WorldItemJunk1" parent="World" instance=ExtResource("2_jyhfs")]
-position = Vector2(102, 63)
+position = Vector2(153, 57)
 item_data = ExtResource("5_tipki")
 
 [node name="WorldItemJunk2" parent="World" instance=ExtResource("2_jyhfs")]
-position = Vector2(146, 116)
+position = Vector2(206, 113)
 item_data = ExtResource("5_tipki")
 
 [node name="WorldItemJunk3" parent="World" instance=ExtResource("2_jyhfs")]
