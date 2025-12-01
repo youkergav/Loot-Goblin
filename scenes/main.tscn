@@ -1,13 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=16 format=3 uid="uid://dhn1m5at7ahu5"]
 
-[ext_resource type="PackedScene" uid="uid://dj1c5h2cw1g4m" path="res://scenes/packed/player.tscn" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://fror435gqham" path="res://scenes/packed/inventory.tscn" id="1_o5qli"]
-[ext_resource type="PackedScene" uid="uid://lh0msmgkv2ey" path="res://scenes/packed/world_item.tscn" id="2_jyhfs"]
-[ext_resource type="Script" uid="uid://d207eahu4wqa3" path="res://scripts/world_drop_zone.gd" id="3_sugp2"]
-[ext_resource type="Resource" uid="uid://bf1cpvg7e8f65" path="res://resources/items/item_sword.tres" id="3_tefeu"]
-[ext_resource type="Resource" uid="uid://c5m2j664luubw" path="res://resources/items/item_junk.tres" id="5_tipki"]
+[ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dj1c5h2cw1g4m" path="res://scenes/packed/player.tscn" id="2_choun"]
+[ext_resource type="Texture2D" uid="uid://dynsjjhj1pu4f" path="res://sprites/sky.png" id="2_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://lh0msmgkv2ey" path="res://scenes/packed/world_item.tscn" id="3_ya4ey"]
+[ext_resource type="Resource" uid="uid://bf1cpvg7e8f65" path="res://resources/items/item_sword.tres" id="4_eb6dy"]
 [ext_resource type="Resource" uid="uid://cl6kob1u26wxn" path="res://resources/items/item_shield.tres" id="5_trceg"]
-[ext_resource type="PackedScene" uid="uid://b6c0437xdr4dq" path="res://scenes/packed/enemy.tscn" id="8_choun"]
+[ext_resource type="Resource" uid="uid://c5m2j664luubw" path="res://resources/items/item_junk.tres" id="6_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://b6c0437xdr4dq" path="res://scenes/packed/enemy.tscn" id="7_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://fror435gqham" path="res://scenes/packed/inventory.tscn" id="8_jbj1t"]
+[ext_resource type="Script" uid="uid://d207eahu4wqa3" path="res://scripts/world_drop_zone.gd" id="9_muem4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_choun"]
 size = Vector2(100, 100)
@@ -52,7 +54,7 @@ void fragment() {
     }
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tipki"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
 resource_local_to_scene = true
 shader = SubResource("Shader_eb6dy")
 shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
@@ -64,23 +66,23 @@ bg_color = Color(0.30138955, 0.30138955, 0.30138946, 1)
 
 [node name="Main" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("1_85g3d")
+
 [node name="World" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Sky" type="ColorRect" parent="World"]
+[node name="Sky" type="Sprite2D" parent="World" groups=["sky"]]
+modulate = Color(0.5647059, 0.5647059, 0.5647059, 1)
 z_index = -100
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 320.0
-offset_bottom = 180.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.5647059, 0.5647059, 0.5647059, 1)
+texture = ExtResource("2_ya4ey")
+offset = Vector2(320, 0)
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 180)
 
 [node name="Ceiling" type="StaticBody2D" parent="World"]
-position = Vector2(237, -10)
-scale = Vector2(5.8638206, 0.779179)
+position = Vector2(327, -101)
+scale = Vector2(7, 0.755)
 
 [node name="ColorRect" type="ColorRect" parent="World/Ceiling"]
 anchors_preset = 8
@@ -101,8 +103,8 @@ shape = SubResource("RectangleShape2D_choun")
 
 [node name="Floor" type="StaticBody2D" parent="World"]
 z_index = -10
-position = Vector2(233.00002, 202.99998)
-scale = Vector2(5.8638206, 1.0888526)
+position = Vector2(323, 111.999985)
+scale = Vector2(7.2238207, 1.0888526)
 
 [node name="ColorRect" type="ColorRect" parent="World/Floor"]
 anchors_preset = 8
@@ -122,58 +124,98 @@ color = Color(0.2123048, 0.21230483, 0.21230477, 1)
 shape = SubResource("RectangleShape2D_choun")
 
 [node name="BarrierLeft" type="StaticBody2D" parent="World"]
-position = Vector2(-17, 136)
+position = Vector2(-18, 45.000004)
 rotation = 1.5707964
-scale = Vector2(6.729272, 0.625705)
+scale = Vector2(6.452, 0.6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/BarrierLeft"]
 shape = SubResource("RectangleShape2D_qycdh")
 
-[node name="BarrierRight" type="StaticBody2D" parent="World"]
-position = Vector2(337.00003, 130)
+[node name="BarrierLeft2" type="StaticBody2D" parent="World"]
+position = Vector2(658, 45)
 rotation = 1.5707964
-scale = Vector2(6.729271, 0.62570494)
+scale = Vector2(6.452, 0.6)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BarrierRight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BarrierLeft2"]
 shape = SubResource("RectangleShape2D_qycdh")
 
-[node name="Player" parent="World" groups=["player"] instance=ExtResource("1_0wfyh")]
-material = SubResource("ShaderMaterial_tipki")
-position = Vector2(40, 126)
+[node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
+material = SubResource("ShaderMaterial_choun")
+position = Vector2(30, 38)
 
-[node name="WorldItemSword" parent="World" instance=ExtResource("2_jyhfs")]
-position = Vector2(121, 130)
-item_data = ExtResource("3_tefeu")
+[node name="WorldItemSword" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(121, 39)
+item_data = ExtResource("4_eb6dy")
 
-[node name="WorldItemShield" parent="World" instance=ExtResource("2_jyhfs")]
-position = Vector2(301, 96.00001)
+[node name="WorldItemShield" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(603, 5.0000076)
 item_data = ExtResource("5_trceg")
 
-[node name="WorldItemJunk1" parent="World" instance=ExtResource("2_jyhfs")]
-position = Vector2(105, 46)
-item_data = ExtResource("5_tipki")
+[node name="WorldItemJunk1" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(105, -45)
+item_data = ExtResource("6_a8y0u")
 
-[node name="WorldItemJunk2" parent="World" instance=ExtResource("2_jyhfs")]
-position = Vector2(164.00002, 83)
-item_data = ExtResource("5_tipki")
+[node name="WorldItemJunk10" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(123, -50)
+item_data = ExtResource("6_a8y0u")
 
-[node name="WorldItemJunk3" parent="World" instance=ExtResource("2_jyhfs")]
-position = Vector2(244, 51)
-item_data = ExtResource("5_tipki")
+[node name="WorldItemJunk11" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(444, -42)
+item_data = ExtResource("6_a8y0u")
 
-[node name="WorldItemJunk4" parent="World" instance=ExtResource("2_jyhfs")]
-position = Vector2(214, 136.00002)
-item_data = ExtResource("5_tipki")
+[node name="WorldItemJunk12" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(593, 13.000008)
+item_data = ExtResource("6_a8y0u")
 
-[node name="Enemy" parent="World" instance=ExtResource("8_choun")]
-position = Vector2(277, 135)
+[node name="WorldItemJunk14" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(550, 47)
+item_data = ExtResource("6_a8y0u")
+
+[node name="WorldItemJunk13" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(341, -36.999992)
+item_data = ExtResource("6_a8y0u")
+
+[node name="WorldItemJunk2" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(164.00002, -8)
+item_data = ExtResource("6_a8y0u")
+
+[node name="WorldItemJunk3" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(546, -40)
+item_data = ExtResource("6_a8y0u")
+
+[node name="WorldItemJunk4" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(214, 45.000015)
+item_data = ExtResource("6_a8y0u")
+
+[node name="WorldItemJunk5" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(273, -32)
+item_data = ExtResource("6_a8y0u")
+
+[node name="WorldItemJunk6" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(351, 38)
+item_data = ExtResource("6_a8y0u")
+
+[node name="WorldItemJunk7" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(368, 20)
+item_data = ExtResource("6_a8y0u")
+
+[node name="WorldItemJunk8" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(457, -23)
+item_data = ExtResource("6_a8y0u")
+
+[node name="WorldItemJunk9" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(497.00003, 36)
+item_data = ExtResource("6_a8y0u")
+
+[node name="Enemy" parent="World" instance=ExtResource("7_jkv2x")]
+position = Vector2(210, -14)
+
+[node name="Enemy2" parent="World" instance=ExtResource("7_jkv2x")]
+position = Vector2(579, 44)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Inventory" parent="UI" groups=["inventory"] instance=ExtResource("1_o5qli")]
-theme_override_styles/panel = SubResource("StyleBoxFlat_tipki")
-
-[node name="WorldDropZone" type="Control" parent="." groups=["player"]]
+[node name="WorldDropZone" type="Control" parent="UI" groups=["player"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -182,6 +224,9 @@ offset_right = 320.0
 offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_sugp2")
+script = ExtResource("9_muem4")
 
-[connection signal="mouse_exited" from="WorldDropZone" to="WorldDropZone" method="_on_mouse_exited"]
+[node name="Inventory" parent="UI" groups=["inventory"] instance=ExtResource("8_jbj1t")]
+theme_override_styles/panel = SubResource("StyleBoxFlat_tipki")
+
+[connection signal="mouse_exited" from="UI/WorldDropZone" to="UI/WorldDropZone" method="_on_mouse_exited"]

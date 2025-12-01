@@ -15,6 +15,7 @@ texture = ExtResource("1_808bg")
 offset = Vector2(-7, -12)
 
 [node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_808bg")
 offset = Vector2(0, -12)
 

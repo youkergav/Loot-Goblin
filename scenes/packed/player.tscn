@@ -19,10 +19,12 @@ script = ExtResource("1_dx721")
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.22745098)
 z_index = -1
+texture_filter = 1
 texture = ExtResource("2_m6pdb")
 offset = Vector2(-7, -12)
 
 [node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("3_m6pdb")
 offset = Vector2(0, -12)
 
