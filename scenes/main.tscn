@@ -66,10 +66,10 @@ bg_color = Color(0.30138955, 0.30138955, 0.30138946, 1)
 
 [node name="Main" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
 script = ExtResource("1_85g3d")
 
-[node name="World" type="Node2D" parent="."]
+[node name="World" type="Node2D" parent="." groups=["world"]]
 y_sort_enabled = true
 
 [node name="Sky" type="Sprite2D" parent="World" groups=["sky"]]
@@ -225,6 +225,7 @@ offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_muem4")
+world_item_scene = ExtResource("3_ya4ey")
 
 [node name="Inventory" parent="UI" groups=["inventory"] instance=ExtResource("8_jbj1t")]
 theme_override_styles/panel = SubResource("StyleBoxFlat_tipki")

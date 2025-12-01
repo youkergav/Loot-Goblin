@@ -26,9 +26,9 @@ func _physics_process(delta: float) -> void:
 
 func _on_item_pickup_zone_area_entered(area: Area2D) -> void:
     if area.is_in_group("world_item"):
-        if pickup_item(area.item_data):
-            area.queue_free()
-            magnet_attracted_items.erase(area)
+        pickup_item(area.item_data)
+        area.queue_free()
+        magnet_attracted_items.erase(area)
 
 func _on_item_magnet_zone_area_entered(area: Area2D) -> void:
     if area.is_in_group("world_item"):
@@ -74,13 +74,9 @@ func pull_item_towards_player(item, delta):
 
         item.global_position += direction.normalized() * movement
 
-func pickup_item(item_data: ItemData) -> bool:
-    if inventory.add_item(item_data):
-        print("Picked up: ", item_data.item_name)
-        return true
-    else:
-        print("Inventory full!")
-        return false
+func pickup_item(item_data: ItemData) -> void:
+    inventory.add_item(item_data)
+    print("Picked up: ", item_data.item_name)
 
 func equip_item(item_data: ItemData) -> ItemData:
     var old_item = equipped_item_data
