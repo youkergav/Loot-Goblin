@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhn1m5at7ahu5"]
+
+[ext_resource type="PackedScene" uid="uid://dj1c5h2cw1g4m" path="res://scenes/packed/player.tscn" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://fror435gqham" path="res://scenes/packed/character_inventory.tscn" id="1_o5qli"]
+
+[node name="Main" type="Node2D"]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Sky" type="Polygon2D" parent="World"]
+position = Vector2(-35, -30)
+color = Color(0.56629795, 0.5662983, 0.56629795, 1)
+polygon = PackedVector2Array(0, 0, 2000, 0, 2000, 1150, 0, 1150)
+
+[node name="Player" parent="World" groups=["player"] instance=ExtResource("1_0wfyh")]
+position = Vector2(150, 800)
+
+[node name="Ground" type="Polygon2D" parent="World"]
+position = Vector2(-165, 1200)
+color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+polygon = PackedVector2Array(0, 0, 0, -400, 2300, -400, 2300, 0)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inventory" parent="UI" groups=["inventory"] instance=ExtResource("1_o5qli")]
+
+[node name="Overlay" type="Control" parent="UI" groups=["ui_root"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

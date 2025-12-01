@@ -1,0 +1,184 @@
+[gd_scene load_steps=13 format=3 uid="uid://dhn1m5at7ahu5"]
+
+[ext_resource type="PackedScene" uid="uid://dj1c5h2cw1g4m" path="res://scenes/packed/player.tscn" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://fror435gqham" path="res://scenes/packed/inventory.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://lh0msmgkv2ey" path="res://scenes/packed/world_item.tscn" id="2_jyhfs"]
+[ext_resource type="Script" uid="uid://d207eahu4wqa3" path="res://scripts/world_drop_zone.gd" id="3_sugp2"]
+[ext_resource type="Resource" uid="uid://bf1cpvg7e8f65" path="res://resources/items/item_sword.tres" id="3_tefeu"]
+[ext_resource type="Resource" uid="uid://c5m2j664luubw" path="res://resources/items/item_junk.tres" id="5_tipki"]
+[ext_resource type="Resource" uid="uid://cl6kob1u26wxn" path="res://resources/items/item_shield.tres" id="5_trceg"]
+[ext_resource type="PackedScene" uid="uid://b6c0437xdr4dq" path="res://scenes/packed/enemy.tscn" id="8_choun"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_choun"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qycdh"]
+size = Vector2(40, 40)
+
+[sub_resource type="Shader" id="Shader_eb6dy"]
+code = "shader_type canvas_item;
+
+uniform vec4 outline_color : source_color = vec4(1.0, 1.0, 0.0, 1.0);
+uniform float outline_width : hint_range(0.0, 20.0) = 4.0;
+uniform bool show_outline = false;
+
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+
+    if (show_outline) {
+        // Sample 8 directions around current pixel
+        bool is_edge = false;
+
+        for (float angle = 0.0; angle < 6.28; angle += 0.785) {
+            vec2 dir = vec2(cos(angle), sin(angle));
+            vec2 sample_uv = UV + dir * outline_width * TEXTURE_PIXEL_SIZE;
+
+            // Check if we're at the edge (sample goes outside bounds or hits transparency)
+            if (sample_uv.x < 0.0 || sample_uv.x > 1.0 ||
+                sample_uv.y < 0.0 || sample_uv.y > 1.0) {
+                is_edge = true;
+                break;
+            }
+        }
+
+        // Draw outline on edge pixels
+        if (is_edge) {
+            COLOR = outline_color;
+        } else {
+            COLOR = color;
+        }
+    } else {
+        COLOR = color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tipki"]
+resource_local_to_scene = true
+shader = SubResource("Shader_eb6dy")
+shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
+shader_parameter/outline_width = 6.8400003249
+shader_parameter/show_outline = true
+
+[node name="Main" type="Node2D"]
+
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Sky" type="ColorRect" parent="World"]
+z_index = -100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.24973682, 0.24973682)
+color = Color(0.5647059, 0.5647059, 0.5647059, 1)
+
+[node name="Ceiling" type="StaticBody2D" parent="World"]
+position = Vector2(237, 0)
+scale = Vector2(5.8638206, 0.779179)
+
+[node name="ColorRect" type="ColorRect" parent="World/Ceiling"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2123048, 0.21230483, 0.21230477, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Ceiling"]
+shape = SubResource("RectangleShape2D_choun")
+
+[node name="Floor" type="StaticBody2D" parent="World"]
+z_index = -10
+position = Vector2(233, 277)
+scale = Vector2(5.8638206, 1.0888526)
+
+[node name="ColorRect" type="ColorRect" parent="World/Floor"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2123048, 0.21230483, 0.21230477, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Floor"]
+shape = SubResource("RectangleShape2D_choun")
+
+[node name="BarrierLeft" type="StaticBody2D" parent="World"]
+position = Vector2(-17, 146)
+rotation = 1.5707964
+scale = Vector2(6.729272, 0.625705)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BarrierLeft"]
+shape = SubResource("RectangleShape2D_qycdh")
+
+[node name="BarrierRight" type="StaticBody2D" parent="World"]
+position = Vector2(497.00003, 140)
+rotation = 1.5707964
+scale = Vector2(6.729271, 0.62570494)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BarrierRight"]
+shape = SubResource("RectangleShape2D_qycdh")
+
+[node name="Player" parent="World" groups=["player"] instance=ExtResource("1_0wfyh")]
+material = SubResource("ShaderMaterial_tipki")
+position = Vector2(72, 178)
+
+[node name="WorldItemSword" parent="World" instance=ExtResource("2_jyhfs")]
+position = Vector2(125, 169)
+item_data = ExtResource("3_tefeu")
+
+[node name="WorldItemShield" parent="World" instance=ExtResource("2_jyhfs")]
+position = Vector2(316, 103)
+item_data = ExtResource("5_trceg")
+
+[node name="WorldItemJunk1" parent="World" instance=ExtResource("2_jyhfs")]
+position = Vector2(102, 63)
+item_data = ExtResource("5_tipki")
+
+[node name="WorldItemJunk2" parent="World" instance=ExtResource("2_jyhfs")]
+position = Vector2(146, 116)
+item_data = ExtResource("5_tipki")
+
+[node name="WorldItemJunk3" parent="World" instance=ExtResource("2_jyhfs")]
+position = Vector2(270, 69)
+item_data = ExtResource("5_tipki")
+
+[node name="WorldItemJunk4" parent="World" instance=ExtResource("2_jyhfs")]
+position = Vector2(251.00002, 200)
+item_data = ExtResource("5_tipki")
+
+[node name="Enemy" parent="World" instance=ExtResource("8_choun")]
+position = Vector2(277, 151)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Inventory" parent="UI" groups=["inventory"] instance=ExtResource("1_o5qli")]
+
+[node name="WorldDropZone" type="Control" parent="." groups=["player"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 480.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_sugp2")
+
+[connection signal="mouse_exited" from="WorldDropZone" to="WorldDropZone" method="_on_mouse_exited"]
