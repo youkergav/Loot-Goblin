@@ -26,15 +26,8 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
     return self
 
 func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
-    return true
-
-func _drop_data(_at_position: Vector2, dropped_slot: Variant) -> void:
-    var temp = item_data
-    item_data = dropped_slot.item_data
-    dropped_slot.item_data = temp
-
-    update_ui()
-    dropped_slot.update_ui()
+    # No slots accept drops - queue system only
+    return false
 
 func update_ui() -> void:
     # Safely get icon reference for editor preview

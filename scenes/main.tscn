@@ -83,6 +83,8 @@ region_rect = Rect2(0, 0, 640, 180)
 [node name="Ceiling" type="StaticBody2D" parent="World"]
 position = Vector2(327, -101)
 scale = Vector2(7, 0.755)
+collision_layer = 4
+collision_mask = 3
 
 [node name="ColorRect" type="ColorRect" parent="World/Ceiling"]
 anchors_preset = 8
@@ -105,6 +107,8 @@ shape = SubResource("RectangleShape2D_choun")
 z_index = -10
 position = Vector2(323, 111.999985)
 scale = Vector2(7.2238207, 1.0888526)
+collision_layer = 4
+collision_mask = 3
 
 [node name="ColorRect" type="ColorRect" parent="World/Floor"]
 anchors_preset = 8
@@ -127,6 +131,8 @@ shape = SubResource("RectangleShape2D_choun")
 position = Vector2(-18, 45.000004)
 rotation = 1.5707964
 scale = Vector2(6.452, 0.6)
+collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/BarrierLeft"]
 shape = SubResource("RectangleShape2D_qycdh")
@@ -135,6 +141,8 @@ shape = SubResource("RectangleShape2D_qycdh")
 position = Vector2(658, 45)
 rotation = 1.5707964
 scale = Vector2(6.452, 0.6)
+collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/BarrierLeft2"]
 shape = SubResource("RectangleShape2D_qycdh")
@@ -144,7 +152,7 @@ material = SubResource("ShaderMaterial_choun")
 position = Vector2(30, 38)
 
 [node name="WorldItemSword" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(121, 39)
+position = Vector2(182, 17)
 item_data = ExtResource("4_eb6dy")
 
 [node name="WorldItemShield" parent="World" instance=ExtResource("3_ya4ey")]
@@ -156,7 +164,7 @@ position = Vector2(105, -45)
 item_data = ExtResource("6_a8y0u")
 
 [node name="WorldItemJunk10" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(123, -50)
+position = Vector2(112, 38)
 item_data = ExtResource("6_a8y0u")
 
 [node name="WorldItemJunk11" parent="World" instance=ExtResource("3_ya4ey")]

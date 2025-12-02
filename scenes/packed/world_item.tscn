@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://lh0msmgkv2ey"]
 
-[ext_resource type="Script" uid="uid://crvjyuw4pmfhe" path="res://scripts/world_item.gd" id="1_5t22k"]
+[ext_resource type="Script" uid="uid://crvjyuw4pmfhe" path="res://scripts/items/world_item.gd" id="1_5t22k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
 size = Vector2(20.000004, 20)
 
 [node name="WorldItem" type="Area2D" groups=["world_item"]]
 scale = Vector2(0.75, 0.75)
+collision_layer = 8
 script = ExtResource("1_5t22k")
 
 [node name="Sprite" type="Sprite2D" parent="."]

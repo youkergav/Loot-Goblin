@@ -23,66 +23,66 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -22.0
-offset_right = 312.0
+offset_top = -26.0
+offset_right = 320.0
 grow_vertical = 0
-theme_override_constants/margin_left = 4
+theme_override_constants/margin_left = 7
 theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
+theme_override_constants/margin_right = 7
 theme_override_constants/margin_bottom = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(312, 3.21)
+custom_minimum_size = Vector2(282, 0)
 layout_mode = 2
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer"]
+[node name="InventorySlotContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer"]
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_horizontal = 3
 theme_override_constants/separation = 4
 
-[node name="IetmSlot1" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_o8gsp")]
+[node name="IetmSlot2" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
 
-[node name="IetmSlot2" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_o8gsp")]
+[node name="IetmSlot3" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
 
-[node name="IetmSlot3" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_o8gsp")]
+[node name="IetmSlot4" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
 
-[node name="IetmSlot4" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_o8gsp")]
+[node name="IetmSlot5" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
 
-[node name="IetmSlot5" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_o8gsp")]
+[node name="IetmSlot6" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
 
-[node name="IetmSlot6" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_o8gsp")]
+[node name="IetmSlot7" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
 
-[node name="IetmSlot7" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_o8gsp")]
+[node name="IetmSlot8" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
 
-[node name="IetmSlot8" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_o8gsp")]
+[node name="IetmSlot9" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
 
-[node name="IetmSlot9" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_o8gsp")]
+[node name="IetmSlot10" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
 
-[node name="IetmSlot10" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_o8gsp")]
+[node name="IetmSlot11" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
 
-[node name="IetmSlot11" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_o8gsp")]
+[node name="IetmSlot12" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
 
-[node name="IetmSlot12" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_o8gsp")]
+[node name="IetmSlot13" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
 
-[node name="IetmSlot13" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_o8gsp")]
+[node name="IetmSlot14" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
 
-[node name="IetmSlot14" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_o8gsp")]
+[node name="IetmSlot15" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
 
-[node name="IetmSlot15" parent="MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_o8gsp")]
+[node name="IetmSlot16" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2

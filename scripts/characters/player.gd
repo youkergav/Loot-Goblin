@@ -1,9 +1,5 @@
-extends CharacterBody2D
-
-@export_group("Movement")
-@export var move_speed: float = 120.0
-@export var move_acceleration: float = 750.0
-@export var move_friction: float = 650.0
+extends Character
+class_name Player
 
 @export_group("Magnetic Pull")
 @export var magnetic_strength: float = 1500.0
@@ -18,11 +14,8 @@ var equipped_item_data: ItemData = null
 
 
 func _physics_process(delta: float) -> void:
-    move_player(delta)
-
-    for item in magnet_attracted_items:
-        if is_instance_valid(item):
-            pull_item_towards_player(item, delta)
+    pull_magnetized_items(delta)
+    super._physics_process(delta)
 
 func _on_item_pickup_zone_area_entered(area: Area2D) -> void:
     if area.is_in_group("world_item"):
@@ -37,23 +30,16 @@ func _on_item_magnet_zone_area_entered(area: Area2D) -> void:
 func _on_item_magnet_zone_area_exited(area: Area2D) -> void:
     magnet_attracted_items.erase(area)
 
-func move_player(delta):
-    # Get 2D movement direction
+func get_movement_direction() -> Vector2:
     var direction = Vector2.ZERO
     direction.x = Input.get_axis("ui_left", "ui_right")
     direction.y = Input.get_axis("ui_up", "ui_down")
+    return direction
 
-    # Normalize to prevent faster diagonal movement
-    direction = direction.normalized()
-
-    if direction != Vector2.ZERO:
-        velocity.x = move_toward(velocity.x, move_speed * direction.x, move_acceleration * delta)
-        velocity.y = move_toward(velocity.y, move_speed * direction.y, move_acceleration * delta)
-    else:
-        velocity.x = move_toward(velocity.x, 0, move_friction * delta)
-        velocity.y = move_toward(velocity.y, 0, move_friction * delta)
-
-    move_and_slide()
+func pull_magnetized_items(delta):
+    for item in magnet_attracted_items:
+        if is_instance_valid(item):
+            pull_item_towards_player(item, delta)
 
 func pull_item_towards_player(item, delta):
     var direction = global_position - item.global_position
