@@ -44,42 +44,55 @@ theme_override_constants/separation = 4
 
 [node name="IetmSlot2" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
+tooltip_text = "Beer"
 
 [node name="IetmSlot3" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
+tooltip_text = "Cigs"
 
 [node name="IetmSlot4" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
 
 [node name="IetmSlot5" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
+tooltip_text = "Milk"
 
 [node name="IetmSlot6" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
+tooltip_text = "Beer"
 
 [node name="IetmSlot7" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
+tooltip_text = "Milk"
 
 [node name="IetmSlot8" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
+tooltip_text = "Milk"
 
 [node name="IetmSlot9" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
+tooltip_text = "Beer"
 
 [node name="IetmSlot10" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
+tooltip_text = "Cigs"
 
 [node name="IetmSlot11" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
+tooltip_text = "Milk"
 
 [node name="IetmSlot12" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
+tooltip_text = "Cigs"
 
 [node name="IetmSlot13" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
+tooltip_text = "Beer"
 
 [node name="IetmSlot14" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
+tooltip_text = "Shield"
 
 [node name="IetmSlot15" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
+tooltip_text = "Milk"

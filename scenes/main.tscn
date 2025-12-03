@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=18 format=3 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dj1c5h2cw1g4m" path="res://scenes/packed/player.tscn" id="2_choun"]
@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://lh0msmgkv2ey" path="res://scenes/packed/world_item.tscn" id="3_ya4ey"]
 [ext_resource type="Resource" uid="uid://bf1cpvg7e8f65" path="res://resources/items/item_sword.tres" id="4_eb6dy"]
 [ext_resource type="Resource" uid="uid://cl6kob1u26wxn" path="res://resources/items/item_shield.tres" id="5_trceg"]
-[ext_resource type="Resource" uid="uid://c5m2j664luubw" path="res://resources/items/item_junk.tres" id="6_a8y0u"]
+[ext_resource type="Resource" uid="uid://cc4j8w2kk2uh2" path="res://resources/items/item_beer.tres" id="7_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://b6c0437xdr4dq" path="res://scenes/packed/enemy.tscn" id="7_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://fror435gqham" path="res://scenes/packed/inventory.tscn" id="8_jbj1t"]
+[ext_resource type="Resource" uid="uid://0qpgr4okjqq7" path="res://resources/items/item_milk.tres" id="8_trceg"]
+[ext_resource type="Resource" uid="uid://cqp8f8k7g8bf" path="res://resources/items/item_cigs.tres" id="9_a8y0u"]
 [ext_resource type="Script" uid="uid://d207eahu4wqa3" path="res://scripts/world_drop_zone.gd" id="9_muem4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_choun"]
@@ -54,7 +56,7 @@ void fragment() {
     }
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eb6dy"]
 resource_local_to_scene = true
 shader = SubResource("Shader_eb6dy")
 shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
@@ -148,7 +150,7 @@ collision_mask = 3
 shape = SubResource("RectangleShape2D_qycdh")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
-material = SubResource("ShaderMaterial_choun")
+material = SubResource("ShaderMaterial_eb6dy")
 position = Vector2(30, 38)
 
 [node name="WorldItemSword" parent="World" instance=ExtResource("3_ya4ey")]
@@ -159,61 +161,49 @@ item_data = ExtResource("4_eb6dy")
 position = Vector2(603, 5.0000076)
 item_data = ExtResource("5_trceg")
 
-[node name="WorldItemJunk1" parent="World" instance=ExtResource("3_ya4ey")]
+[node name="WorldItemBeer1" parent="World" instance=ExtResource("3_ya4ey")]
 position = Vector2(105, -45)
-item_data = ExtResource("6_a8y0u")
+item_data = ExtResource("7_eb6dy")
 
-[node name="WorldItemJunk10" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(112, 38)
-item_data = ExtResource("6_a8y0u")
+[node name="WorldItemBeer2" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(332, -42)
+item_data = ExtResource("7_eb6dy")
 
-[node name="WorldItemJunk11" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(444, -42)
-item_data = ExtResource("6_a8y0u")
+[node name="WorldItemBeer3" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(508, 33)
+item_data = ExtResource("7_eb6dy")
 
-[node name="WorldItemJunk12" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(593, 13.000008)
-item_data = ExtResource("6_a8y0u")
+[node name="WorldItemBeer4" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(184, 41)
+item_data = ExtResource("7_eb6dy")
 
-[node name="WorldItemJunk14" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(550, 47)
-item_data = ExtResource("6_a8y0u")
+[node name="WorldItemMilk1" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(244, -40)
+item_data = ExtResource("8_trceg")
 
-[node name="WorldItemJunk13" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(341, -36.999992)
-item_data = ExtResource("6_a8y0u")
+[node name="WorldItemMilk2" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(422, 38)
+item_data = ExtResource("8_trceg")
 
-[node name="WorldItemJunk2" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(164.00002, -8)
-item_data = ExtResource("6_a8y0u")
+[node name="WorldItemMilk3" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(126, 32)
+item_data = ExtResource("8_trceg")
 
-[node name="WorldItemJunk3" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(546, -40)
-item_data = ExtResource("6_a8y0u")
+[node name="WorldItemMilk4" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(536, -43)
+item_data = ExtResource("8_trceg")
 
-[node name="WorldItemJunk4" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(214, 45.000015)
-item_data = ExtResource("6_a8y0u")
+[node name="WorldItemCigs1" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(175, -34)
+item_data = ExtResource("9_a8y0u")
 
-[node name="WorldItemJunk5" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(273, -32)
-item_data = ExtResource("6_a8y0u")
+[node name="WorldItemCigs2" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(319, 32)
+item_data = ExtResource("9_a8y0u")
 
-[node name="WorldItemJunk6" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(351, 38)
-item_data = ExtResource("6_a8y0u")
-
-[node name="WorldItemJunk7" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(368, 20)
-item_data = ExtResource("6_a8y0u")
-
-[node name="WorldItemJunk8" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(457, -23)
-item_data = ExtResource("6_a8y0u")
-
-[node name="WorldItemJunk9" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(497.00003, 36)
-item_data = ExtResource("6_a8y0u")
+[node name="WorldItemCigs3" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(477, -11)
+item_data = ExtResource("9_a8y0u")
 
 [node name="Enemy" parent="World" instance=ExtResource("7_jkv2x")]
 position = Vector2(210, -14)
