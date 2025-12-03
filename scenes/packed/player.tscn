@@ -16,6 +16,7 @@ radius = 65.0
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 4
 script = ExtResource("1_dx721")
+min_magnetic_strength = 350.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.22745098)
