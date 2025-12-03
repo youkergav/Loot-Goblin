@@ -195,10 +195,6 @@ item_data = ExtResource("6_a8y0u")
 position = Vector2(214, 45.000015)
 item_data = ExtResource("6_a8y0u")
 
-[node name="WorldItemJunk15" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(214, 45.000015)
-item_data = ExtResource("6_a8y0u")
-
 [node name="WorldItemJunk5" parent="World" instance=ExtResource("3_ya4ey")]
 position = Vector2(273, -32)
 item_data = ExtResource("6_a8y0u")

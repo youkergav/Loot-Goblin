@@ -83,6 +83,3 @@ layout_mode = 2
 
 [node name="IetmSlot15" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
 layout_mode = 2
-
-[node name="IetmSlot16" parent="MarginContainer/ScrollContainer/InventorySlotContainer" instance=ExtResource("1_o8gsp")]
-layout_mode = 2

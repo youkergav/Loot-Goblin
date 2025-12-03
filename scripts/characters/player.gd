@@ -26,9 +26,18 @@ func _on_item_pickup_zone_area_entered(area: Area2D) -> void:
 func _on_item_magnet_zone_area_entered(area: Area2D) -> void:
     if area.is_in_group("world_item"):
         magnet_attracted_items.append(area)
+        area.is_being_magnetized = true
+        area.modulate.a = 0.5  # Make item 50% transparent
+        
+        var shadow = area.get_node_or_null("Shadow")
+        if shadow:
+            shadow.visible = false
 
 func _on_item_magnet_zone_area_exited(area: Area2D) -> void:
     magnet_attracted_items.erase(area)
+    if is_instance_valid(area):
+        area.is_being_magnetized = false
+        area.modulate.a = 1.0  # Restore full opacity
 
 func get_movement_direction() -> Vector2:
     var direction = Vector2.ZERO
