@@ -44,3 +44,6 @@ func update_ui() -> void:
 
     icon_node.texture = item_data.icon
     tooltip_text = item_data.item_name
+    
+    if not item_data.is_equippable:
+        icon_node.modulate = Color(.25, .25, .25)
