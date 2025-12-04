@@ -7,7 +7,7 @@ class_name Player
 @export var max_magnetic_strength: float = 3000.0
 
 @onready var sprite = $Sprite
-@onready var inventory = get_tree().get_first_node_in_group("inventory")
+@onready var hotbar = get_tree().get_first_node_in_group("hotbar")
 
 var magnet_attracted_items: Array = []
 var equipped_item_data: ItemData = null
@@ -70,7 +70,7 @@ func pull_item_towards_player(item, delta):
         item.global_position += direction.normalized() * movement
 
 func pickup_item(item_data: ItemData) -> void:
-    inventory.add_item(item_data)
+    hotbar.add_item(item_data)
     print("Picked up: ", item_data.item_name)
 
 func equip_item(item_data: ItemData) -> ItemData:

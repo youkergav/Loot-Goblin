@@ -1,16 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://buvd0mdx20tqq"]
+[gd_scene load_steps=5 format=3 uid="uid://buvd0mdx20tqq"]
 
 [ext_resource type="Script" uid="uid://bky48elkxwtbp" path="res://scripts/items/item_slot.gd" id="1_jfob3"]
+[ext_resource type="Texture2D" uid="uid://ccb882dxhccmd" path="res://sprites/ui/item_slot_background.png" id="1_x06fe"]
+[ext_resource type="Texture2D" uid="uid://1v141y6mn52y" path="res://sprites/items/item_sword.png" id="3_6l78l"]
+[ext_resource type="Texture2D" uid="uid://ddmumil0sge5u" path="res://sprites/ui/item_slot_border.png" id="3_qdn75"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfob3"]
-bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
-
-[node name="IetmSlot" type="Panel"]
-custom_minimum_size = Vector2(18, 18)
-offset_right = 18.0
-offset_bottom = 18.0
+[node name="IetmSlot" type="TextureRect"]
+custom_minimum_size = Vector2(24, 24)
+offset_right = 22.0
+offset_bottom = 22.0
 tooltip_text = "Sword"
-theme_override_styles/panel = SubResource("StyleBoxFlat_jfob3")
+texture = ExtResource("1_x06fe")
+stretch_mode = 3
 script = ExtResource("1_jfob3")
 
 [node name="Icon" type="TextureRect" parent="."]
@@ -27,5 +28,12 @@ offset_right = 8.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 4
-stretch_mode = 5
+texture = ExtResource("3_6l78l")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="Border" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 22.0
+offset_bottom = 22.0
+texture = ExtResource("3_qdn75")

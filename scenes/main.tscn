@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=17 format=3 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dj1c5h2cw1g4m" path="res://scenes/packed/player.tscn" id="2_choun"]
@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://cl6kob1u26wxn" path="res://resources/items/item_shield.tres" id="5_trceg"]
 [ext_resource type="Resource" uid="uid://cc4j8w2kk2uh2" path="res://resources/items/item_beer.tres" id="7_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://b6c0437xdr4dq" path="res://scenes/packed/enemy.tscn" id="7_jkv2x"]
-[ext_resource type="PackedScene" uid="uid://fror435gqham" path="res://scenes/packed/inventory.tscn" id="8_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://fror435gqham" path="res://scenes/packed/hotbar.tscn" id="8_jbj1t"]
 [ext_resource type="Resource" uid="uid://0qpgr4okjqq7" path="res://resources/items/item_milk.tres" id="8_trceg"]
 [ext_resource type="Resource" uid="uid://cqp8f8k7g8bf" path="res://resources/items/item_cigs.tres" id="9_a8y0u"]
 [ext_resource type="Script" uid="uid://d207eahu4wqa3" path="res://scripts/world_drop_zone.gd" id="9_muem4"]
@@ -63,9 +63,6 @@ shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
 shader_parameter/outline_width = 6.8400003249
 shader_parameter/show_outline = true
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
-bg_color = Color(0.30138955, 0.30138955, 0.30138946, 1)
-
 [node name="Main" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
@@ -107,7 +104,7 @@ shape = SubResource("RectangleShape2D_choun")
 
 [node name="Floor" type="StaticBody2D" parent="World"]
 z_index = -10
-position = Vector2(323, 111.999985)
+position = Vector2(323, 102)
 scale = Vector2(7.2238207, 1.0888526)
 collision_layer = 4
 collision_mask = 3
@@ -151,7 +148,7 @@ shape = SubResource("RectangleShape2D_qycdh")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
 material = SubResource("ShaderMaterial_eb6dy")
-position = Vector2(30, 38)
+position = Vector2(30, 28)
 
 [node name="WorldItemSword" parent="World" instance=ExtResource("3_ya4ey")]
 position = Vector2(182, 17)
@@ -169,28 +166,12 @@ item_data = ExtResource("7_eb6dy")
 position = Vector2(332, -42)
 item_data = ExtResource("7_eb6dy")
 
-[node name="WorldItemBeer3" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(508, 33)
-item_data = ExtResource("7_eb6dy")
-
-[node name="WorldItemBeer4" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(184, 41)
-item_data = ExtResource("7_eb6dy")
-
 [node name="WorldItemMilk1" parent="World" instance=ExtResource("3_ya4ey")]
 position = Vector2(244, -40)
 item_data = ExtResource("8_trceg")
 
 [node name="WorldItemMilk2" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(422, 38)
-item_data = ExtResource("8_trceg")
-
-[node name="WorldItemMilk3" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(126, 32)
-item_data = ExtResource("8_trceg")
-
-[node name="WorldItemMilk4" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(536, -43)
+position = Vector2(420, 28)
 item_data = ExtResource("8_trceg")
 
 [node name="WorldItemCigs1" parent="World" instance=ExtResource("3_ya4ey")]
@@ -198,18 +179,14 @@ position = Vector2(175, -34)
 item_data = ExtResource("9_a8y0u")
 
 [node name="WorldItemCigs2" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(319, 32)
-item_data = ExtResource("9_a8y0u")
-
-[node name="WorldItemCigs3" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(477, -11)
+position = Vector2(319, 22)
 item_data = ExtResource("9_a8y0u")
 
 [node name="Enemy" parent="World" instance=ExtResource("7_jkv2x")]
 position = Vector2(210, -14)
 
 [node name="Enemy2" parent="World" instance=ExtResource("7_jkv2x")]
-position = Vector2(579, 44)
+position = Vector2(579, 35)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -225,7 +202,6 @@ grow_vertical = 2
 script = ExtResource("9_muem4")
 world_item_scene = ExtResource("3_ya4ey")
 
-[node name="Inventory" parent="UI" groups=["inventory"] instance=ExtResource("8_jbj1t")]
-theme_override_styles/panel = SubResource("StyleBoxFlat_tipki")
+[node name="Inventory" parent="UI" instance=ExtResource("8_jbj1t")]
 
 [connection signal="mouse_exited" from="UI/WorldDropZone" to="UI/WorldDropZone" method="_on_mouse_exited"]

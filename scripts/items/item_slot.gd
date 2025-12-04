@@ -1,5 +1,5 @@
 @tool
-extends Panel
+extends TextureRect
 
 @export var item_data: ItemData:
     set(value):
@@ -20,6 +20,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
     control.add_child(preview)
     preview.position -= size / 2
     preview.self_modulate = Color.TRANSPARENT
+    preview.get_node("Border").self_modulate = Color.TRANSPARENT
     control.modulate = Color(control.modulate, 0.5)
 
     set_drag_preview(control)
@@ -47,3 +48,5 @@ func update_ui() -> void:
     
     if not item_data.is_equippable:
         icon_node.modulate = Color(.25, .25, .25)
+    else:
+        icon_node.modulate = Color.WHITE

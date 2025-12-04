@@ -3,18 +3,18 @@ extends Control
 @export var world_item_scene: PackedScene
 
 @onready var player = get_tree().get_first_node_in_group("player")
-@onready var inventory = get_tree().get_first_node_in_group("inventory")
+@onready var hotbar = get_tree().get_first_node_in_group("hotbar")
 @onready var world = get_tree().get_first_node_in_group("world")
 @onready var camera = get_tree().get_first_node_in_group("camera")
 
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
     return data.item_data != null
     
-func _drop_data(at_position: Vector2, inventory_slot: Variant) -> void:
-    var item_data = inventory_slot.item_data
+func _drop_data(at_position: Vector2, item_slot: Variant) -> void:
+    var item_data = item_slot.item_data
     
     # Remove from queue and shift everything left
-    inventory.remove_item_and_shift(inventory_slot)
+    hotbar.remove_item_and_shift(item_slot)
     
     spawn_item_in_world(item_data, at_position)
 
