@@ -81,7 +81,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 640, 180)
 
 [node name="Ceiling" type="StaticBody2D" parent="World"]
-position = Vector2(327, -101)
+position = Vector2(327, -80)
 scale = Vector2(7, 0.755)
 collision_layer = 4
 collision_mask = 3
@@ -206,9 +206,11 @@ world_item_scene = ExtResource("3_ya4ey")
 [node name="Inventory" parent="UI" instance=ExtResource("8_jbj1t")]
 
 [node name="HeartBar" type="HBoxContainer" parent="UI"]
-offset_right = 96.0
-offset_bottom = 16.0
-theme_override_constants/separation = 4
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 101.0
+offset_bottom = 21.0
+theme_override_constants/separation = 2
 
 [node name="Heart1" type="TextureRect" parent="UI/HeartBar"]
 layout_mode = 2
