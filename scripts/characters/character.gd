@@ -6,6 +6,14 @@ class_name Character
 @export var move_acceleration: float = 750.0
 @export var move_friction: float = 650.0
 
+@export_group("Health")
+@export var health_max: int = 5
+
+var isalive: bool = true 
+var health: int 
+
+func _ready() -> void:
+    health = health_max
 
 func _physics_process(delta):
     var direction = get_movement_direction()
@@ -27,3 +35,12 @@ func apply_movement(direction: Vector2, delta: float):
         velocity.y = move_toward(velocity.y, 0, move_friction * delta)
     
     move_and_slide()
+
+func take_damage() -> void:
+    if health > 0:
+        health -= 1
+    #hit animation will go here
+    
+func heal() -> void:
+    health = health_max
+   

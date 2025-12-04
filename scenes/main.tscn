@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=18 format=3 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dj1c5h2cw1g4m" path="res://scenes/packed/player.tscn" id="2_choun"]
@@ -8,10 +8,11 @@
 [ext_resource type="Resource" uid="uid://cl6kob1u26wxn" path="res://resources/items/item_shield.tres" id="5_trceg"]
 [ext_resource type="Resource" uid="uid://cc4j8w2kk2uh2" path="res://resources/items/item_beer.tres" id="7_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://b6c0437xdr4dq" path="res://scenes/packed/enemy.tscn" id="7_jkv2x"]
-[ext_resource type="PackedScene" uid="uid://fror435gqham" path="res://scenes/packed/hotbar.tscn" id="8_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://ivgm86b4arbt" path="res://scenes/packed/hotbar.tscn" id="8_jbj1t"]
 [ext_resource type="Resource" uid="uid://0qpgr4okjqq7" path="res://resources/items/item_milk.tres" id="8_trceg"]
 [ext_resource type="Resource" uid="uid://cqp8f8k7g8bf" path="res://resources/items/item_cigs.tres" id="9_a8y0u"]
 [ext_resource type="Script" uid="uid://d207eahu4wqa3" path="res://scripts/world_drop_zone.gd" id="9_muem4"]
+[ext_resource type="Texture2D" uid="uid://cu3scq4upc201" path="res://sprites/ui/equip_slot_border_active.png" id="13_trceg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_choun"]
 size = Vector2(100, 100)
@@ -56,7 +57,7 @@ void fragment() {
     }
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eb6dy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8y0u"]
 resource_local_to_scene = true
 shader = SubResource("Shader_eb6dy")
 shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
@@ -147,7 +148,7 @@ collision_mask = 3
 shape = SubResource("RectangleShape2D_qycdh")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
-material = SubResource("ShaderMaterial_eb6dy")
+material = SubResource("ShaderMaterial_a8y0u")
 position = Vector2(30, 28)
 
 [node name="WorldItemSword" parent="World" instance=ExtResource("3_ya4ey")]
@@ -203,5 +204,36 @@ script = ExtResource("9_muem4")
 world_item_scene = ExtResource("3_ya4ey")
 
 [node name="Inventory" parent="UI" instance=ExtResource("8_jbj1t")]
+
+[node name="HeartBar" type="HBoxContainer" parent="UI"]
+offset_right = 137.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="TextureRect" type="TextureRect" parent="UI/HeartBar"]
+layout_mode = 2
+texture = ExtResource("13_trceg")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="UI/HeartBar"]
+layout_mode = 2
+texture = ExtResource("13_trceg")
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="UI/HeartBar"]
+layout_mode = 2
+texture = ExtResource("13_trceg")
+stretch_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="UI/HeartBar"]
+layout_mode = 2
+texture = ExtResource("13_trceg")
+stretch_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="UI/HeartBar"]
+layout_mode = 2
+texture = ExtResource("13_trceg")
+stretch_mode = 2
 
 [connection signal="mouse_exited" from="UI/WorldDropZone" to="UI/WorldDropZone" method="_on_mouse_exited"]
