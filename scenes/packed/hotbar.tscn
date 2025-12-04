@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://fror435gqham"]
+[gd_scene load_steps=6 format=3 uid="uid://ivgm86b4arbt"]
 
-[ext_resource type="Script" uid="uid://bkukjaealpgbb" path="res://scripts/hotbar.gd" id="1_1j4qe"]
+[ext_resource type="Script" path="res://scripts/hotbar.gd" id="1_1j4qe"]
 [ext_resource type="Texture2D" uid="uid://bufelkdo2saay" path="res://sprites/ui/hotbar.png" id="1_ja78e"]
 [ext_resource type="PackedScene" uid="uid://buvd0mdx20tqq" path="res://scenes/packed/item_slot.tscn" id="1_o8gsp"]
 [ext_resource type="Texture2D" uid="uid://cu3scq4upc201" path="res://sprites/ui/equip_slot_border_active.png" id="4_o7c7x"]
