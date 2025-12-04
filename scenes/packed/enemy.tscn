@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6c0437xdr4dq"]
 
-[ext_resource type="Texture2D" uid="uid://bjb30nw5r6mj" path="res://sprites/characters/character_shadow.png" id="1_808bg"]
 [ext_resource type="Script" uid="uid://cqde2wtrj6y1a" path="res://scripts/characters/enemy.gd" id="1_d80uj"]
-[ext_resource type="Texture2D" uid="uid://fu387cjw7ovo" path="res://sprites/characters/enemy.png" id="2_808bg"]
+[ext_resource type="Texture2D" uid="uid://up6s2l2uyv6i" path="res://sprites/characters/shroomite_shadow.png" id="2_d80uj"]
+[ext_resource type="Texture2D" uid="uid://o4hm262qss4m" path="res://sprites/characters/shroomite.png" id="3_d80uj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d80uj"]
 radius = 150.0
@@ -19,14 +19,14 @@ move_acceleration = 800.0
 move_friction = 600.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.22745098)
 z_index = -1
-texture = ExtResource("1_808bg")
+position = Vector2(11.5, 12.5)
+texture = ExtResource("2_d80uj")
 offset = Vector2(-7, -12)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_808bg")
+texture = ExtResource("3_d80uj")
 offset = Vector2(0, -12)
 
 [node name="PlayerDetectionZone" type="Area2D" parent="."]
