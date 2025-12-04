@@ -12,6 +12,7 @@ class_name Player
 var magnet_attracted_items: Array = []
 var equipped_item_data: ItemData = null
 
+var hearts_list : Array[TextureRect]
 
 func _physics_process(delta: float) -> void:
     pull_magnetized_items(delta)
@@ -80,3 +81,24 @@ func equip_item(item_data: ItemData) -> ItemData:
     sprite.modulate = equipped_item_data.color
 
     return old_item
+
+func _ready() -> void: 
+    var hearts_parent = $"../../UI/HeartBar"
+    for child in hearts_parent.get_children():
+        hearts_list.append(child)
+    print (hearts_list)
+    super._ready()
+
+func take_damage() -> void:
+    super.take_damage()
+    for i in range (hearts_list.size()):
+        hearts_list[i].visible = i < health
+    if health == 1:
+        hearts_list[0].play()
+    elif health > 1:
+        hearts_list[0].play()
+    elif health <= 0:
+        isalive = false 
+        #end screen 
+        #death() #dath Animation 
+    
