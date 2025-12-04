@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=20 format=4 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
+[ext_resource type="Texture2D" uid="uid://c8ichhqq68qk4" path="res://sprites/tilemaps/grass_tilemap.png" id="2_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://dj1c5h2cw1g4m" path="res://scenes/packed/player.tscn" id="2_choun"]
-[ext_resource type="Texture2D" uid="uid://dynsjjhj1pu4f" path="res://sprites/sky.png" id="2_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://lh0msmgkv2ey" path="res://scenes/packed/world_item.tscn" id="3_ya4ey"]
 [ext_resource type="Resource" uid="uid://bf1cpvg7e8f65" path="res://resources/items/item_sword.tres" id="4_eb6dy"]
 [ext_resource type="Resource" uid="uid://cl6kob1u26wxn" path="res://resources/items/item_shield.tres" id="5_trceg"]
@@ -13,6 +13,38 @@
 [ext_resource type="Resource" uid="uid://cqp8f8k7g8bf" path="res://resources/items/item_cigs.tres" id="9_a8y0u"]
 [ext_resource type="Script" uid="uid://d207eahu4wqa3" path="res://scripts/world_drop_zone.gd" id="9_muem4"]
 [ext_resource type="Texture2D" uid="uid://b3jaog4l1unge" path="res://sprites/ui/heart.png" id="13_trceg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8y0u"]
+texture = ExtResource("2_a8y0u")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+3:0/0/probability = 0.25
+4:0/0 = 0
+4:0/0/probability = 0.25
+5:0/0 = 0
+5:0/0/probability = 0.25
+6:0/0 = 0
+6:0/0/probability = 0.25
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+12:0/0/probability = 0.25
+13:0/0 = 0
+13:0/0/probability = 0.25
+14:0/0 = 0
+14:0/0/probability = 0.25
+15:0/0 = 0
+15:0/0/probability = 0.25
+
+[sub_resource type="TileSet" id="TileSet_jbj1t"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_a8y0u")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_choun"]
 size = Vector2(100, 100)
@@ -67,26 +99,28 @@ shader_parameter/show_outline = true
 [node name="Main" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
+limit_left = 0
+limit_top = -90
+limit_right = 640
+limit_bottom = 90
 script = ExtResource("1_85g3d")
 
 [node name="World" type="Node2D" parent="." groups=["world"]]
 y_sort_enabled = true
 
-[node name="Sky" type="Sprite2D" parent="World" groups=["sky"]]
-modulate = Color(0.5647059, 0.5647059, 0.5647059, 1)
+[node name="TileMapLayer" type="TileMapLayer" parent="World"]
 z_index = -100
-texture = ExtResource("2_ya4ey")
-offset = Vector2(320, 0)
-region_enabled = true
-region_rect = Rect2(0, 0, 640, 180)
+position = Vector2(-4, 0)
+tile_map_data = PackedByteArray("AAD///7/AQABAAAAAAD/////AQALAAAAAAD//wAAAQAOAAAAAAD//wEAAQAHAAAAAAD//wIAAQAKAAAAAAAAAP7/AQAJAAAAAAAAAP//AQAJAAAAAAAAAAAAAQACAAAAAAAAAAEAAQADAAAAAAAAAAIAAQAAAAAAAAABAP7/AQABAAAAAAABAP//AQAIAAAAAAABAAAAAQAIAAAAAAABAAEAAQAPAAAAAAABAAIAAQAAAAAAAAACAP7/AQAHAAAAAAACAP//AQAIAAAAAAACAAAAAQAIAAAAAAACAAEAAQAHAAAAAAACAAIAAQAGAAAAAAADAP7/AQAKAAAAAAADAP//AQAJAAAAAAADAAAAAQAAAAAAAAADAAEAAQAKAAAAAAADAAIAAQAJAAAAAAAEAP7/AQAMAAAAAAAEAP//AQAJAAAAAAAEAAAAAQAGAAAAAAAEAAEAAQAEAAAAAAAEAAIAAQALAAAAAAAFAP7/AQAHAAAAAAAFAP//AQAHAAAAAAAFAAAAAQALAAAAAAAFAAEAAQACAAAAAAAFAAIAAQAAAAAAAAAGAP7/AQAHAAAAAAAGAP//AQAJAAAAAAAGAAAAAQAJAAAAAAAGAAEAAQABAAAAAAAGAAIAAQAGAAAAAAAHAP7/AQAIAAAAAAAHAP//AQAGAAAAAAAHAAAAAQAOAAAAAAAHAAEAAQAMAAAAAAAHAAIAAQAHAAAAAAAIAP7/AQAHAAAAAAAIAP//AQAJAAAAAAAIAAAAAQABAAAAAAAIAAEAAQALAAAAAAAIAAIAAQAIAAAAAAAJAP7/AQAEAAAAAAAJAP//AQAIAAAAAAAJAAAAAQAKAAAAAAAJAAEAAQAKAAAAAAAJAAIAAQAHAAAAAAAKAP7/AQAKAAAAAAAKAP//AQAKAAAAAAAKAAAAAQAEAAAAAAAKAAEAAQAIAAAAAAAKAAIAAQAHAAAAAAALAP7/AQAEAAAAAAALAP//AQAJAAAAAAALAAAAAQACAAAAAAALAAEAAQACAAAAAAALAAIAAQALAAAAAAAMAP7/AQABAAAAAAAMAP//AQAJAAAAAAAMAAAAAQALAAAAAAAMAAEAAQAJAAAAAAAMAAIAAQAHAAAAAAANAP7/AQACAAAAAAANAP//AQAKAAAAAAANAAAAAQABAAAAAAANAAEAAQAPAAAAAAANAAIAAQAOAAAAAAAOAP7/AQAOAAAAAAAOAP//AQADAAAAAAAOAAAAAQAJAAAAAAAOAAEAAQAMAAAAAAAOAAIAAQAHAAAAAAAPAP7/AQAAAAAAAAAPAP//AQAHAAAAAAAPAAAAAQACAAAAAAAPAAEAAQABAAAAAAAPAAIAAQAOAAAAAAAQAP7/AQACAAAAAAAQAP//AQACAAAAAAAQAAAAAQABAAAAAAAQAAEAAQAGAAAAAAAQAAIAAQACAAAAAAARAP7/AQABAAAAAAARAP//AQAFAAAAAAARAAAAAQALAAAAAAARAAEAAQAPAAAAAAARAAIAAQAAAAAAAAASAP7/AQAAAAAAAAASAP//AQAIAAAAAAASAAAAAQAJAAAAAAASAAEAAQABAAAAAAASAAIAAQANAAAAAAATAP7/AQAAAAAAAAATAP//AQALAAAAAAATAAAAAQAOAAAAAAATAAEAAQABAAAAAAATAAIAAQAHAAAAAAAUAP7/AQACAAAAAAAUAP//AQAHAAAAAAAUAAAAAQAKAAAAAAAUAAEAAQABAAAAAAAUAAIAAQABAAAAAAA=")
+tile_set = SubResource("TileSet_jbj1t")
 
-[node name="Ceiling" type="StaticBody2D" parent="World"]
+[node name="Background" type="StaticBody2D" parent="World"]
 position = Vector2(327, -80)
 scale = Vector2(7, 0.755)
 collision_layer = 4
 collision_mask = 3
 
-[node name="ColorRect" type="ColorRect" parent="World/Ceiling"]
+[node name="ColorRect" type="ColorRect" parent="World/Background"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -100,17 +134,17 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.2123048, 0.21230483, 0.21230477, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Ceiling"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Background"]
 shape = SubResource("RectangleShape2D_choun")
 
-[node name="Floor" type="StaticBody2D" parent="World"]
+[node name="Foreground" type="StaticBody2D" parent="World"]
 z_index = -10
 position = Vector2(323, 102)
 scale = Vector2(7.2238207, 1.0888526)
 collision_layer = 4
 collision_mask = 3
 
-[node name="ColorRect" type="ColorRect" parent="World/Floor"]
+[node name="ColorRect" type="ColorRect" parent="World/Foreground"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -124,7 +158,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.2123048, 0.21230483, 0.21230477, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Floor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Foreground"]
 shape = SubResource("RectangleShape2D_choun")
 
 [node name="BarrierLeft" type="StaticBody2D" parent="World"]
@@ -137,14 +171,14 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/BarrierLeft"]
 shape = SubResource("RectangleShape2D_qycdh")
 
-[node name="BarrierLeft2" type="StaticBody2D" parent="World"]
+[node name="BarrierRight" type="StaticBody2D" parent="World"]
 position = Vector2(658, 45)
 rotation = 1.5707964
 scale = Vector2(6.452, 0.6)
 collision_layer = 4
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BarrierLeft2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BarrierRight"]
 shape = SubResource("RectangleShape2D_qycdh")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
