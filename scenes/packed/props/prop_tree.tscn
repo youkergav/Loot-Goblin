@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyc23nln5hmqk"]
+
+[ext_resource type="Texture2D" uid="uid://db3kuv4wlev3d" path="res://sprites/props/prop_tree.png" id="1_k61fv"]
+[ext_resource type="Texture2D" uid="uid://gnyxmyj1bgbd" path="res://sprites/props/prop_tree_shadow.png" id="2_moydc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uh3yy"]
+size = Vector2(14, 5)
+
+[node name="PropTree" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -20
+texture = ExtResource("2_moydc")
+offset = Vector2(2.7, 3.15)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k61fv")
+offset = Vector2(3, -37)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 1.5)
+shape = SubResource("RectangleShape2D_uh3yy")

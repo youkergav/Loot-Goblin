@@ -1,8 +1,8 @@
-[gd_scene load_steps=28 format=4 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=30 format=4 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c8ichhqq68qk4" path="res://sprites/tilemaps/grass_tilemap.png" id="2_a8y0u"]
-[ext_resource type="PackedScene" uid="uid://dj1c5h2cw1g4m" path="res://scenes/packed/player.tscn" id="2_choun"]
+[ext_resource type="PackedScene" uid="uid://dj1c5h2cw1g4m" path="res://scenes/packed/characters/player.tscn" id="2_choun"]
 [ext_resource type="Texture2D" uid="uid://c3xnr14kovxyv" path="res://sprites/backgrounds/background4.png" id="2_muem4"]
 [ext_resource type="Texture2D" uid="uid://bois1unhu3fan" path="res://sprites/backgrounds/background3.png" id="3_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://lh0msmgkv2ey" path="res://scenes/packed/world_item.tscn" id="3_ya4ey"]
@@ -13,12 +13,14 @@
 [ext_resource type="Texture2D" uid="uid://d1xn5whcus62d" path="res://sprites/backgrounds/foreground2.png" id="6_0ld40"]
 [ext_resource type="Texture2D" uid="uid://bj3uxajacs3wl" path="res://sprites/backgrounds/foreground1.png" id="6_dp3eg"]
 [ext_resource type="Resource" uid="uid://cc4j8w2kk2uh2" path="res://resources/items/item_beer.tres" id="7_eb6dy"]
-[ext_resource type="PackedScene" uid="uid://b6c0437xdr4dq" path="res://scenes/packed/enemy.tscn" id="7_jkv2x"]
-[ext_resource type="PackedScene" uid="uid://ivgm86b4arbt" path="res://scenes/packed/hotbar.tscn" id="8_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://b6c0437xdr4dq" path="res://scenes/packed/characters/enemy.tscn" id="7_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://ivgm86b4arbt" path="res://scenes/packed/ui/hotbar.tscn" id="8_jbj1t"]
 [ext_resource type="Resource" uid="uid://0qpgr4okjqq7" path="res://resources/items/item_milk.tres" id="8_trceg"]
 [ext_resource type="Resource" uid="uid://cqp8f8k7g8bf" path="res://resources/items/item_cigs.tres" id="9_a8y0u"]
 [ext_resource type="Script" uid="uid://d207eahu4wqa3" path="res://scripts/world_drop_zone.gd" id="9_muem4"]
-[ext_resource type="PackedScene" uid="uid://6d6wdo8felvi" path="res://scenes/packed/heartbar.tscn" id="18_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://dyc23nln5hmqk" path="res://scenes/packed/props/prop_tree.tscn" id="17_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://6d6wdo8felvi" path="res://scenes/packed/ui/heartbar.tscn" id="18_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://bqvuahjs2dfel" path="res://scenes/packed/props/prop_tree_stump.tscn" id="18_yc10j"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dp3eg"]
 normal = Vector2(0, 1)
@@ -102,7 +104,7 @@ void fragment() {
     }
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ld40"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jscy8"]
 resource_local_to_scene = true
 shader = SubResource("Shader_eb6dy")
 shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
@@ -203,8 +205,9 @@ tile_map_data = PackedByteArray("AAD///7/AQAHAAAAAAD/////AQAMAAAAAAD//wAAAQACAAA
 tile_set = SubResource("TileSet_jkv2x")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
-material = SubResource("ShaderMaterial_0ld40")
+material = SubResource("ShaderMaterial_jscy8")
 position = Vector2(30, 28)
+move_speed = 70.0
 
 [node name="WorldItemSword" parent="World" instance=ExtResource("3_ya4ey")]
 position = Vector2(182, 17)
@@ -240,9 +243,38 @@ item_data = ExtResource("9_a8y0u")
 
 [node name="Enemy" parent="World" instance=ExtResource("7_jkv2x")]
 position = Vector2(210, -14)
+move_speed = 50.0
 
 [node name="Enemy2" parent="World" instance=ExtResource("7_jkv2x")]
-position = Vector2(579, 35)
+position = Vector2(502, 7)
+move_speed = 50.0
+
+[node name="PropTree" parent="World" instance=ExtResource("17_gqmmt")]
+position = Vector2(228, 48)
+
+[node name="PropTree2" parent="World" instance=ExtResource("17_gqmmt")]
+position = Vector2(333, -11)
+
+[node name="PropTree3" parent="World" instance=ExtResource("17_gqmmt")]
+position = Vector2(471, 9)
+
+[node name="PropTree4" parent="World" instance=ExtResource("17_gqmmt")]
+position = Vector2(502, -7)
+
+[node name="PropTree5" parent="World" instance=ExtResource("17_gqmmt")]
+position = Vector2(561, 68)
+
+[node name="PropTree6" parent="World" instance=ExtResource("17_gqmmt")]
+position = Vector2(121, -14)
+
+[node name="PropTree7" parent="World" instance=ExtResource("18_yc10j")]
+position = Vector2(153, 27)
+
+[node name="PropTree8" parent="World" instance=ExtResource("18_yc10j")]
+position = Vector2(352, -16)
+
+[node name="PropTree9" parent="World" instance=ExtResource("18_yc10j")]
+position = Vector2(655, -17)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
