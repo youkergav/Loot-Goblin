@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6y1jw3mrkqn2"]
+
+[ext_resource type="Texture2D" uid="uid://bc6o0rfh2hi7c" path="res://sprites/ui/heart_border.png" id="1_nmywg"]
+[ext_resource type="Texture2D" uid="uid://b3jaog4l1unge" path="res://sprites/ui/heart.png" id="2_38kcm"]
+
+[node name="Heart" type="TextureRect"]
+texture = ExtResource("1_nmywg")
+stretch_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 15)
+layout_mode = 0
+offset_left = 1.4000001
+offset_top = 1.0
+offset_right = 17.4
+offset_bottom = 16.0
+texture = ExtResource("2_38kcm")
+stretch_mode = 2

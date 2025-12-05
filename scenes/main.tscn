@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=27 format=4 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c8ichhqq68qk4" path="res://sprites/tilemaps/grass_tilemap.png" id="2_a8y0u"]
@@ -10,13 +10,14 @@
 [ext_resource type="Resource" uid="uid://bf1cpvg7e8f65" path="res://resources/items/item_sword.tres" id="4_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://cchxiaq7nqpff" path="res://sprites/backgrounds/background1.png" id="5_gqmmt"]
 [ext_resource type="Resource" uid="uid://cl6kob1u26wxn" path="res://resources/items/item_shield.tres" id="5_trceg"]
+[ext_resource type="Texture2D" uid="uid://sl6qklese02c" path="res://sprites/backgrounds/foreground.png" id="6_dp3eg"]
 [ext_resource type="Resource" uid="uid://cc4j8w2kk2uh2" path="res://resources/items/item_beer.tres" id="7_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://b6c0437xdr4dq" path="res://scenes/packed/enemy.tscn" id="7_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://ivgm86b4arbt" path="res://scenes/packed/hotbar.tscn" id="8_jbj1t"]
 [ext_resource type="Resource" uid="uid://0qpgr4okjqq7" path="res://resources/items/item_milk.tres" id="8_trceg"]
 [ext_resource type="Resource" uid="uid://cqp8f8k7g8bf" path="res://resources/items/item_cigs.tres" id="9_a8y0u"]
 [ext_resource type="Script" uid="uid://d207eahu4wqa3" path="res://scripts/world_drop_zone.gd" id="9_muem4"]
-[ext_resource type="Texture2D" uid="uid://b3jaog4l1unge" path="res://sprites/ui/heart.png" id="13_trceg"]
+[ext_resource type="PackedScene" uid="uid://6d6wdo8felvi" path="res://scenes/packed/heartbar.tscn" id="18_dp3eg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dp3eg"]
 normal = Vector2(0, 1)
@@ -100,7 +101,7 @@ void fragment() {
     }
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jkv2x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dp3eg"]
 resource_local_to_scene = true
 shader = SubResource("Shader_eb6dy")
 shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
@@ -172,35 +173,26 @@ repeat_times = 4
 [node name="Sprite2D" type="Sprite2D" parent="World/Background/Layer4"]
 texture = ExtResource("5_gqmmt")
 
+[node name="Foreground" type="Node2D" parent="World"]
+z_index = 99
+
+[node name="Layer1" type="Parallax2D" parent="World/Foreground"]
+scroll_scale = Vector2(1.1, 1)
+scroll_offset = Vector2(0, 80)
+repeat_size = Vector2(320, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Foreground/Layer1"]
+texture = ExtResource("6_dp3eg")
+
 [node name="TileMap" type="TileMapLayer" parent="World"]
 z_index = -100
 position = Vector2(-4, 19)
 tile_map_data = PackedByteArray("AAD///7/AQAHAAAAAAD/////AQAMAAAAAAD//wAAAQACAAAAAAD//wEAAQABAAAAAAD//wIAAQAJAAAAAAAAAP7/AQACAAAAAAAAAP//AQANAAAAAAAAAAAAAQAFAAAAAAAAAAEAAQANAAAAAAAAAAIAAQAAAAAAAAABAP7/AQAJAAAAAAABAP//AQAHAAAAAAABAAAAAQANAAAAAAABAAEAAQAFAAAAAAABAAIAAQANAAAAAAACAP7/AQAPAAAAAAACAP//AQADAAAAAAACAAAAAQAAAAAAAAACAAEAAQANAAAAAAACAAIAAQAHAAAAAAADAP7/AQACAAAAAAADAP//AQAAAAAAAAADAAAAAQAJAAAAAAADAAEAAQAJAAAAAAADAAIAAQAAAAAAAAAEAP7/AQAPAAAAAAAEAP//AQAPAAAAAAAEAAAAAQABAAAAAAAEAAEAAQAOAAAAAAAEAAIAAQAAAAAAAAAFAP7/AQABAAAAAAAFAP//AQAAAAAAAAAFAAAAAQANAAAAAAAFAAEAAQAOAAAAAAAFAAIAAQANAAAAAAAGAP7/AQAPAAAAAAAGAP//AQAFAAAAAAAGAAAAAQAPAAAAAAAGAAEAAQAEAAAAAAAGAAIAAQADAAAAAAAHAP7/AQANAAAAAAAHAP//AQAJAAAAAAAHAAAAAQAHAAAAAAAHAAEAAQANAAAAAAAHAAIAAQAMAAAAAAAIAP7/AQABAAAAAAAIAP//AQAJAAAAAAAIAAAAAQACAAAAAAAIAAEAAQANAAAAAAAIAAIAAQABAAAAAAAJAP7/AQAHAAAAAAAJAP//AQABAAAAAAAJAAAAAQAAAAAAAAAJAAEAAQAKAAAAAAAJAAIAAQAOAAAAAAAKAP7/AQAJAAAAAAAKAP//AQAMAAAAAAAKAAAAAQANAAAAAAAKAAEAAQAJAAAAAAAKAAIAAQAAAAAAAAALAP7/AQAFAAAAAAALAP//AQAMAAAAAAALAAAAAQAHAAAAAAALAAEAAQANAAAAAAALAAIAAQAGAAAAAAAMAP7/AQANAAAAAAAMAP//AQAOAAAAAAAMAAAAAQANAAAAAAAMAAEAAQAKAAAAAAAMAAIAAQADAAAAAAANAP7/AQAMAAAAAAANAP//AQAAAAAAAAANAAAAAQAOAAAAAAANAAEAAQAJAAAAAAANAAIAAQANAAAAAAAOAP7/AQAJAAAAAAAOAP//AQACAAAAAAAOAAAAAQAEAAAAAAAOAAEAAQAJAAAAAAAOAAIAAQACAAAAAAAPAP7/AQAJAAAAAAAPAP//AQAOAAAAAAAPAAAAAQAHAAAAAAAPAAEAAQACAAAAAAAPAAIAAQAPAAAAAAAQAP7/AQAFAAAAAAAQAP//AQAMAAAAAAAQAAAAAQABAAAAAAAQAAEAAQAAAAAAAAAQAAIAAQAJAAAAAAARAP7/AQAHAAAAAAARAP//AQAAAAAAAAARAAAAAQAOAAAAAAARAAEAAQAHAAAAAAARAAIAAQAPAAAAAAASAP7/AQAHAAAAAAASAP//AQAJAAAAAAASAAAAAQAMAAAAAAASAAEAAQAMAAAAAAASAAIAAQAJAAAAAAATAP7/AQANAAAAAAATAP//AQACAAAAAAATAAAAAQAHAAAAAAATAAEAAQANAAAAAAATAAIAAQAOAAAAAAAUAP7/AQANAAAAAAAUAP//AQAFAAAAAAAUAAAAAQANAAAAAAAUAAEAAQACAAAAAAAUAAIAAQAKAAAAAAA=")
 tile_set = SubResource("TileSet_jkv2x")
 
-[node name="Foreground" type="StaticBody2D" parent="World"]
-z_index = -10
-position = Vector2(323, 102)
-scale = Vector2(7.2238207, 1.0888526)
-collision_layer = 4
-collision_mask = 3
-
-[node name="ColorRect" type="ColorRect" parent="World/Foreground"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.2123048, 0.21230483, 0.21230477, 1)
-
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
-material = SubResource("ShaderMaterial_jkv2x")
+material = SubResource("ShaderMaterial_dp3eg")
 position = Vector2(30, 28)
 
 [node name="WorldItemSword" parent="World" instance=ExtResource("3_ya4ey")]
@@ -257,36 +249,6 @@ world_item_scene = ExtResource("3_ya4ey")
 
 [node name="Inventory" parent="UI" instance=ExtResource("8_jbj1t")]
 
-[node name="HeartBar" type="HBoxContainer" parent="UI"]
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 101.0
-offset_bottom = 21.0
-theme_override_constants/separation = 2
-
-[node name="Heart1" type="TextureRect" parent="UI/HeartBar"]
-layout_mode = 2
-texture = ExtResource("13_trceg")
-stretch_mode = 2
-
-[node name="Heart2" type="TextureRect" parent="UI/HeartBar"]
-layout_mode = 2
-texture = ExtResource("13_trceg")
-stretch_mode = 2
-
-[node name="Heart3" type="TextureRect" parent="UI/HeartBar"]
-layout_mode = 2
-texture = ExtResource("13_trceg")
-stretch_mode = 2
-
-[node name="Heart4" type="TextureRect" parent="UI/HeartBar"]
-layout_mode = 2
-texture = ExtResource("13_trceg")
-stretch_mode = 2
-
-[node name="Heart5" type="TextureRect" parent="UI/HeartBar"]
-layout_mode = 2
-texture = ExtResource("13_trceg")
-stretch_mode = 2
+[node name="Heartbar" parent="UI" instance=ExtResource("18_dp3eg")]
 
 [connection signal="mouse_exited" from="UI/WorldDropZone" to="UI/WorldDropZone" method="_on_mouse_exited"]
