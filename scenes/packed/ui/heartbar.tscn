@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://6d6wdo8felvi"]
 
 [ext_resource type="Texture2D" uid="uid://cpq22warb1115" path="res://sprites/ui/heartbar.png" id="1_m0und"]
-[ext_resource type="PackedScene" uid="uid://c6y1jw3mrkqn2" path="res://scenes/packed/heart.tscn" id="2_j7fp2"]
+[ext_resource type="PackedScene" uid="uid://c6y1jw3mrkqn2" path="res://scenes/packed/ui/heart.tscn" id="2_j7fp2"]
 
 [node name="Heartbar" type="TextureRect"]
 offset_top = 5.0

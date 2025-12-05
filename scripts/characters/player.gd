@@ -30,7 +30,6 @@ func _on_item_magnet_zone_area_entered(area: Area2D) -> void:
         area.is_being_magnetized = true
         area.modulate.a = 0.5  # Make item 50% transparent
         
-        var shadow = area.get_node_or_null("Shadow")
         if shadow:
             shadow.visible = false
 
