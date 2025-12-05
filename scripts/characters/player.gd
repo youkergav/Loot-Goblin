@@ -83,7 +83,7 @@ func equip_item(item_data: ItemData) -> ItemData:
     return old_item
 
 func _ready() -> void: 
-    var hearts_parent = $"../../UI/HeartBar"
+    var hearts_parent = $"../../UI/Heartbar/HBoxContainer"
     for child in hearts_parent.get_children():
         hearts_list.append(child)
     print (hearts_list)

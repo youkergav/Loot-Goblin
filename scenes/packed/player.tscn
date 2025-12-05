@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dj1c5h2cw1g4m"]
 
 [ext_resource type="Script" uid="uid://faivtna4spb3" path="res://scripts/characters/player.gd" id="1_dx721"]
-[ext_resource type="Texture2D" uid="uid://bjb30nw5r6mj" path="res://sprites/characters/character_shadow.png" id="2_m6pdb"]
+[ext_resource type="Texture2D" uid="uid://dsaottt0utchj" path="res://sprites/characters/player_shadow.png" id="2_m6pdb"]
 [ext_resource type="Texture2D" uid="uid://bgbiodtualhk0" path="res://sprites/characters/player.png" id="3_m6pdb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhmt7"]
@@ -19,11 +19,10 @@ script = ExtResource("1_dx721")
 min_magnetic_strength = 350.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.22745098)
 z_index = -1
 texture_filter = 1
 texture = ExtResource("2_m6pdb")
-offset = Vector2(-7, -12)
+offset = Vector2(0, 0.5)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -31,10 +30,12 @@ texture = ExtResource("3_m6pdb")
 offset = Vector2(0, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_mhmt7")
 
 [node name="ItemPickupZone" type="Area2D" parent="."]
+visible = false
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickupZone"]
@@ -45,6 +46,7 @@ shape = SubResource("RectangleShape2D_dx721")
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemMagnetZone"]
+visible = false
 position = Vector2(0, -12)
 shape = SubResource("CircleShape2D_m6pdb")
 

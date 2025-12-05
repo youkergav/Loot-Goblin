@@ -1,18 +1,38 @@
-[gd_scene load_steps=20 format=4 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=27 format=4 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c8ichhqq68qk4" path="res://sprites/tilemaps/grass_tilemap.png" id="2_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://dj1c5h2cw1g4m" path="res://scenes/packed/player.tscn" id="2_choun"]
+[ext_resource type="Texture2D" uid="uid://c3xnr14kovxyv" path="res://sprites/backgrounds/background4.png" id="2_muem4"]
+[ext_resource type="Texture2D" uid="uid://bois1unhu3fan" path="res://sprites/backgrounds/background3.png" id="3_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://lh0msmgkv2ey" path="res://scenes/packed/world_item.tscn" id="3_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://bahoisd6g7o33" path="res://sprites/backgrounds/background2.png" id="4_0ld40"]
 [ext_resource type="Resource" uid="uid://bf1cpvg7e8f65" path="res://resources/items/item_sword.tres" id="4_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://cchxiaq7nqpff" path="res://sprites/backgrounds/background1.png" id="5_gqmmt"]
 [ext_resource type="Resource" uid="uid://cl6kob1u26wxn" path="res://resources/items/item_shield.tres" id="5_trceg"]
+[ext_resource type="Texture2D" uid="uid://sl6qklese02c" path="res://sprites/backgrounds/foreground.png" id="6_dp3eg"]
 [ext_resource type="Resource" uid="uid://cc4j8w2kk2uh2" path="res://resources/items/item_beer.tres" id="7_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://b6c0437xdr4dq" path="res://scenes/packed/enemy.tscn" id="7_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://ivgm86b4arbt" path="res://scenes/packed/hotbar.tscn" id="8_jbj1t"]
 [ext_resource type="Resource" uid="uid://0qpgr4okjqq7" path="res://resources/items/item_milk.tres" id="8_trceg"]
 [ext_resource type="Resource" uid="uid://cqp8f8k7g8bf" path="res://resources/items/item_cigs.tres" id="9_a8y0u"]
 [ext_resource type="Script" uid="uid://d207eahu4wqa3" path="res://scripts/world_drop_zone.gd" id="9_muem4"]
-[ext_resource type="Texture2D" uid="uid://b3jaog4l1unge" path="res://sprites/ui/heart.png" id="13_trceg"]
+[ext_resource type="PackedScene" uid="uid://6d6wdo8felvi" path="res://scenes/packed/heartbar.tscn" id="18_dp3eg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dp3eg"]
+normal = Vector2(0, 1)
+distance = -45.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_muem4"]
+distance = -50.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0ld40"]
+normal = Vector2(1, 0)
+distance = -8.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gqmmt"]
+normal = Vector2(-1, 0)
+distance = -670.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8y0u"]
 texture = ExtResource("2_a8y0u")
@@ -21,36 +41,28 @@ texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
-3:0/0/probability = 0.25
+3:0/0/probability = 0.1
 4:0/0 = 0
-4:0/0/probability = 0.25
+4:0/0/probability = 0.1
 5:0/0 = 0
-5:0/0/probability = 0.25
 6:0/0 = 0
-6:0/0/probability = 0.25
+6:0/0/probability = 0.1
 7:0/0 = 0
 8:0/0 = 0
+8:0/0/probability = 0.1
 9:0/0 = 0
 10:0/0 = 0
+10:0/0/probability = 0.1
 11:0/0 = 0
+11:0/0/probability = 0.1
 12:0/0 = 0
-12:0/0/probability = 0.25
 13:0/0 = 0
-13:0/0/probability = 0.25
 14:0/0 = 0
-14:0/0/probability = 0.25
 15:0/0 = 0
-15:0/0/probability = 0.25
 
-[sub_resource type="TileSet" id="TileSet_jbj1t"]
+[sub_resource type="TileSet" id="TileSet_jkv2x"]
 tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_a8y0u")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_choun"]
-size = Vector2(100, 100)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qycdh"]
-size = Vector2(40, 40)
 
 [sub_resource type="Shader" id="Shader_eb6dy"]
 code = "shader_type canvas_item;
@@ -89,7 +101,7 @@ void fragment() {
     }
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_trceg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dp3eg"]
 resource_local_to_scene = true
 shader = SubResource("Shader_eb6dy")
 shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
@@ -101,88 +113,86 @@ shader_parameter/show_outline = true
 [node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
 limit_left = 0
 limit_top = -90
-limit_right = 640
+limit_right = 665
 limit_bottom = 90
 script = ExtResource("1_85g3d")
 
 [node name="World" type="Node2D" parent="." groups=["world"]]
 y_sort_enabled = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="World"]
+[node name="WorldBoundries" type="StaticBody2D" parent="World"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="BoundryTop" type="CollisionShape2D" parent="World/WorldBoundries"]
+shape = SubResource("WorldBoundaryShape2D_dp3eg")
+
+[node name="BoundryBottom" type="CollisionShape2D" parent="World/WorldBoundries"]
+shape = SubResource("WorldBoundaryShape2D_muem4")
+
+[node name="BoundryLeft" type="CollisionShape2D" parent="World/WorldBoundries"]
+shape = SubResource("WorldBoundaryShape2D_0ld40")
+
+[node name="BoundryRight" type="CollisionShape2D" parent="World/WorldBoundries"]
+shape = SubResource("WorldBoundaryShape2D_gqmmt")
+
+[node name="Background" type="Node2D" parent="World"]
+z_index = -99
+
+[node name="Layer1" type="Parallax2D" parent="World/Background"]
+scroll_offset = Vector2(0, -67)
+repeat_size = Vector2(320, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Background/Layer1"]
+texture = ExtResource("2_muem4")
+
+[node name="Layer2" type="Parallax2D" parent="World/Background"]
+scroll_scale = Vector2(0.8, 1)
+scroll_offset = Vector2(0, -67)
+repeat_size = Vector2(320, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Background/Layer2"]
+texture = ExtResource("3_dp3eg")
+
+[node name="Layer3" type="Parallax2D" parent="World/Background"]
+scroll_scale = Vector2(0.9, 1)
+scroll_offset = Vector2(0, -67)
+repeat_size = Vector2(320, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Background/Layer3"]
+texture = ExtResource("4_0ld40")
+
+[node name="Layer4" type="Parallax2D" parent="World/Background"]
+scroll_offset = Vector2(0, -67)
+repeat_size = Vector2(320, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Background/Layer4"]
+texture = ExtResource("5_gqmmt")
+
+[node name="Foreground" type="Node2D" parent="World"]
+z_index = 99
+
+[node name="Layer1" type="Parallax2D" parent="World/Foreground"]
+scroll_scale = Vector2(1.1, 1)
+scroll_offset = Vector2(0, 80)
+repeat_size = Vector2(320, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Foreground/Layer1"]
+texture = ExtResource("6_dp3eg")
+
+[node name="TileMap" type="TileMapLayer" parent="World"]
 z_index = -100
-position = Vector2(-4, 0)
-tile_map_data = PackedByteArray("AAD///7/AQABAAAAAAD/////AQALAAAAAAD//wAAAQAOAAAAAAD//wEAAQAHAAAAAAD//wIAAQAKAAAAAAAAAP7/AQAJAAAAAAAAAP//AQAJAAAAAAAAAAAAAQACAAAAAAAAAAEAAQADAAAAAAAAAAIAAQAAAAAAAAABAP7/AQABAAAAAAABAP//AQAIAAAAAAABAAAAAQAIAAAAAAABAAEAAQAPAAAAAAABAAIAAQAAAAAAAAACAP7/AQAHAAAAAAACAP//AQAIAAAAAAACAAAAAQAIAAAAAAACAAEAAQAHAAAAAAACAAIAAQAGAAAAAAADAP7/AQAKAAAAAAADAP//AQAJAAAAAAADAAAAAQAAAAAAAAADAAEAAQAKAAAAAAADAAIAAQAJAAAAAAAEAP7/AQAMAAAAAAAEAP//AQAJAAAAAAAEAAAAAQAGAAAAAAAEAAEAAQAEAAAAAAAEAAIAAQALAAAAAAAFAP7/AQAHAAAAAAAFAP//AQAHAAAAAAAFAAAAAQALAAAAAAAFAAEAAQACAAAAAAAFAAIAAQAAAAAAAAAGAP7/AQAHAAAAAAAGAP//AQAJAAAAAAAGAAAAAQAJAAAAAAAGAAEAAQABAAAAAAAGAAIAAQAGAAAAAAAHAP7/AQAIAAAAAAAHAP//AQAGAAAAAAAHAAAAAQAOAAAAAAAHAAEAAQAMAAAAAAAHAAIAAQAHAAAAAAAIAP7/AQAHAAAAAAAIAP//AQAJAAAAAAAIAAAAAQABAAAAAAAIAAEAAQALAAAAAAAIAAIAAQAIAAAAAAAJAP7/AQAEAAAAAAAJAP//AQAIAAAAAAAJAAAAAQAKAAAAAAAJAAEAAQAKAAAAAAAJAAIAAQAHAAAAAAAKAP7/AQAKAAAAAAAKAP//AQAKAAAAAAAKAAAAAQAEAAAAAAAKAAEAAQAIAAAAAAAKAAIAAQAHAAAAAAALAP7/AQAEAAAAAAALAP//AQAJAAAAAAALAAAAAQACAAAAAAALAAEAAQACAAAAAAALAAIAAQALAAAAAAAMAP7/AQABAAAAAAAMAP//AQAJAAAAAAAMAAAAAQALAAAAAAAMAAEAAQAJAAAAAAAMAAIAAQAHAAAAAAANAP7/AQACAAAAAAANAP//AQAKAAAAAAANAAAAAQABAAAAAAANAAEAAQAPAAAAAAANAAIAAQAOAAAAAAAOAP7/AQAOAAAAAAAOAP//AQADAAAAAAAOAAAAAQAJAAAAAAAOAAEAAQAMAAAAAAAOAAIAAQAHAAAAAAAPAP7/AQAAAAAAAAAPAP//AQAHAAAAAAAPAAAAAQACAAAAAAAPAAEAAQABAAAAAAAPAAIAAQAOAAAAAAAQAP7/AQACAAAAAAAQAP//AQACAAAAAAAQAAAAAQABAAAAAAAQAAEAAQAGAAAAAAAQAAIAAQACAAAAAAARAP7/AQABAAAAAAARAP//AQAFAAAAAAARAAAAAQALAAAAAAARAAEAAQAPAAAAAAARAAIAAQAAAAAAAAASAP7/AQAAAAAAAAASAP//AQAIAAAAAAASAAAAAQAJAAAAAAASAAEAAQABAAAAAAASAAIAAQANAAAAAAATAP7/AQAAAAAAAAATAP//AQALAAAAAAATAAAAAQAOAAAAAAATAAEAAQABAAAAAAATAAIAAQAHAAAAAAAUAP7/AQACAAAAAAAUAP//AQAHAAAAAAAUAAAAAQAKAAAAAAAUAAEAAQABAAAAAAAUAAIAAQABAAAAAAA=")
-tile_set = SubResource("TileSet_jbj1t")
-
-[node name="Background" type="StaticBody2D" parent="World"]
-position = Vector2(327, -80)
-scale = Vector2(7, 0.755)
-collision_layer = 4
-collision_mask = 3
-
-[node name="ColorRect" type="ColorRect" parent="World/Background"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.2123048, 0.21230483, 0.21230477, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Background"]
-shape = SubResource("RectangleShape2D_choun")
-
-[node name="Foreground" type="StaticBody2D" parent="World"]
-z_index = -10
-position = Vector2(323, 102)
-scale = Vector2(7.2238207, 1.0888526)
-collision_layer = 4
-collision_mask = 3
-
-[node name="ColorRect" type="ColorRect" parent="World/Foreground"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.2123048, 0.21230483, 0.21230477, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Foreground"]
-shape = SubResource("RectangleShape2D_choun")
-
-[node name="BarrierLeft" type="StaticBody2D" parent="World"]
-position = Vector2(-18, 45.000004)
-rotation = 1.5707964
-scale = Vector2(6.452, 0.6)
-collision_layer = 4
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BarrierLeft"]
-shape = SubResource("RectangleShape2D_qycdh")
-
-[node name="BarrierRight" type="StaticBody2D" parent="World"]
-position = Vector2(658, 45)
-rotation = 1.5707964
-scale = Vector2(6.452, 0.6)
-collision_layer = 4
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/BarrierRight"]
-shape = SubResource("RectangleShape2D_qycdh")
+position = Vector2(-4, 19)
+tile_map_data = PackedByteArray("AAD///7/AQAHAAAAAAD/////AQAMAAAAAAD//wAAAQACAAAAAAD//wEAAQABAAAAAAD//wIAAQAJAAAAAAAAAP7/AQACAAAAAAAAAP//AQANAAAAAAAAAAAAAQAFAAAAAAAAAAEAAQANAAAAAAAAAAIAAQAAAAAAAAABAP7/AQAJAAAAAAABAP//AQAHAAAAAAABAAAAAQANAAAAAAABAAEAAQAFAAAAAAABAAIAAQANAAAAAAACAP7/AQAPAAAAAAACAP//AQADAAAAAAACAAAAAQAAAAAAAAACAAEAAQANAAAAAAACAAIAAQAHAAAAAAADAP7/AQACAAAAAAADAP//AQAAAAAAAAADAAAAAQAJAAAAAAADAAEAAQAJAAAAAAADAAIAAQAAAAAAAAAEAP7/AQAPAAAAAAAEAP//AQAPAAAAAAAEAAAAAQABAAAAAAAEAAEAAQAOAAAAAAAEAAIAAQAAAAAAAAAFAP7/AQABAAAAAAAFAP//AQAAAAAAAAAFAAAAAQANAAAAAAAFAAEAAQAOAAAAAAAFAAIAAQANAAAAAAAGAP7/AQAPAAAAAAAGAP//AQAFAAAAAAAGAAAAAQAPAAAAAAAGAAEAAQAEAAAAAAAGAAIAAQADAAAAAAAHAP7/AQANAAAAAAAHAP//AQAJAAAAAAAHAAAAAQAHAAAAAAAHAAEAAQANAAAAAAAHAAIAAQAMAAAAAAAIAP7/AQABAAAAAAAIAP//AQAJAAAAAAAIAAAAAQACAAAAAAAIAAEAAQANAAAAAAAIAAIAAQABAAAAAAAJAP7/AQAHAAAAAAAJAP//AQABAAAAAAAJAAAAAQAAAAAAAAAJAAEAAQAKAAAAAAAJAAIAAQAOAAAAAAAKAP7/AQAJAAAAAAAKAP//AQAMAAAAAAAKAAAAAQANAAAAAAAKAAEAAQAJAAAAAAAKAAIAAQAAAAAAAAALAP7/AQAFAAAAAAALAP//AQAMAAAAAAALAAAAAQAHAAAAAAALAAEAAQANAAAAAAALAAIAAQAGAAAAAAAMAP7/AQANAAAAAAAMAP//AQAOAAAAAAAMAAAAAQANAAAAAAAMAAEAAQAKAAAAAAAMAAIAAQADAAAAAAANAP7/AQAMAAAAAAANAP//AQAAAAAAAAANAAAAAQAOAAAAAAANAAEAAQAJAAAAAAANAAIAAQANAAAAAAAOAP7/AQAJAAAAAAAOAP//AQACAAAAAAAOAAAAAQAEAAAAAAAOAAEAAQAJAAAAAAAOAAIAAQACAAAAAAAPAP7/AQAJAAAAAAAPAP//AQAOAAAAAAAPAAAAAQAHAAAAAAAPAAEAAQACAAAAAAAPAAIAAQAPAAAAAAAQAP7/AQAFAAAAAAAQAP//AQAMAAAAAAAQAAAAAQABAAAAAAAQAAEAAQAAAAAAAAAQAAIAAQAJAAAAAAARAP7/AQAHAAAAAAARAP//AQAAAAAAAAARAAAAAQAOAAAAAAARAAEAAQAHAAAAAAARAAIAAQAPAAAAAAASAP7/AQAHAAAAAAASAP//AQAJAAAAAAASAAAAAQAMAAAAAAASAAEAAQAMAAAAAAASAAIAAQAJAAAAAAATAP7/AQANAAAAAAATAP//AQACAAAAAAATAAAAAQAHAAAAAAATAAEAAQANAAAAAAATAAIAAQAOAAAAAAAUAP7/AQANAAAAAAAUAP//AQAFAAAAAAAUAAAAAQANAAAAAAAUAAEAAQACAAAAAAAUAAIAAQAKAAAAAAA=")
+tile_set = SubResource("TileSet_jkv2x")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
-material = SubResource("ShaderMaterial_trceg")
+material = SubResource("ShaderMaterial_dp3eg")
 position = Vector2(30, 28)
 
 [node name="WorldItemSword" parent="World" instance=ExtResource("3_ya4ey")]
@@ -239,36 +249,6 @@ world_item_scene = ExtResource("3_ya4ey")
 
 [node name="Inventory" parent="UI" instance=ExtResource("8_jbj1t")]
 
-[node name="HeartBar" type="HBoxContainer" parent="UI"]
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 101.0
-offset_bottom = 21.0
-theme_override_constants/separation = 2
-
-[node name="Heart1" type="TextureRect" parent="UI/HeartBar"]
-layout_mode = 2
-texture = ExtResource("13_trceg")
-stretch_mode = 2
-
-[node name="Heart2" type="TextureRect" parent="UI/HeartBar"]
-layout_mode = 2
-texture = ExtResource("13_trceg")
-stretch_mode = 2
-
-[node name="Heart3" type="TextureRect" parent="UI/HeartBar"]
-layout_mode = 2
-texture = ExtResource("13_trceg")
-stretch_mode = 2
-
-[node name="Heart4" type="TextureRect" parent="UI/HeartBar"]
-layout_mode = 2
-texture = ExtResource("13_trceg")
-stretch_mode = 2
-
-[node name="Heart5" type="TextureRect" parent="UI/HeartBar"]
-layout_mode = 2
-texture = ExtResource("13_trceg")
-stretch_mode = 2
+[node name="Heartbar" parent="UI" instance=ExtResource("18_dp3eg")]
 
 [connection signal="mouse_exited" from="UI/WorldDropZone" to="UI/WorldDropZone" method="_on_mouse_exited"]
