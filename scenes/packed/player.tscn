@@ -18,13 +18,15 @@ collision_mask = 4
 script = ExtResource("1_dx721")
 min_magnetic_strength = 350.0
 
-[node name="Shadow" type="Sprite2D" parent="."]
-z_index = -1
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Shadow" type="Sprite2D" parent="Sprites"]
+z_index = -20
 texture_filter = 1
 texture = ExtResource("2_m6pdb")
 offset = Vector2(0, 0.5)
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Body" type="Sprite2D" parent="Sprites"]
 texture_filter = 1
 texture = ExtResource("3_m6pdb")
 offset = Vector2(0, -12)

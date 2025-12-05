@@ -9,11 +9,19 @@ class_name Character
 @export_group("Health")
 @export var health_max: int = 5
 
+var sprites: Node2D
+var shadow: Sprite2D
 var isalive: bool = true 
 var health: int 
 
 func _ready() -> void:
     health = health_max
+    
+    if sprites == null:
+        sprites = get_node("Sprites") if has_node("Sprites") else null
+        
+    if shadow == null:
+        shadow = get_node("Shadow") if has_node("Shadow") else null
 
 func _physics_process(delta):
     var direction = get_movement_direction()
@@ -30,11 +38,18 @@ func apply_movement(direction: Vector2, delta: float):
     if direction != Vector2.ZERO:
         velocity.x = move_toward(velocity.x, move_speed * direction.x, move_acceleration * delta)
         velocity.y = move_toward(velocity.y, move_speed * direction.y, move_acceleration * delta)
+        
+        # Flip sprite based on horizontal direction
+        update_sprite_direction(direction.x)
     else:
         velocity.x = move_toward(velocity.x, 0, move_friction * delta)
         velocity.y = move_toward(velocity.y, 0, move_friction * delta)
     
     move_and_slide()
+
+func update_sprite_direction(horizontal_direction: float) -> void:
+    if sprites != null and horizontal_direction != 0:
+        sprites.scale.x = -1 if horizontal_direction < 0 else 1
 
 func take_damage() -> void:
     if health > 0:
@@ -43,4 +58,3 @@ func take_damage() -> void:
     
 func heal() -> void:
     health = health_max
-   

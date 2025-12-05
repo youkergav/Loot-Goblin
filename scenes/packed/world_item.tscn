@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://lh0msmgkv2ey"]
+[gd_scene load_steps=4 format=3 uid="uid://lh0msmgkv2ey"]
 
 [ext_resource type="Script" uid="uid://crvjyuw4pmfhe" path="res://scripts/items/world_item.gd" id="1_5t22k"]
-[ext_resource type="Texture2D" uid="uid://7timgvt8m7sp" path="res://sprites/items/item_junk.png" id="2_5t22k"]
 [ext_resource type="Texture2D" uid="uid://3njgyh23vq1a" path="res://sprites/items/item_shadow.png" id="3_i6d5j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
@@ -15,12 +14,13 @@ bob_height = 3.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.34509805)
+z_index = -20
 position = Vector2(-0.5, 12.085001)
 texture = ExtResource("3_i6d5j")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_5t22k")
+position = Vector2(0, -0.5186035)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.9999998, 0.9999998)

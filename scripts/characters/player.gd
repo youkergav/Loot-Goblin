@@ -6,7 +6,7 @@ class_name Player
 @export var min_magnetic_strength: float = 125.0
 @export var max_magnetic_strength: float = 3000.0
 
-@onready var sprite = $Sprite
+@onready var sprite = $Sprites/Body
 @onready var hotbar = get_tree().get_first_node_in_group("hotbar")
 
 var magnet_attracted_items: Array = []

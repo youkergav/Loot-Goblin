@@ -18,13 +18,15 @@ move_speed = 90.0
 move_acceleration = 800.0
 move_friction = 600.0
 
-[node name="Shadow" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(11.5, 12.5)
-texture = ExtResource("2_d80uj")
-offset = Vector2(-7, -12)
+[node name="Sprites" type="Node2D" parent="."]
+scale = Vector2(-1, 1)
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="Sprites"]
+z_index = -20
+texture = ExtResource("2_d80uj")
+offset = Vector2(-4.5, 0.5)
+
+[node name="Body" type="Sprite2D" parent="Sprites"]
 texture_filter = 1
 texture = ExtResource("3_d80uj")
 offset = Vector2(0, -12)
@@ -32,9 +34,11 @@ offset = Vector2(0, -12)
 [node name="PlayerDetectionZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionZone"]
+visible = false
 shape = SubResource("CircleShape2D_d80uj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_d80uj")
 

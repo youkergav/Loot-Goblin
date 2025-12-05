@@ -21,6 +21,7 @@ var pause_timer: float = 0.0
 
 
 func _ready() -> void:
+    super._ready()
     randomize_movement_speed()
 
 func _physics_process(delta: float) -> void:

@@ -138,7 +138,7 @@ shape = SubResource("WorldBoundaryShape2D_0ld40")
 shape = SubResource("WorldBoundaryShape2D_gqmmt")
 
 [node name="Background" type="Node2D" parent="World"]
-z_index = -99
+z_index = -10
 
 [node name="Layer1" type="Parallax2D" parent="World/Background"]
 scroll_offset = Vector2(0, -67)
