@@ -99,10 +99,13 @@ func equip_item(item_data: ItemData) -> ItemData:
         #check if there are any existing collisions
         if sword_has_overlap():
             sword_attack()
-
-
-        
     return old_item
+
+
+func drop_equipped_item():
+    var dropped_item_data = equipped_item_data
+    hotbar.remove_equipped_item_and_shift()
+    super.spawn_world_item(dropped_item_data, self.position)
 
 func _ready() -> void: 
     var hearts_parent = $"../../UI/Heartbar/HBoxContainer"
@@ -114,11 +117,9 @@ func _ready() -> void:
 func check_invulnerability(delta):
     damage_recovery_timer += delta
     if(damage_recovery_timer > damage_recovery_time_limit):
-        print("Recovery timed out.")
         is_invulnerable = false
         damage_recovery_timer = 0
         if has_overlapping_hit():
-            print("timeout while taking damage")
             take_damage()
         
 
@@ -167,7 +168,7 @@ func sword_attack() -> void:
             parent_node.take_damage()
             hit_counter += 1
     if hit_counter > 0:
-        worldDropZone.drop_data_at_global_position(self.position, hotbar.get_equipped_item_texture_rect())
+        drop_equipped_item()
 
 func sword_has_overlap() -> bool:
     if hitBoxSword.get_overlapping_areas().size() > 0:

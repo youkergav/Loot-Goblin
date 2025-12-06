@@ -9,6 +9,11 @@ class_name Character
 @export_group("Health")
 @export var health_max: int = 5
 
+@export_group("Scene")
+@export var world_item_scene: PackedScene
+
+@onready var world = get_tree().get_first_node_in_group("world")
+
 var sprites: Node2D
 var shadow: Sprite2D
 var isalive: bool = true 
@@ -50,6 +55,19 @@ func apply_movement(direction: Vector2, delta: float):
 func update_sprite_direction(horizontal_direction: float) -> void:
     if sprites != null and horizontal_direction != 0:
         sprites.scale.x = -1 if horizontal_direction < 0 else 1
+
+
+
+func spawn_world_item(world_item_data: Variant, item_position: Vector2) -> void:
+    print("Spawning item off char")
+    print(world_item_data)
+    # Create the world item
+    var new_item = world_item_scene.instantiate()
+    new_item.item_data = world_item_data
+    new_item.global_position = item_position
+    print("new item: ")
+    print(new_item)
+    world.call_deferred("add_child", new_item)
 
 func take_damage() -> void:
     if health > 0:
