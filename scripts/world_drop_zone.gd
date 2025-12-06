@@ -31,8 +31,7 @@ func spawn_item_in_world_at_global_position(item_data: ItemData, world_position:
     var new_item = world_item_scene.instantiate()
     new_item.item_data = item_data
     new_item.global_position = world_position
-    
-    world.add_child(new_item)
+    world.call_deferred("add_child", new_item)
     player.magnet_attracted_items.append(new_item)
     
     print("Dropped: ", item_data.item_name)
