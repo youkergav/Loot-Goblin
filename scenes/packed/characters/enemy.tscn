@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6c0437xdr4dq"]
+[gd_scene load_steps=8 format=3 uid="uid://b6c0437xdr4dq"]
 
 [ext_resource type="Script" uid="uid://cqde2wtrj6y1a" path="res://scripts/characters/enemy.gd" id="1_d80uj"]
 [ext_resource type="Texture2D" uid="uid://up6s2l2uyv6i" path="res://sprites/characters/shroomite_shadow.png" id="2_d80uj"]
@@ -12,6 +12,9 @@ size = Vector2(16, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltwr7"]
 size = Vector2(6, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2hml"]
+size = Vector2(28, 6)
 
 [node name="Enemy" type="CharacterBody2D" groups=["hit"]]
 collision_layer = 2
@@ -50,6 +53,13 @@ position = Vector2(0, 0.5)
 position = Vector2(-10, -7)
 shape = SubResource("RectangleShape2D_ltwr7")
 debug_color = Color(0.9999998, 0.014054468, 0.037908163, 0.41960785)
+
+[node name="HurtBox" type="Area2D" parent="." groups=["hurtbox_enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_f2hml")
+debug_color = Color(0.7327679, 0.47197044, 1.92523e-07, 0.41960785)
 
 [connection signal="body_entered" from="PlayerDetectionZone" to="." method="_on_player_detection_zone_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionZone" to="." method="_on_player_detection_zone_body_exited"]

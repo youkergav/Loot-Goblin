@@ -34,6 +34,10 @@ func add_item(item_data: ItemData) -> void:
         new_slot.update_ui()
         update_equipped_item()
 
+func get_equipped_item_texture_rect() -> TextureRect:
+    return slot_container.get_children()[0]
+    
+
 func remove_item_and_shift(removed_slot: TextureRect) -> void:
     var slots = slot_container.get_children()
     var removed_index = slots.find(removed_slot)

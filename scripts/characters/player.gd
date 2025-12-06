@@ -12,6 +12,10 @@ class_name Player
 @onready var sprite: Sprite2D = $Sprites/Body
 @onready var hotbar: Hotbar = get_tree().get_first_node_in_group("hotbar")
 @onready var hurtbox: Area2D = $HurtBox
+@onready var hitBoxSword: Area2D = $HitBoxSword
+@onready var hitBoxSwordAttack: Area2D = $HitBoxSwordAttack
+@onready var worldDropZone: Control = $"../../UI/WorldDropZone"
+@onready var camera = get_tree().get_first_node_in_group("camera")
 
 var magnet_attracted_items: Array = []
 var equipped_item_data: ItemData = null
@@ -20,6 +24,8 @@ var hearts_list : Array[TextureRect]
 
 var is_invulnerable : bool = false
 var damage_recovery_timer : float
+
+var equipment_state : String
 
 func _physics_process(delta: float) -> void:
     pull_magnetized_items(delta)
@@ -83,12 +89,19 @@ func pickup_item(item_data: ItemData) -> void:
     hotbar.add_item(item_data)
     print("Picked up: ", item_data.item_name)
 
-
-
 func equip_item(item_data: ItemData) -> ItemData:
     var old_item = equipped_item_data
     equipped_item_data = item_data
     sprite.modulate = equipped_item_data.color
+    if equipped_item_data.item_name == "Sword":
+        #turn on sword hitbox
+        print("SWORD!!!!")
+        #check if there are any existing collisions
+        if sword_has_overlap():
+            sword_attack()
+
+
+        
     return old_item
 
 func _ready() -> void: 
@@ -132,8 +145,8 @@ func take_damage() -> void:
     damage_recovery_timer = 0
     
 func has_overlapping_hit() -> bool:
-    for overlapping_area in hurtbox.get_overlapping_areas():
-        if overlapping_area.is_in_group("hit"):
+    for overlap_area in hurtbox.get_overlapping_areas():
+        if overlap_area.is_in_group("hit"):
             return true
     return false
     
@@ -141,3 +154,29 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
     if area.is_in_group("hit"):
         print("Hit!")
         take_damage()
+
+func sword_attack() -> void:
+    print("Sword Attack!")
+    var hit_counter = 0
+    for overlap_area in hitBoxSwordAttack.get_overlapping_areas():
+        if overlap_area.is_in_group("hurtbox_enemy"):
+            #how do we navigate to the object to call take_damage on?
+            var parent_node = overlap_area.get_parent()
+            #kill the parent
+            print("attacking with sword: " + parent_node.name)
+            parent_node.take_damage()
+            hit_counter += 1
+    if hit_counter > 0:
+        worldDropZone.drop_data_at_global_position(self.position, hotbar.get_equipped_item_texture_rect())
+
+func sword_has_overlap() -> bool:
+    if hitBoxSword.get_overlapping_areas().size() > 0:
+        return true
+    return false
+
+func _on_hit_box_sword_area_entered(_area: Area2D) -> void:
+    if not equipped_item_data or equipped_item_data.item_name != "Sword":
+        return
+    print("sword trigger entered")
+    sword_attack()
+        

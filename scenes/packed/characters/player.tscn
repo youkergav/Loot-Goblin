@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj1c5h2cw1g4m"]
+[gd_scene load_steps=10 format=3 uid="uid://dj1c5h2cw1g4m"]
 
 [ext_resource type="Script" uid="uid://faivtna4spb3" path="res://scripts/characters/player.gd" id="1_dx721"]
 [ext_resource type="Texture2D" uid="uid://dsaottt0utchj" path="res://sprites/characters/player_shadow.png" id="2_m6pdb"]
@@ -15,6 +15,12 @@ radius = 65.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0c560"]
 size = Vector2(15, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0c560"]
+radius = 52.009613
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yae0h"]
+radius = 22.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 4
@@ -61,7 +67,20 @@ position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_0c560")
 debug_color = Color(0.8057586, 0.41635647, 0, 0.41960785)
 
+[node name="HitBoxSwordAttack" type="Area2D" parent="." groups=["hit_enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxSwordAttack"]
+shape = SubResource("CircleShape2D_0c560")
+debug_color = Color(0.83638, 0.060955554, 0.17612648, 0.41960785)
+
+[node name="HitBoxSword" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxSword"]
+shape = SubResource("CircleShape2D_yae0h")
+debug_color = Color(0.8434055, 0.8814429, 1, 0.41960785)
+
 [connection signal="area_entered" from="ItemPickupZone" to="." method="_on_item_pickup_zone_area_entered"]
 [connection signal="area_entered" from="ItemMagnetZone" to="." method="_on_item_magnet_zone_area_entered"]
 [connection signal="area_exited" from="ItemMagnetZone" to="." method="_on_item_magnet_zone_area_exited"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_entered" from="HitBoxSword" to="." method="_on_hit_box_sword_area_entered"]
