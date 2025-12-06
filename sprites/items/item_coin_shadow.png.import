@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byejh33xlfnlr"
-path="res://.godot/imported/item_beer.png-4d050a9e7e9c8974f7d1bc2e5a90a314.ctex"
+uid="uid://dkvppb5bhawcr"
+path="res://.godot/imported/item_coin_shadow.png-1c0d08ad7c75f5c1a5512372bf332fca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/items/item_beer.png"
-dest_files=["res://.godot/imported/item_beer.png-4d050a9e7e9c8974f7d1bc2e5a90a314.ctex"]
+source_file="res://sprites/items/item_coin_shadow.png"
+dest_files=["res://.godot/imported/item_coin_shadow.png-1c0d08ad7c75f5c1a5512372bf332fca.ctex"]
 
 [params]
 

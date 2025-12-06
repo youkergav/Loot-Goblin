@@ -26,6 +26,7 @@ min_magnetic_strength = 350.0
 [node name="Shadow" type="Sprite2D" parent="Sprites"]
 z_index = -20
 texture_filter = 1
+position = Vector2(1, 0)
 texture = ExtResource("2_m6pdb")
 offset = Vector2(0, 0.5)
 

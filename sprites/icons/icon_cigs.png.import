@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7timgvt8m7sp"
-path="res://.godot/imported/item_junk.png-984003a5d50767a73f1cdf683978743e.ctex"
+uid="uid://btrucddp0p1rl"
+path="res://.godot/imported/icon_cigs.png-8ea0bdd2f390537ee1fd0af8c8369d31.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/items/item_junk.png"
-dest_files=["res://.godot/imported/item_junk.png-984003a5d50767a73f1cdf683978743e.ctex"]
+source_file="res://sprites/icons/icon_cigs.png"
+dest_files=["res://.godot/imported/icon_cigs.png-8ea0bdd2f390537ee1fd0af8c8369d31.ctex"]
 
 [params]
 
