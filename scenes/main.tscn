@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=33 format=4 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c8ichhqq68qk4" path="res://sprites/tilemaps/grass_tilemap.png" id="2_a8y0u"]
@@ -21,6 +21,9 @@
 [ext_resource type="PackedScene" uid="uid://dyc23nln5hmqk" path="res://scenes/packed/props/prop_tree.tscn" id="17_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://6d6wdo8felvi" path="res://scenes/packed/ui/heartbar.tscn" id="18_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://bqvuahjs2dfel" path="res://scenes/packed/props/prop_tree_stump.tscn" id="18_yc10j"]
+[ext_resource type="PackedScene" uid="uid://b7l8viral71ia" path="res://scenes/packed/props/prop_rock1.tscn" id="19_jscy8"]
+[ext_resource type="PackedScene" uid="uid://4ks8r0f8dfho" path="res://scenes/packed/props/prop_rock2.tscn" id="20_pm3ni"]
+[ext_resource type="PackedScene" uid="uid://miq5biuvfuab" path="res://scenes/packed/props/prop_rock3.tscn" id="21_y6deb"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dp3eg"]
 normal = Vector2(0, 1)
@@ -104,7 +107,7 @@ void fragment() {
     }
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yc10j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_og1vs"]
 resource_local_to_scene = true
 shader = SubResource("Shader_eb6dy")
 shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
@@ -205,7 +208,7 @@ tile_map_data = PackedByteArray("AAD///7/AQAHAAAAAAD/////AQAMAAAAAAD//wAAAQACAAA
 tile_set = SubResource("TileSet_jkv2x")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
-material = SubResource("ShaderMaterial_yc10j")
+material = SubResource("ShaderMaterial_og1vs")
 position = Vector2(30, 28)
 move_speed = 70.0
 
@@ -267,14 +270,32 @@ position = Vector2(561, 68)
 [node name="PropTree6" parent="World" instance=ExtResource("17_gqmmt")]
 position = Vector2(121, -14)
 
-[node name="PropTree7" parent="World" instance=ExtResource("18_yc10j")]
+[node name="PropTreeStump1" parent="World" instance=ExtResource("18_yc10j")]
 position = Vector2(153, 27)
 
-[node name="PropTree8" parent="World" instance=ExtResource("18_yc10j")]
-position = Vector2(352, -16)
+[node name="PropTreeStump2" parent="World" instance=ExtResource("18_yc10j")]
+position = Vector2(368, -40)
 
-[node name="PropTree9" parent="World" instance=ExtResource("18_yc10j")]
-position = Vector2(655, -17)
+[node name="PropTreeStump3" parent="World" instance=ExtResource("18_yc10j")]
+position = Vector2(656, -40)
+
+[node name="PropTreeStump4" parent="World" instance=ExtResource("18_yc10j")]
+position = Vector2(636, 51)
+
+[node name="PropRock1_1" parent="World" instance=ExtResource("19_jscy8")]
+position = Vector2(56, -12)
+
+[node name="PropRock2_1" parent="World" instance=ExtResource("20_pm3ni")]
+position = Vector2(307, 41)
+
+[node name="PropRock2_2" parent="World" instance=ExtResource("20_pm3ni")]
+position = Vector2(307, 41)
+
+[node name="PropRock3_1" parent="World" instance=ExtResource("21_y6deb")]
+position = Vector2(569, -23)
+
+[node name="PropRock1_2" parent="World" instance=ExtResource("19_jscy8")]
+position = Vector2(662, 45)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
