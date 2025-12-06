@@ -14,7 +14,7 @@ size = Vector2(18, 8)
 radius = 65.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0c560"]
-size = Vector2(15, 1)
+size = Vector2(11, 1)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 4
@@ -57,11 +57,10 @@ shape = SubResource("CircleShape2D_m6pdb")
 [node name="HurtBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-0.5, 1.5)
+position = Vector2(0.5, 1.5)
 shape = SubResource("RectangleShape2D_0c560")
-debug_color = Color(0.8057586, 0.41635647, 0, 0.41960785)
 
 [connection signal="area_entered" from="ItemPickupZone" to="." method="_on_item_pickup_zone_area_entered"]
 [connection signal="area_entered" from="ItemMagnetZone" to="." method="_on_item_magnet_zone_area_entered"]
 [connection signal="area_exited" from="ItemMagnetZone" to="." method="_on_item_magnet_zone_area_exited"]
-[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_shape_entered" from="HurtBox" to="." method="_on_hurt_box_area_shape_entered"]
