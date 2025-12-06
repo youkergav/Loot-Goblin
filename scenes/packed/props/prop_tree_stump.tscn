@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uh3yy"]
 size = Vector2(14, 5)
 
-[node name="PropTree" type="StaticBody2D"]
+[node name="PropTreeStump" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 3
 
