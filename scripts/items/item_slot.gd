@@ -46,6 +46,7 @@ func update_ui() -> void:
         icon_node.texture = null
         label_node.visible = false
         label_node.text = ""
+        tooltip_text = ""
         
         return
 

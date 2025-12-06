@@ -1,16 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://buvd0mdx20tqq"]
+[gd_scene load_steps=5 format=3 uid="uid://buvd0mdx20tqq"]
 
 [ext_resource type="Script" uid="uid://bky48elkxwtbp" path="res://scripts/items/item_slot.gd" id="1_jfob3"]
 [ext_resource type="Texture2D" uid="uid://ccb882dxhccmd" path="res://sprites/ui/item_slot_background.png" id="1_x06fe"]
-[ext_resource type="Texture2D" uid="uid://d0ma4s5f4kmdj" path="res://sprites/icons/icon_coin.png" id="3_jtvnr"]
 [ext_resource type="Texture2D" uid="uid://ddmumil0sge5u" path="res://sprites/ui/item_slot_border.png" id="3_qdn75"]
-[ext_resource type="FontFile" uid="uid://cyvj6qae48av4" path="res://fonts/cc_red_alert.ttf" id="4_cdne8"]
+[ext_resource type="FontFile" uid="uid://cyvj6qae48av4" path="res://cc_red_alert.ttf" id="4_cdne8"]
 
 [node name="IetmSlot" type="TextureRect"]
 custom_minimum_size = Vector2(24, 24)
 offset_right = 22.0
 offset_bottom = 22.0
-tooltip_text = "Sword"
 texture = ExtResource("1_x06fe")
 stretch_mode = 3
 script = ExtResource("1_jfob3")
@@ -29,11 +27,11 @@ offset_right = 8.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_jtvnr")
 expand_mode = 1
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="Icon"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,7 +49,6 @@ theme_override_constants/outline_size = 2
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("4_cdne8")
 theme_override_font_sizes/font_size = 8
-text = "999"
 horizontal_alignment = 2
 vertical_alignment = 2
 

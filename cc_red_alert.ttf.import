@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cyvj6qae48av4"
-path="res://.godot/imported/cc_red_alert.ttf-0ddd018f8bbb6121713ae4c5a56db214.fontdata"
+path="res://.godot/imported/cc_red_alert.ttf-672d5674f400990dba4e2173872ced61.fontdata"
 
 [deps]
 
-source_file="res://fonts/cc_red_alert.ttf"
-dest_files=["res://.godot/imported/cc_red_alert.ttf-0ddd018f8bbb6121713ae4c5a56db214.fontdata"]
+source_file="res://cc_red_alert.ttf"
+dest_files=["res://.godot/imported/cc_red_alert.ttf-672d5674f400990dba4e2173872ced61.fontdata"]
 
 [params]
 
