@@ -28,7 +28,6 @@ func _physics_process(delta: float) -> void:
         check_invulnerability(delta)
 
 
-
 func _on_item_pickup_zone_area_entered(area: Area2D) -> void:
     if area.is_in_group("world_item"):
         pickup_item(area.item_data)
@@ -84,12 +83,12 @@ func pickup_item(item_data: ItemData) -> void:
     hotbar.add_item(item_data)
     print("Picked up: ", item_data.item_name)
 
+
+
 func equip_item(item_data: ItemData) -> ItemData:
     var old_item = equipped_item_data
     equipped_item_data = item_data
-
     sprite.modulate = equipped_item_data.color
-
     return old_item
 
 func _ready() -> void: 

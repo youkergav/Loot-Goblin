@@ -60,9 +60,7 @@ func update_equipped_item() -> void:
     # Check if first slot has an equippable item
     if slots.size() > 0 and slots[0].item_data and slots[0].item_data.is_equippable:
         # Equip the first slot's item
-        player.equipped_item_data = slots[0].item_data
-        player.sprite.modulate = slots[0].item_data.color
-        
+        player.equip_item(slots[0].item_data)
         # Change the border to activate.
         border.texture = active_equip_border_texture
     else:
