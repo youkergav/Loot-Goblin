@@ -6,17 +6,28 @@ class_name Player
 @export var min_magnetic_strength: float = 125.0
 @export var max_magnetic_strength: float = 3000.0
 
-@onready var sprite = $Sprites/Body
-@onready var hotbar = get_tree().get_first_node_in_group("hotbar")
+@export_group("Health")
+@export var damage_recovery_time_limit: float = 2.0
+
+@onready var sprite: Sprite2D = $Sprites/Body
+@onready var hotbar: Hotbar = get_tree().get_first_node_in_group("hotbar")
+@onready var hurtbox: Area2D = $HurtBox
 
 var magnet_attracted_items: Array = []
 var equipped_item_data: ItemData = null
 
 var hearts_list : Array[TextureRect]
 
+var is_invulnerable : bool = false
+var damage_recovery_timer : float
+
 func _physics_process(delta: float) -> void:
     pull_magnetized_items(delta)
     super._physics_process(delta)
+    if is_invulnerable:
+        check_invulnerability(delta)
+
+
 
 func _on_item_pickup_zone_area_entered(area: Area2D) -> void:
     if area.is_in_group("world_item"):
@@ -88,16 +99,46 @@ func _ready() -> void:
     print (hearts_list)
     super._ready()
 
+func check_invulnerability(delta):
+    damage_recovery_timer += delta
+    if(damage_recovery_timer > damage_recovery_time_limit):
+        print("Recovery timed out.")
+        is_invulnerable = false
+        damage_recovery_timer = 0
+        if has_overlapping_hit():
+            print("timeout while taking damage")
+            take_damage()
+        
+
 func take_damage() -> void:
+    if is_invulnerable:
+        return
     super.take_damage()
     for i in range (hearts_list.size()):
         hearts_list[i].visible = i < health
     if health == 1:
-        hearts_list[0].play()
+        #hearts_list[0].play()
+        #play danger animation
+        pass
     elif health > 1:
-        hearts_list[0].play()
+        #play regular animation
+        #hearts_list[0].play()
+        pass
     elif health <= 0:
-        isalive = false 
+        isalive = false
         #end screen 
-        #death() #dath Animation 
+        #death() #dath Animation
+        return
+    is_invulnerable = true
+    damage_recovery_timer = 0
     
+func has_overlapping_hit() -> bool:
+    for overlapping_area in hurtbox.get_overlapping_areas():
+        if overlapping_area.is_in_group("hit"):
+            return true
+    return false
+    
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+    if area.is_in_group("hit"):
+        print("Hit!")
+        take_damage()
