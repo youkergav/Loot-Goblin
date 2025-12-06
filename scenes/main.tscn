@@ -1,27 +1,25 @@
-[gd_scene load_steps=33 format=4 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=31 format=4 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c8ichhqq68qk4" path="res://sprites/tilemaps/grass_tilemap.png" id="2_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://dj1c5h2cw1g4m" path="res://scenes/packed/characters/player.tscn" id="2_choun"]
 [ext_resource type="Texture2D" uid="uid://c3xnr14kovxyv" path="res://sprites/backgrounds/background4.png" id="2_muem4"]
 [ext_resource type="Texture2D" uid="uid://bois1unhu3fan" path="res://sprites/backgrounds/background3.png" id="3_dp3eg"]
-[ext_resource type="PackedScene" uid="uid://lh0msmgkv2ey" path="res://scenes/packed/world_item.tscn" id="3_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://lh0msmgkv2ey" path="res://scenes/packed/items/item_coin.tscn" id="3_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://bahoisd6g7o33" path="res://sprites/backgrounds/background2.png" id="4_0ld40"]
-[ext_resource type="Resource" uid="uid://bf1cpvg7e8f65" path="res://resources/items/item_sword.tres" id="4_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://cchxiaq7nqpff" path="res://sprites/backgrounds/background1.png" id="5_gqmmt"]
-[ext_resource type="Resource" uid="uid://cl6kob1u26wxn" path="res://resources/items/item_shield.tres" id="5_trceg"]
 [ext_resource type="Texture2D" uid="uid://d1xn5whcus62d" path="res://sprites/backgrounds/foreground2.png" id="6_0ld40"]
 [ext_resource type="Texture2D" uid="uid://bj3uxajacs3wl" path="res://sprites/backgrounds/foreground1.png" id="6_dp3eg"]
-[ext_resource type="Resource" uid="uid://cc4j8w2kk2uh2" path="res://resources/items/item_beer.tres" id="7_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://b6c0437xdr4dq" path="res://scenes/packed/characters/enemy.tscn" id="7_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://ivgm86b4arbt" path="res://scenes/packed/ui/hotbar.tscn" id="8_jbj1t"]
-[ext_resource type="Resource" uid="uid://0qpgr4okjqq7" path="res://resources/items/item_milk.tres" id="8_trceg"]
-[ext_resource type="Resource" uid="uid://cqp8f8k7g8bf" path="res://resources/items/item_cigs.tres" id="9_a8y0u"]
 [ext_resource type="Script" uid="uid://d207eahu4wqa3" path="res://scripts/world_drop_zone.gd" id="9_muem4"]
 [ext_resource type="PackedScene" uid="uid://dyc23nln5hmqk" path="res://scenes/packed/props/prop_tree.tscn" id="17_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://ytgcro6s0cmu" path="res://scenes/packed/items/item_emerald.tscn" id="17_jscy8"]
 [ext_resource type="PackedScene" uid="uid://6d6wdo8felvi" path="res://scenes/packed/ui/heartbar.tscn" id="18_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://ddg5ktk2thoqh" path="res://scenes/packed/items/item_ruby.tscn" id="18_pm3ni"]
 [ext_resource type="PackedScene" uid="uid://bqvuahjs2dfel" path="res://scenes/packed/props/prop_tree_stump.tscn" id="18_yc10j"]
 [ext_resource type="PackedScene" uid="uid://b7l8viral71ia" path="res://scenes/packed/props/prop_rock1.tscn" id="19_jscy8"]
+[ext_resource type="PackedScene" uid="uid://c8rmsjna4x64j" path="res://scenes/packed/items/item_diamond.tscn" id="19_y6deb"]
 [ext_resource type="PackedScene" uid="uid://4ks8r0f8dfho" path="res://scenes/packed/props/prop_rock2.tscn" id="20_pm3ni"]
 [ext_resource type="PackedScene" uid="uid://miq5biuvfuab" path="res://scenes/packed/props/prop_rock3.tscn" id="21_y6deb"]
 
@@ -107,7 +105,7 @@ void fragment() {
     }
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_og1vs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jscy8"]
 resource_local_to_scene = true
 shader = SubResource("Shader_eb6dy")
 shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
@@ -208,41 +206,9 @@ tile_map_data = PackedByteArray("AAD///7/AQAHAAAAAAD/////AQAMAAAAAAD//wAAAQACAAA
 tile_set = SubResource("TileSet_jkv2x")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
-material = SubResource("ShaderMaterial_og1vs")
+material = SubResource("ShaderMaterial_jscy8")
 position = Vector2(30, 28)
 move_speed = 70.0
-
-[node name="WorldItemSword" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(182, 17)
-item_data = ExtResource("4_eb6dy")
-
-[node name="WorldItemShield" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(603, 5.0000076)
-item_data = ExtResource("5_trceg")
-
-[node name="WorldItemBeer1" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(105, -45)
-item_data = ExtResource("7_eb6dy")
-
-[node name="WorldItemBeer2" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(332, -42)
-item_data = ExtResource("7_eb6dy")
-
-[node name="WorldItemMilk1" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(244, -40)
-item_data = ExtResource("8_trceg")
-
-[node name="WorldItemMilk2" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(420, 28)
-item_data = ExtResource("8_trceg")
-
-[node name="WorldItemCigs1" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(175, -34)
-item_data = ExtResource("9_a8y0u")
-
-[node name="WorldItemCigs2" parent="World" instance=ExtResource("3_ya4ey")]
-position = Vector2(319, 22)
-item_data = ExtResource("9_a8y0u")
 
 [node name="Enemy" parent="World" instance=ExtResource("7_jkv2x")]
 position = Vector2(210, -14)
@@ -296,6 +262,75 @@ position = Vector2(569, -23)
 
 [node name="PropRock1_2" parent="World" instance=ExtResource("19_jscy8")]
 position = Vector2(662, 45)
+
+[node name="ItemCoin" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(95, -21)
+
+[node name="ItemCoin12" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(-22, 69)
+
+[node name="ItemCoin2" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(155, -31)
+
+[node name="ItemCoin3" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(117, 39)
+
+[node name="ItemCoin4" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(179, 6)
+
+[node name="ItemCoin5" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(263, -34)
+
+[node name="ItemCoin6" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(270, -30)
+
+[node name="ItemCoin7" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(267, 43)
+
+[node name="ItemCoin8" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(408, 36)
+
+[node name="ItemCoin9" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(384, -32)
+
+[node name="ItemCoin10" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(531, 62)
+
+[node name="ItemCoin11" parent="World" instance=ExtResource("3_ya4ey")]
+position = Vector2(582, -26)
+
+[node name="ItemEmerald" parent="World" instance=ExtResource("17_jscy8")]
+position = Vector2(-21, -33)
+
+[node name="ItemEmerald2" parent="World" instance=ExtResource("17_jscy8")]
+position = Vector2(203, 49)
+
+[node name="ItemEmerald3" parent="World" instance=ExtResource("17_jscy8")]
+position = Vector2(324, -14)
+
+[node name="ItemEmerald4" parent="World" instance=ExtResource("17_jscy8")]
+position = Vector2(517, 53)
+
+[node name="ItemRuby" parent="World" instance=ExtResource("18_pm3ni")]
+position = Vector2(165, 43)
+
+[node name="ItemRuby2" parent="World" instance=ExtResource("18_pm3ni")]
+position = Vector2(275, -39)
+
+[node name="ItemRuby3" parent="World" instance=ExtResource("18_pm3ni")]
+position = Vector2(436, 61)
+
+[node name="ItemRuby4" parent="World" instance=ExtResource("18_pm3ni")]
+position = Vector2(451.00003, -22)
+
+[node name="ItemDiamond" parent="World" instance=ExtResource("19_y6deb")]
+position = Vector2(262, 9)
+
+[node name="ItemDiamond2" parent="World" instance=ExtResource("19_y6deb")]
+position = Vector2(-30, 64)
+
+[node name="ItemDiamond3" parent="World" instance=ExtResource("19_y6deb")]
+position = Vector2(520, -12)
 
 [node name="UI" type="CanvasLayer" parent="."]
 

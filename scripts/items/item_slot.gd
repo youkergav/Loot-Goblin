@@ -7,6 +7,7 @@ extends TextureRect
         update_ui()
 
 @onready var icon: TextureRect = $Icon
+@onready var label: Label = $Icon/Label
 
 func _ready():
     update_ui()
@@ -36,17 +37,24 @@ func update_ui() -> void:
         return
 
     var icon_node = get_node_or_null("Icon")
-    if not icon_node:
+    var label_node = get_node_or_null("Icon/Label")
+    
+    if not icon_node or not label_node:
         return
 
     if not item_data:
         icon_node.texture = null
+        label_node.visible = false
+        label_node.text = ""
+        
         return
 
     icon_node.texture = item_data.icon
     tooltip_text = item_data.item_name
     
-    if not item_data.is_equippable:
-        icon_node.modulate = Color(.25, .25, .25)
+    if item_data.is_stackable and item_data.stack_count > 1:
+        label_node.visible = true
+        label_node.text = str(item_data.stack_count)
     else:
-        icon_node.modulate = Color.WHITE
+        label_node.visible = false
+        label_node.text = ""

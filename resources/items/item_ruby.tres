@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dmhpa5la1ylqr"]
+
+[ext_resource type="Texture2D" uid="uid://bcj0mq7pjw673" path="res://sprites/icons/icon_ruby.png" id="1_iytcg"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_0120c"]
+
+[resource]
+script = ExtResource("2_0120c")
+item_name = "Ruby"
+icon = ExtResource("1_iytcg")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"
