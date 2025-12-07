@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cl6kob1u26wxn"]
 
-[ext_resource type="Texture2D" uid="uid://cpxdjth86yucu" path="res://sprites/items/item_shield.png" id="1_5c3mg"]
+[ext_resource type="Texture2D" uid="uid://cpxdjth86yucu" path="res://sprites/icons/icon_shield.png" id="1_5c3mg"]
 [ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_rum2y"]
 
 [resource]
 script = ExtResource("2_rum2y")
 item_name = "Shield"
+world_item_path = "uid://6vc7d5uy7bq"
 icon = ExtResource("1_5c3mg")
 color = Color(0, 0.20392157, 0.63529414, 1)
 is_equippable = true

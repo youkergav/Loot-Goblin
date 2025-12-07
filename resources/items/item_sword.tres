@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bf1cpvg7e8f65"]
 
-[ext_resource type="Texture2D" uid="uid://1v141y6mn52y" path="res://sprites/items/item_sword.png" id="1_ohwmg"]
+[ext_resource type="Texture2D" uid="uid://1v141y6mn52y" path="res://sprites/icons/icon_sword.png" id="1_nplpj"]
 [ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_1hcy5"]
 
 [resource]
 script = ExtResource("2_1hcy5")
 item_name = "Sword"
-icon = ExtResource("1_ohwmg")
+world_item_path = "uid://o0culj7s2jts"
+icon = ExtResource("1_nplpj")
 color = Color(0.50980395, 0, 0.06666667, 1)
 is_equippable = true
 metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddg5ktk2thoqh"]
+
+[ext_resource type="Script" uid="uid://crvjyuw4pmfhe" path="res://scripts/items/world_item.gd" id="1_u376m"]
+[ext_resource type="Resource" uid="uid://dmhpa5la1ylqr" path="res://resources/items/item_ruby.tres" id="2_eoqqh"]
+[ext_resource type="Texture2D" uid="uid://d0s8o5d7ub0b" path="res://sprites/items/item_ruby_shadow.png" id="2_u376m"]
+[ext_resource type="Texture2D" uid="uid://c7lsaupjet7sk" path="res://sprites/items/item_ruby.png" id="3_eoqqh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
+size = Vector2(5, 11)
+
+[node name="ItemRuby" type="Area2D" groups=["world_item"]]
+scale = Vector2(0.75, 0.75)
+collision_layer = 8
+script = ExtResource("1_u376m")
+item_data = ExtResource("2_eoqqh")
+bob_height = 1.5
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0.33660764, 0.3366076, 0.3366076, 1)
+z_index = -20
+position = Vector2(1.3333334, 0)
+texture = ExtResource("2_u376m")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -5.9466696)
+texture = ExtResource("3_eoqqh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.105)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_tbgi4")
