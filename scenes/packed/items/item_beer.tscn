@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsmv3ko26ngau"]
+
+[ext_resource type="Script" uid="uid://crvjyuw4pmfhe" path="res://scripts/items/world_item.gd" id="1_vvelr"]
+[ext_resource type="Resource" uid="uid://cc4j8w2kk2uh2" path="res://resources/items/item_beer.tres" id="2_vvelr"]
+[ext_resource type="Texture2D" uid="uid://b7jkgfg7j14re" path="res://sprites/items/item_beer_shadow.png" id="3_vvelr"]
+[ext_resource type="Texture2D" uid="uid://bdrdltj3lvsko" path="res://sprites/items/item_beer.png" id="4_ht74g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
+size = Vector2(8, 11.025)
+
+[node name="ItemBeer" type="Area2D" groups=["world_item"]]
+scale = Vector2(0.75, 0.75)
+collision_layer = 8
+script = ExtResource("1_vvelr")
+item_data = ExtResource("2_vvelr")
+bob_height = 1.5
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0.33660764, 0.3366076, 0.3366076, 1)
+z_index = -20
+position = Vector2(1.3333334, 0)
+texture = ExtResource("3_vvelr")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -6.7551236)
+texture = ExtResource("4_ht74g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_tbgi4")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bqy1sphd1sgpa"]
+
+[ext_resource type="Texture2D" uid="uid://c8y2gtf06mm5v" path="res://sprites/icons/icon_wand.png" id="1_ifme4"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_r1yhl"]
+
+[resource]
+script = ExtResource("2_r1yhl")
+item_name = "Wand"
+world_item_path = "uid://o0culj7s2jts"
+icon = ExtResource("1_ifme4")
+color = Color(0, 0.32214928, 0.08686937, 1)
+is_equippable = true
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"
