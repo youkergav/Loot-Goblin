@@ -63,16 +63,13 @@ func update_equipped_item() -> void:
     var slots = slot_container.get_children()
     var border = slots[0].get_node("Border")
     
+    #always have the player update the equip item
+    player.equip_item(slots[0].item_data)
     # Check if first slot has an equippable item
+    
     if slots.size() > 0 and slots[0].item_data and slots[0].item_data.is_equippable:
-        # Equip the first slot's item
-        player.equip_item(slots[0].item_data)
         # Change the border to activate.
         border.texture = active_equip_border_texture
-    else:
-        # First slot is empty or not equippable - unequip
-        player.equipped_item_data = null
-        player.sprite.modulate = Color.WHITE
-        
+    else:        
         # Change the border to normal.
         border.texture = normal_equip_border_texture

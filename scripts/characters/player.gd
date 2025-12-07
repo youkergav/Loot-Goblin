@@ -12,20 +12,18 @@ class_name Player
 @onready var sprite: Sprite2D = $Sprites/Body
 @onready var hotbar: Hotbar = get_tree().get_first_node_in_group("hotbar")
 @onready var hurtbox: Area2D = $HurtBox
-@onready var hitBoxSword: Area2D = $HitBoxSword
-@onready var hitBoxSwordAttack: Area2D = $HitBoxSwordAttack
 @onready var worldDropZone: Control = $"../../UI/WorldDropZone"
 @onready var camera = get_tree().get_first_node_in_group("camera")
 
 var magnet_attracted_items: Array = []
+
 var equipped_item_data: ItemData = null
+var equipment: Variant
 
 var hearts_list : Array[TextureRect]
 
 var is_invulnerable : bool = false
 var damage_recovery_timer : float
-
-var equipment_state : String
 
 func _physics_process(delta: float) -> void:
     pull_magnetized_items(delta)
@@ -89,23 +87,55 @@ func pickup_item(item_data: ItemData) -> void:
     hotbar.add_item(item_data)
     print("Picked up: ", item_data.item_name)
 
-func equip_item(item_data: ItemData) -> ItemData:
-    var old_item = equipped_item_data
+func update_player_color() -> void:
+    if equipped_item_data.is_equippable:
+        sprite.modulate = equipped_item_data.color
+    else:
+        sprite.modulate = Color.WHITE
+
+func equip_item(item_data: ItemData) -> void:
+    #use this to generically update the equip slot
+    #regardless of if it is equipment or not
+
+    #check if the new equipment is the same as the old
+    if item_data == equipped_item_data:
+        return
+
+    #start by clearing out the old equipment
+    remove_equipment()
+
     equipped_item_data = item_data
-    sprite.modulate = equipped_item_data.color
-    if equipped_item_data.item_name == "Sword":
-        #turn on sword hitbox
-        print("SWORD!!!!")
-        #check if there are any existing collisions
-        if sword_has_overlap():
-            sword_attack()
-    return old_item
+    
+    #if the item is equippable then set the equipment
+    if equipped_item_data.is_equippable:
+        #create new equpment and make it a child of player
+        print("adding new child")
+        equipment = equipped_item_data.equipment_scene.instantiate()
+        self.call_deferred("add_child", equipment)
+        
+    
+    print("equipping " + equipped_item_data.item_name)
+    update_player_color()
 
+func remove_equipment() -> void:
+    if equipment:
+        self.call_deferred("remove_child", equipment)
+        equipment.queue_free()
+        
 
-func drop_equipped_item():
-    var dropped_item_data = equipped_item_data
+func drop_equipped_item() -> void:
+    #remove player equipment
+    remove_equipment()
+
+    #clean up item data and send a copy to the world
+    if equipped_item_data != null:
+        super.spawn_world_item(equipped_item_data, self.position)
+        equipped_item_data = null
+
+    #update the hotbar last
     hotbar.remove_equipped_item_and_shift()
-    super.spawn_world_item(dropped_item_data, self.position)
+
+
 
 func _ready() -> void: 
     var hearts_parent = $"../../UI/Heartbar/HBoxContainer"
@@ -155,29 +185,3 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
     if area.is_in_group("hit"):
         print("Hit!")
         take_damage()
-
-func sword_attack() -> void:
-    print("Sword Attack!")
-    var hit_counter = 0
-    for overlap_area in hitBoxSwordAttack.get_overlapping_areas():
-        if overlap_area.is_in_group("hurtbox_enemy"):
-            #how do we navigate to the object to call take_damage on?
-            var parent_node = overlap_area.get_parent()
-            #kill the parent
-            print("attacking with sword: " + parent_node.name)
-            parent_node.take_damage()
-            hit_counter += 1
-    if hit_counter > 0:
-        drop_equipped_item()
-
-func sword_has_overlap() -> bool:
-    if hitBoxSword.get_overlapping_areas().size() > 0:
-        return true
-    return false
-
-func _on_hit_box_sword_area_entered(_area: Area2D) -> void:
-    if not equipped_item_data or equipped_item_data.item_name != "Sword":
-        return
-    print("sword trigger entered")
-    sword_attack()
-        
