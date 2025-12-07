@@ -109,7 +109,7 @@ void fragment() {
     }
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vxglm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2wyq8"]
 resource_local_to_scene = true
 shader = SubResource("Shader_eb6dy")
 shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
@@ -210,7 +210,7 @@ tile_map_data = PackedByteArray("AAD///7/AQAHAAAAAAD/////AQAMAAAAAAD//wAAAQACAAA
 tile_set = SubResource("TileSet_jkv2x")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
-material = SubResource("ShaderMaterial_vxglm")
+material = SubResource("ShaderMaterial_2wyq8")
 position = Vector2(30, 28)
 move_speed = 70.0
 
