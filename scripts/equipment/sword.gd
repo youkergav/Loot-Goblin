@@ -11,7 +11,7 @@ func _ready() -> void:
 func attack() -> void:
     #check hitbox for collisions
     var hit_counter = 0
-    for area in hitBoxTrigger.get_overlapping_areas():
+    for area in hitBox.get_overlapping_areas():
         if area.is_in_group("hurtbox_enemy"):
             area.get_parent().take_damage()
             hit_counter += 1
@@ -19,7 +19,7 @@ func attack() -> void:
         self.get_parent().drop_equipped_item()
 
 func is_trigger_active() -> bool:
-    for area in hitBox.get_overlapping_areas():
+    for area in hitBoxTrigger.get_overlapping_areas():
         if area.is_in_group("hurtbox_enemy"):
             return true
     return false

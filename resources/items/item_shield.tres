@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://cl6kob1u26wxn"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dl5gkoj4fndrt"]
 
 [ext_resource type="Texture2D" uid="uid://cpxdjth86yucu" path="res://sprites/icons/icon_shield.png" id="1_5c3mg"]
+[ext_resource type="PackedScene" uid="uid://c6csnw2f4dxu2" path="res://scenes/packed/equipment/sword.tscn" id="1_gr8kg"]
 [ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_rum2y"]
 
 [resource]
@@ -8,7 +9,7 @@ script = ExtResource("2_rum2y")
 item_name = "Shield"
 world_item_path = "uid://6vc7d5uy7bq"
 icon = ExtResource("1_5c3mg")
-color = Color(0, 0.20392157, 0.63529414, 1)
+color = Color(0.28660044, 0.3381555, 1, 1)
 is_equippable = true
 equipment_scene = ExtResource("1_gr8kg")
 metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

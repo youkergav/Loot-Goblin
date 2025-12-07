@@ -12,8 +12,6 @@ class_name Player
 @onready var sprite: Sprite2D = $Sprites/Body
 @onready var hotbar: Hotbar = get_tree().get_first_node_in_group("hotbar")
 @onready var hurtbox: Area2D = $HurtBox
-@onready var worldDropZone: Control = $"../../UI/WorldDropZone"
-@onready var camera = get_tree().get_first_node_in_group("camera")
 
 var magnet_attracted_items: Array = []
 

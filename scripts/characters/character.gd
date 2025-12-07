@@ -9,9 +9,6 @@ class_name Character
 @export_group("Health")
 @export var health_max: int = 5
 
-@export_group("Scene")
-@export var world_item_scene: PackedScene
-
 @onready var world = get_tree().get_first_node_in_group("world")
 
 var sprites: Node2D
@@ -62,6 +59,7 @@ func spawn_world_item(world_item_data: Variant, item_position: Vector2) -> void:
     print("Spawning item off char")
     print(world_item_data)
     # Create the world item
+    var world_item_scene = load(world_item_data.world_item_path)
     var new_item = world_item_scene.instantiate()
     new_item.item_data = world_item_data
     new_item.global_position = item_position
