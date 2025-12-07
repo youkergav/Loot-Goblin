@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_1hcy5")
 item_name = "Sword"
+world_item_path = "uid://o0culj7s2jts"
 icon = ExtResource("1_ohwmg")
 color = Color(0.50980395, 0, 0.06666667, 1)
 is_equippable = true

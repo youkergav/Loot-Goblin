@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://o0culj7s2jts"]
+
+[ext_resource type="Script" uid="uid://crvjyuw4pmfhe" path="res://scripts/items/world_item.gd" id="1_vbb4y"]
+[ext_resource type="Resource" uid="uid://bf1cpvg7e8f65" path="res://resources/items/item_sword.tres" id="2_vbb4y"]
+[ext_resource type="Texture2D" uid="uid://3njgyh23vq1a" path="res://sprites/items/item_shadow.png" id="3_vbb4y"]
+[ext_resource type="Texture2D" uid="uid://1v141y6mn52y" path="res://sprites/icons/icon_sword.png" id="4_80i6q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
+size = Vector2(16, 20)
+
+[node name="ItemSword" type="Area2D" groups=["world_item"]]
+scale = Vector2(0.75, 0.75)
+collision_layer = 8
+script = ExtResource("1_vbb4y")
+item_data = ExtResource("2_vbb4y")
+bob_height = 2.0
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0.6309206, 0.6309206, 0.6309206, 0.28235295)
+z_index = -20
+position = Vector2(1.3333334, 0)
+texture = ExtResource("3_vbb4y")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -4.59079)
+texture = ExtResource("4_80i6q")
+offset = Vector2(1.5, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -9.5)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_tbgi4")
