@@ -45,6 +45,12 @@ func add_item(item_data: ItemData) -> void:
         new_slot.update_ui()
         update_equipped_item()
 
+func get_equipped_item_texture_rect() -> TextureRect:
+    return slot_container.get_children()[0]
+
+func remove_equipped_item_and_shift() -> void:
+    remove_item_and_shift(get_equipped_item_texture_rect())    
+
 func remove_item_and_shift(removed_slot: TextureRect) -> void:
     var slots = slot_container.get_children()
     var removed_index = slots.find(removed_slot)
@@ -68,18 +74,13 @@ func update_equipped_item() -> void:
     var slots = slot_container.get_children()
     var border = slots[0].get_node("Border")
     
+    #always have the player update the equip item
+    player.equip_item(slots[0].item_data)
     # Check if first slot has an equippable item
+    
     if slots.size() > 0 and slots[0].item_data and slots[0].item_data.is_equippable:
-        # Equip the first slot's item
-        player.equipped_item_data = slots[0].item_data
-        player.sprite.modulate = slots[0].item_data.color
-        
         # Change the border to activate.
         border.texture = active_equip_border_texture
-    else:
-        # First slot is empty or not equippable - unequip
-        player.equipped_item_data = null
-        player.sprite.modulate = Color.WHITE
-        
+    else:        
         # Change the border to normal.
         border.texture = normal_equip_border_texture

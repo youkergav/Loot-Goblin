@@ -77,3 +77,7 @@ func update_movement_variation(delta: float) -> void:
     if offset_timer >= randf_range(0.5, 1.0):
         movement_offset = Vector2(randf_range(-15, 15), randf_range(-15, 15))
         offset_timer = 0.0
+        
+func take_damage() -> void:
+    print(self.name + " killing self")
+    self.queue_free()

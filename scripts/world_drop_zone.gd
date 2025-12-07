@@ -18,6 +18,7 @@ func _drop_data(at_position: Vector2, item_slot: Variant) -> void:
     
     spawn_item_in_world(item_data, at_position)
 
+
 func spawn_item_in_world(item_data: ItemData, screen_position: Vector2) -> void:	
     # Convert screen position to world position
     var world_position = camera.global_position + (screen_position - get_viewport_rect().size / 2)

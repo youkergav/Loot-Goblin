@@ -14,7 +14,9 @@ class_name Player
 @onready var hurtbox: Area2D = $HurtBox
 
 var magnet_attracted_items: Array = []
+
 var equipped_item_data: ItemData = null
+var equipment: Variant
 
 var hearts_list : Array[TextureRect]
 
@@ -26,7 +28,6 @@ func _physics_process(delta: float) -> void:
     super._physics_process(delta)
     if is_invulnerable:
         check_invulnerability(delta)
-
 
 
 func _on_item_pickup_zone_area_entered(area: Area2D) -> void:
@@ -84,13 +85,63 @@ func pickup_item(item_data: ItemData) -> void:
     hotbar.add_item(item_data)
     print("Picked up: ", item_data.item_name)
 
-func equip_item(item_data: ItemData) -> ItemData:
-    var old_item = equipped_item_data
+func update_player_color() -> void:
+    if equipped_item_data.is_equippable:
+        sprite.modulate = equipped_item_data.color
+    else:
+        sprite.modulate = Color.WHITE
+
+func equip_item(item_data: ItemData) -> void:
+    #use this to generically update the equip slot
+    #regardless of if it is equipment or not
+
+    #check if the new equipment is the same as the old
+    if item_data == equipped_item_data:
+        return
+
+    #start by clearing out the old equipment
+    remove_equipment()
+
     equipped_item_data = item_data
+    
+    #if the item is equippable then set the equipment
+    if equipped_item_data.is_equippable:
+        #create new equpment and make it a child of player
+        print("adding new child")
+        equipment = equipped_item_data.equipment_scene.instantiate()
+        self.call_deferred("add_child", equipment)
+        
+    
+    print("equipping " + equipped_item_data.item_name)
+    update_player_color()
 
-    sprite.modulate = equipped_item_data.color
+func reset_cleanup_flag() -> void:
+    is_cleanup_queued = false
 
-    return old_item
+var is_cleanup_queued: bool = false
+func remove_equipment() -> void:
+    if equipment and not is_cleanup_queued:
+        print("REMOVE EQUIPMENT")
+        print(equipment.get_parent())
+        self.call_deferred("remove_child", equipment)
+        is_cleanup_queued = true
+        self.call_deferred("reset_cleanup_flag")
+        equipment.queue_free()
+        
+
+func drop_equipped_item() -> void:
+    #remove player equipment
+    remove_equipment()
+
+    #clean up item data and send a copy to the world
+    if equipped_item_data != null:
+        super.spawn_world_item(equipped_item_data, self.position)
+        equipped_item_data = null
+
+    #update the hotbar last
+    hotbar.remove_equipped_item_and_shift()
+
+
 
 func _ready() -> void: 
     var hearts_parent = $"../../UI/Heartbar/HBoxContainer"
@@ -102,11 +153,9 @@ func _ready() -> void:
 func check_invulnerability(delta):
     damage_recovery_timer += delta
     if(damage_recovery_timer > damage_recovery_time_limit):
-        print("Recovery timed out.")
         is_invulnerable = false
         damage_recovery_timer = 0
         if has_overlapping_hit():
-            print("timeout while taking damage")
             take_damage()
         
 
@@ -133,8 +182,8 @@ func take_damage() -> void:
     damage_recovery_timer = 0
     
 func has_overlapping_hit() -> bool:
-    for overlapping_area in hurtbox.get_overlapping_areas():
-        if overlapping_area.is_in_group("hit"):
+    for overlap_area in hurtbox.get_overlapping_areas():
+        if overlap_area.is_in_group("hit"):
             return true
     return false
     
