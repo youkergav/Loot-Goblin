@@ -117,9 +117,17 @@ func equip_item(item_data: ItemData) -> void:
     print("equipping " + equipped_item_data.item_name)
     update_player_color()
 
+func reset_cleanup_flag() -> void:
+    is_cleanup_queued = false
+
+var is_cleanup_queued: bool = false
 func remove_equipment() -> void:
-    if equipment:
+    if equipment and not is_cleanup_queued:
+        print("REMOVE EQUIPMENT")
+        print(equipment.get_parent())
         self.call_deferred("remove_child", equipment)
+        is_cleanup_queued = true
+        self.call_deferred("reset_cleanup_flag")
         equipment.queue_free()
         
 
