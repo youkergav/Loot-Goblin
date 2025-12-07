@@ -28,6 +28,7 @@ world_item_scene = ExtResource("2_yae0h")
 [node name="Shadow" type="Sprite2D" parent="Sprites"]
 z_index = -20
 texture_filter = 1
+position = Vector2(1, 0)
 texture = ExtResource("2_m6pdb")
 offset = Vector2(0, 0.5)
 
@@ -44,7 +45,6 @@ shape = SubResource("RectangleShape2D_mhmt7")
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickupZone"]
-visible = false
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_dx721")
 
@@ -52,7 +52,6 @@ shape = SubResource("RectangleShape2D_dx721")
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemMagnetZone"]
-visible = false
 position = Vector2(0, -12)
 shape = SubResource("CircleShape2D_m6pdb")
 

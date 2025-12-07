@@ -18,6 +18,17 @@ func _process(_delta: float) -> void:
         DisplayServer.cursor_set_shape(DisplayServer.CURSOR_ARROW)
 
 func add_item(item_data: ItemData) -> void:
+    # If item is stackable, try to add it to existing stack first
+    if item_data.is_stackable:
+        for item_slot in slot_container.get_children():
+            if item_slot.item_data == item_data:
+                item_data.stack_count += 1
+                item_slot.update_ui()
+                return
+                
+    if item_data.is_stackable and item_data.stack_count == 0:
+        item_data.stack_count = 1
+                
     # Queue system - always add to the rightmost empty slot
     for item_slot in slot_container.get_children():
         if item_slot.item_data == null:
