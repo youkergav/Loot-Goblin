@@ -23,7 +23,7 @@ texture = ExtResource("2_u376m")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -5.632075)
+position = Vector2(0, -5.9466696)
 texture = ExtResource("3_eoqqh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

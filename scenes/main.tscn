@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=33 format=4 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c8ichhqq68qk4" path="res://sprites/tilemaps/grass_tilemap.png" id="2_a8y0u"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://b7l8viral71ia" path="res://scenes/packed/props/prop_rock1.tscn" id="19_jscy8"]
 [ext_resource type="PackedScene" uid="uid://c8rmsjna4x64j" path="res://scenes/packed/items/item_diamond.tscn" id="19_y6deb"]
 [ext_resource type="PackedScene" uid="uid://4ks8r0f8dfho" path="res://scenes/packed/props/prop_rock2.tscn" id="20_pm3ni"]
+[ext_resource type="PackedScene" uid="uid://c3wjpww4ht0ni" path="res://scenes/packed/props/prop_bush.tscn" id="20_y6deb"]
 [ext_resource type="PackedScene" uid="uid://miq5biuvfuab" path="res://scenes/packed/props/prop_rock3.tscn" id="21_y6deb"]
 [ext_resource type="Theme" uid="uid://dckml7ouee555" path="res://themes/default_theme.tres" id="22_pm3ni"]
 
@@ -301,7 +302,7 @@ position = Vector2(531, 62)
 position = Vector2(582, -26)
 
 [node name="ItemEmerald" parent="World" instance=ExtResource("17_jscy8")]
-position = Vector2(-21, -33)
+position = Vector2(63, -42)
 
 [node name="ItemEmerald2" parent="World" instance=ExtResource("17_jscy8")]
 position = Vector2(203, 49)
@@ -332,6 +333,18 @@ position = Vector2(-30, 64)
 
 [node name="ItemDiamond3" parent="World" instance=ExtResource("19_y6deb")]
 position = Vector2(520, -12)
+
+[node name="PropBush" parent="World" instance=ExtResource("20_y6deb")]
+position = Vector2(48, -38)
+
+[node name="PropBush2" parent="World" instance=ExtResource("20_y6deb")]
+position = Vector2(135, 67)
+
+[node name="PropBush3" parent="World" instance=ExtResource("20_y6deb")]
+position = Vector2(391, 19)
+
+[node name="PropBush4" parent="World" instance=ExtResource("20_y6deb")]
+position = Vector2(661, -26)
 
 [node name="UI" type="CanvasLayer" parent="."]
 

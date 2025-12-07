@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3wjpww4ht0ni"]
+
+[ext_resource type="Texture2D" uid="uid://xs6jtpb5wnne" path="res://sprites/props/bush_shadow.png" id="1_fwknk"]
+[ext_resource type="Texture2D" uid="uid://dehokb840lsh0" path="res://sprites/props/bush.png" id="2_raafb"]
+
+[node name="PropBush" type="Node2D"]
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -10
+texture = ExtResource("1_fwknk")
+offset = Vector2(2, 3.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_raafb")
+offset = Vector2(0, -4)

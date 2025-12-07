@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_ujbau")
 item_name = "Coin"
+world_item_path = "uid://lh0msmgkv2ey"
 icon = ExtResource("1_oyf2y")
 is_stackable = true
 metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

@@ -22,8 +22,9 @@ func spawn_item_in_world(item_data: ItemData, screen_position: Vector2) -> void:
     # Convert screen position to world position
     var world_position = camera.global_position + (screen_position - get_viewport_rect().size / 2)
     
-    # Create the world item
-    var new_item = world_item_scene.instantiate()
+    # Load the scene from the path
+    var world_scene = load(item_data.world_item_path)
+    var new_item = world_scene.instantiate()
     new_item.item_data = item_data
     new_item.global_position = world_position
     

@@ -6,5 +6,7 @@
 [resource]
 script = ExtResource("2_0120c")
 item_name = "Ruby"
+world_item_path = "uid://ddg5ktk2thoqh"
 icon = ExtResource("1_iytcg")
+is_stackable = true
 metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

@@ -15,7 +15,6 @@ extends Area2D
 
 var is_being_magnetized: bool = false
 
-
 func _process(_delta: float) -> void:
     # Ignore if bob_run is disabled for inspector
     if Engine.is_editor_hint() and not bob_preview:
