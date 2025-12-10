@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=67 format=4 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c8ichhqq68qk4" path="res://sprites/tilemaps/grass_tilemap.png" id="2_a8y0u"]
@@ -14,12 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://ivgm86b4arbt" path="res://scenes/packed/ui/hotbar.tscn" id="8_jbj1t"]
 [ext_resource type="Script" uid="uid://d207eahu4wqa3" path="res://scripts/world_drop_zone.gd" id="9_muem4"]
 [ext_resource type="PackedScene" uid="uid://dyc23nln5hmqk" path="res://scenes/packed/props/prop_tree.tscn" id="17_gqmmt"]
-[ext_resource type="PackedScene" uid="uid://ytgcro6s0cmu" path="res://scenes/packed/items/item_emerald.tscn" id="17_jscy8"]
+[ext_resource type="PackedScene" uid="uid://ytgcro6s0cmu" path="res://scenes/packed/items/item_gem_emerald.tscn" id="17_jscy8"]
 [ext_resource type="PackedScene" uid="uid://6d6wdo8felvi" path="res://scenes/packed/ui/heartbar.tscn" id="18_dp3eg"]
-[ext_resource type="PackedScene" uid="uid://ddg5ktk2thoqh" path="res://scenes/packed/items/item_ruby.tscn" id="18_pm3ni"]
+[ext_resource type="PackedScene" uid="uid://ddg5ktk2thoqh" path="res://scenes/packed/items/item_gem_ruby.tscn" id="18_pm3ni"]
 [ext_resource type="PackedScene" uid="uid://bqvuahjs2dfel" path="res://scenes/packed/props/prop_tree_stump.tscn" id="18_yc10j"]
 [ext_resource type="PackedScene" uid="uid://b7l8viral71ia" path="res://scenes/packed/props/prop_rock1.tscn" id="19_jscy8"]
-[ext_resource type="PackedScene" uid="uid://c8rmsjna4x64j" path="res://scenes/packed/items/item_diamond.tscn" id="19_y6deb"]
+[ext_resource type="PackedScene" uid="uid://c8rmsjna4x64j" path="res://scenes/packed/items/item_gem_diamond.tscn" id="19_y6deb"]
 [ext_resource type="PackedScene" uid="uid://4ks8r0f8dfho" path="res://scenes/packed/props/prop_rock2.tscn" id="20_pm3ni"]
 [ext_resource type="PackedScene" uid="uid://c3wjpww4ht0ni" path="res://scenes/packed/props/prop_bush.tscn" id="20_y6deb"]
 [ext_resource type="PackedScene" uid="uid://miq5biuvfuab" path="res://scenes/packed/props/prop_rock3.tscn" id="21_y6deb"]
@@ -27,8 +27,37 @@
 [ext_resource type="PackedScene" uid="uid://bbtw0rmnb6hkp" path="res://scenes/packed/items/item_wand.tscn" id="24_yq6so"]
 [ext_resource type="PackedScene" uid="uid://o0culj7s2jts" path="res://scenes/packed/items/item_sword.tscn" id="25_og1vs"]
 [ext_resource type="PackedScene" uid="uid://6vc7d5uy7bq" path="res://scenes/packed/items/item_shield.tscn" id="26_2wyq8"]
-[ext_resource type="Texture2D" uid="uid://bypp6wsbi5ljx" path="res://sprites/props/spike_trap.png" id="27_vxglm"]
+[ext_resource type="PackedScene" uid="uid://da8l7wq4r70s" path="res://scenes/packed/items/item_torch.tscn" id="26_5q0nq"]
+[ext_resource type="PackedScene" uid="uid://bkboarx5oshf3" path="res://scenes/packed/items/item_map.tscn" id="26_qkpxi"]
+[ext_resource type="PackedScene" uid="uid://dd6d4c15vi5mq" path="res://scenes/packed/items/item_painting_1.tscn" id="27_5q0nq"]
+[ext_resource type="PackedScene" uid="uid://ekau57exv5fp" path="res://scenes/packed/items/item_candle.tscn" id="27_dgi5k"]
 [ext_resource type="PackedScene" uid="uid://bsmv3ko26ngau" path="res://scenes/packed/items/item_beer.tscn" id="28_2f3dj"]
+[ext_resource type="PackedScene" uid="uid://bborthdlrf8a8" path="res://scenes/packed/items/item_painting_2.tscn" id="28_dgi5k"]
+[ext_resource type="PackedScene" uid="uid://dew2c5yjaao1d" path="res://scenes/packed/items/item_crown.tscn" id="28_j8jky"]
+[ext_resource type="PackedScene" uid="uid://da5fanth1qkbr" path="res://scenes/packed/items/item_compass.tscn" id="29_kmb1v"]
+[ext_resource type="PackedScene" uid="uid://l6v7owyyt3nc" path="res://scenes/packed/items/item_clock.tscn" id="30_fuf3a"]
+[ext_resource type="PackedScene" uid="uid://dexn07knvfjyr" path="res://scenes/packed/items/item_potion_blue.tscn" id="30_qkpxi"]
+[ext_resource type="PackedScene" uid="uid://wnb1gj2xpn2n" path="res://scenes/packed/items/item_berries_blue.tscn" id="30_tel4y"]
+[ext_resource type="PackedScene" uid="uid://deh1fqsn5disr" path="res://scenes/packed/items/item_potion_green.tscn" id="31_5q0nq"]
+[ext_resource type="PackedScene" uid="uid://cqxd62cf05f3k" path="res://scenes/packed/items/item_thread_blue.tscn" id="31_augu2"]
+[ext_resource type="PackedScene" uid="uid://bk1y3roai63wn" path="res://scenes/packed/items/item_berries_red.tscn" id="31_qkpxi"]
+[ext_resource type="PackedScene" uid="uid://c0jtu1k6jqaf3" path="res://scenes/packed/items/item_potion_red.tscn" id="32_dgi5k"]
+[ext_resource type="PackedScene" uid="uid://bxa5sv81e53cj" path="res://scenes/packed/items/item_sock.tscn" id="32_qkpxi"]
+[ext_resource type="PackedScene" uid="uid://x546np8u4e2e" path="res://scenes/packed/items/item_thread_green.tscn" id="32_tm6hj"]
+[ext_resource type="PackedScene" uid="uid://d024ew5wtakd4" path="res://scenes/packed/items/item_thread_red.tscn" id="33_kf5aa"]
+[ext_resource type="PackedScene" uid="uid://bsj4fm6uovabv" path="res://scenes/packed/items/item_necklace_diamond.tscn" id="34_t5ykj"]
+[ext_resource type="PackedScene" uid="uid://c8aen7ktao7cj" path="res://scenes/packed/items/item_necklace_emerald.tscn" id="35_e755i"]
+[ext_resource type="PackedScene" uid="uid://dsgcje4mdobuk" path="res://scenes/packed/items/item_necklace_ruby.tscn" id="36_ro3en"]
+[ext_resource type="PackedScene" uid="uid://x7avsx4hnxcm" path="res://scenes/packed/items/item_button_blue.tscn" id="37_od4ux"]
+[ext_resource type="PackedScene" uid="uid://ctprw1mwkenr8" path="res://scenes/packed/items/item_button_green.tscn" id="38_xhfw6"]
+[ext_resource type="PackedScene" uid="uid://b74s5avoutnif" path="res://scenes/packed/items/item_button_red.tscn" id="39_1epgm"]
+[ext_resource type="PackedScene" uid="uid://cirj78gw35mrg" path="res://scenes/packed/items/item_ring_diamond.tscn" id="40_152kg"]
+[ext_resource type="PackedScene" uid="uid://7xw86evlll13" path="res://scenes/packed/items/item_ring_emerald.tscn" id="41_r4e17"]
+[ext_resource type="PackedScene" uid="uid://bbco8qhoxqevv" path="res://scenes/packed/items/item_ring_ruby.tscn" id="42_y57op"]
+[ext_resource type="PackedScene" uid="uid://bo828b30c3o3c" path="res://scenes/packed/items/item_berry_blue.tscn" id="45_mlv25"]
+[ext_resource type="PackedScene" uid="uid://dmghmk5eb375g" path="res://scenes/packed/items/item_berry_red.tscn" id="46_a82wo"]
+[ext_resource type="PackedScene" uid="uid://hep8km3vxor4" path="res://scenes/packed/items/item_plank.tscn" id="53_gdvew"]
+[ext_resource type="PackedScene" uid="uid://dxd0q3y47hvt5" path="res://scenes/packed/items/item_nail.tscn" id="54_kjtvk"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dp3eg"]
 normal = Vector2(0, 1)
@@ -112,7 +141,7 @@ void fragment() {
     }
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yq6so"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_augu2"]
 resource_local_to_scene = true
 shader = SubResource("Shader_eb6dy")
 shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
@@ -213,7 +242,7 @@ tile_map_data = PackedByteArray("AAD///7/AQAHAAAAAAD/////AQAMAAAAAAD//wAAAQACAAA
 tile_set = SubResource("TileSet_jkv2x")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
-material = SubResource("ShaderMaterial_yq6so")
+material = SubResource("ShaderMaterial_augu2")
 position = Vector2(30, 28)
 move_speed = 70.0
 
@@ -357,13 +386,128 @@ position = Vector2(133, 12)
 [node name="ItemShield" parent="World" instance=ExtResource("26_2wyq8")]
 position = Vector2(373, -7)
 
-[node name="SpikeTrap" type="Sprite2D" parent="World"]
-z_index = -25
-position = Vector2(394, 16)
-texture = ExtResource("27_vxglm")
-
 [node name="ItemWand" parent="World" instance=ExtResource("24_yq6so")]
 position = Vector2(609, 15)
+
+[node name="ItemBeer" parent="World" instance=ExtResource("28_2f3dj")]
+position = Vector2(170, -33)
+
+[node name="ItemBeer2" parent="World" instance=ExtResource("28_2f3dj")]
+position = Vector2(296, -13)
+
+[node name="ItemMap" parent="World" instance=ExtResource("26_qkpxi")]
+position = Vector2(101, -1)
+
+[node name="ItemPainting1" parent="World" instance=ExtResource("27_5q0nq")]
+position = Vector2(526, -35)
+
+[node name="ItemPainting2" parent="World" instance=ExtResource("28_dgi5k")]
+position = Vector2(245, -45)
+
+[node name="ItemPotionBlue" parent="World" instance=ExtResource("30_qkpxi")]
+position = Vector2(133, -33)
+
+[node name="ItemPotionGreen" parent="World" instance=ExtResource("31_5q0nq")]
+position = Vector2(316, 37)
+
+[node name="ItemPotionRed" parent="World" instance=ExtResource("32_dgi5k")]
+position = Vector2(612, -34)
+
+[node name="ItemThreadBlue" parent="World" instance=ExtResource("31_augu2")]
+position = Vector2(400, 36)
+
+[node name="ItemThreadGreen" parent="World" instance=ExtResource("32_tm6hj")]
+position = Vector2(405, 27)
+
+[node name="ItemThreadRed" parent="World" instance=ExtResource("33_kf5aa")]
+position = Vector2(477, 10)
+
+[node name="ItemNecklaceDiamond" parent="World" instance=ExtResource("34_t5ykj")]
+position = Vector2(197, -43)
+
+[node name="ItemNecklaceEmerald" parent="World" instance=ExtResource("35_e755i")]
+position = Vector2(651, 53)
+
+[node name="ItemNecklaceRuby" parent="World" instance=ExtResource("36_ro3en")]
+position = Vector2(492, 47)
+
+[node name="ItemButtonBlue" parent="World" instance=ExtResource("37_od4ux")]
+position = Vector2(354, 33)
+
+[node name="ItemButtonGreen" parent="World" instance=ExtResource("38_xhfw6")]
+position = Vector2(345, 21)
+
+[node name="ItemButtonRed" parent="World" instance=ExtResource("39_1epgm")]
+position = Vector2(333, 13)
+
+[node name="ItemRingDiamond" parent="World" instance=ExtResource("40_152kg")]
+position = Vector2(-30, -39)
+
+[node name="ItemRingEmerald" parent="World" instance=ExtResource("41_r4e17")]
+position = Vector2(585, 44)
+
+[node name="ItemRingRuby" parent="World" instance=ExtResource("42_y57op")]
+position = Vector2(664, -41)
+
+[node name="ItemBerriesBlue" parent="World" instance=ExtResource("30_tel4y")]
+position = Vector2(461, 14)
+
+[node name="ItemBerriesRed" parent="World" instance=ExtResource("31_qkpxi")]
+position = Vector2(651, -14)
+
+[node name="ItemBerryBlue" parent="World" instance=ExtResource("45_mlv25")]
+z_index = 1
+position = Vector2(420, -19)
+bob_height = 0.0
+
+[node name="ItemBerryBlue2" parent="World" instance=ExtResource("45_mlv25")]
+z_index = 1
+position = Vector2(425, -25)
+bob_height = 0.0
+
+[node name="ItemBerryBlue3" parent="World" instance=ExtResource("45_mlv25")]
+z_index = 1
+position = Vector2(427, -18)
+bob_height = 0.0
+
+[node name="ItemBerryRed" parent="World" instance=ExtResource("46_a82wo")]
+z_index = 1
+position = Vector2(658, -31)
+bob_height = 0.0
+
+[node name="ItemBerryRed2" parent="World" instance=ExtResource("46_a82wo")]
+z_index = 1
+position = Vector2(666, -27)
+bob_height = 0.0
+
+[node name="ItemBerryRed3" parent="World" instance=ExtResource("46_a82wo")]
+z_index = 1
+position = Vector2(658, -23)
+bob_height = 0.0
+
+[node name="ItemSock" parent="World" instance=ExtResource("32_qkpxi")]
+position = Vector2(319, -37)
+
+[node name="ItemClock" parent="World" instance=ExtResource("30_fuf3a")]
+position = Vector2(390, -19)
+
+[node name="ItemCompass" parent="World" instance=ExtResource("29_kmb1v")]
+position = Vector2(376, 25)
+
+[node name="ItemCandle" parent="World" instance=ExtResource("27_dgi5k")]
+position = Vector2(512, 25)
+
+[node name="ItemCrown" parent="World" instance=ExtResource("28_j8jky")]
+position = Vector2(246, 36)
+
+[node name="ItemTorch" parent="World" instance=ExtResource("26_5q0nq")]
+position = Vector2(597, -14)
+
+[node name="ItemPlank" parent="World" instance=ExtResource("53_gdvew")]
+position = Vector2(641, 23)
+
+[node name="ItemNail" parent="World" instance=ExtResource("54_kjtvk")]
+position = Vector2(650, 25)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -383,11 +527,5 @@ world_item_scene = ExtResource("3_ya4ey")
 theme = ExtResource("22_pm3ni")
 
 [node name="Heartbar" parent="UI" instance=ExtResource("18_dp3eg")]
-
-[node name="ItemBeer" parent="." instance=ExtResource("28_2f3dj")]
-position = Vector2(170, -33)
-
-[node name="ItemBeer2" parent="." instance=ExtResource("28_2f3dj")]
-position = Vector2(296, -13)
 
 [connection signal="mouse_exited" from="UI/WorldDropZone" to="UI/WorldDropZone" method="_on_mouse_exited"]

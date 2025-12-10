@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dn4tymxupn2n4"]
+
+[ext_resource type="Texture2D" uid="uid://ducrqxpptu00g" path="res://sprites/icons/icon_berries_blue.png" id="1_52gct"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_bcm3e"]
+
+[resource]
+script = ExtResource("2_bcm3e")
+item_name = "Blue Berries"
+world_item_path = "uid://wnb1gj2xpn2n"
+icon = ExtResource("1_52gct")
+is_stackable = true
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

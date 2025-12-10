@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://ct1c0oiycj8on"]
+
+[ext_resource type="Texture2D" uid="uid://cokgyaipdwe2t" path="res://sprites/icons/icon_book_green.png" id="1_kdre0"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_v7ngd"]
+
+[resource]
+script = ExtResource("2_v7ngd")
+item_name = "Book"
+world_item_path = "uid://mvnu0q2pcss"
+icon = ExtResource("1_kdre0")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

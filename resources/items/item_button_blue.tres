@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://vc8h73isx7y5"]
+
+[ext_resource type="Texture2D" uid="uid://dc5tbl67amr6m" path="res://sprites/icons/icon_button_blue.png" id="1_i4r7h"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_q6tqa"]
+
+[resource]
+script = ExtResource("2_q6tqa")
+item_name = "Button"
+world_item_path = "uid://x7avsx4hnxcm"
+icon = ExtResource("1_i4r7h")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

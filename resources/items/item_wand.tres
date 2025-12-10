@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_r1yhl")
 item_name = "Wand"
-world_item_path = "uid://o0culj7s2jts"
+world_item_path = "uid://bbtw0rmnb6hkp"
 icon = ExtResource("1_ifme4")
 color = Color(0, 0.32214928, 0.08686937, 1)
 is_equippable = true

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://d4f7u1xj5d7jp"]
+
+[ext_resource type="Texture2D" uid="uid://4ro4h6iyeeac" path="res://sprites/icons/icon_crown.png" id="1_1qq3i"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_bmwa1"]
+
+[resource]
+script = ExtResource("2_bmwa1")
+item_name = "Crown"
+world_item_path = "uid://dew2c5yjaao1d"
+icon = ExtResource("1_1qq3i")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://h2uxeeffjnlv"]
+
+[ext_resource type="Texture2D" uid="uid://bhkw1xeaoem0g" path="res://sprites/icons/icon_necklace_ruby.png" id="1_pnbjw"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_owfiy"]
+
+[resource]
+script = ExtResource("2_owfiy")
+item_name = "Ruby Necklace"
+world_item_path = "uid://dsgcje4mdobuk"
+icon = ExtResource("1_pnbjw")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

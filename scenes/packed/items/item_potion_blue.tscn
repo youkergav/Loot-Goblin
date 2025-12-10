@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dexn07knvfjyr"]
+
+[ext_resource type="Script" uid="uid://crvjyuw4pmfhe" path="res://scripts/items/world_item.gd" id="1_2qe04"]
+[ext_resource type="Resource" uid="uid://bs4icgm2futdu" path="res://resources/items/item_potion_blue.tres" id="2_2qe04"]
+[ext_resource type="Texture2D" uid="uid://dcgd1unwd0kng" path="res://sprites/items/item_potion_blue_shadow.png" id="3_5p8xc"]
+[ext_resource type="Texture2D" uid="uid://ojge2e6nlefd" path="res://sprites/items/item_potion_blue.png" id="4_idkqc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
+size = Vector2(7, 12)
+
+[node name="ItemPotionBlue" type="Area2D" groups=["world_item"]]
+collision_layer = 8
+script = ExtResource("1_2qe04")
+item_data = ExtResource("2_2qe04")
+bob_height = 2.0
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -20
+texture = ExtResource("3_5p8xc")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("4_idkqc")
+offset = Vector2(0, 0.013873729)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_tbgi4")

@@ -6,27 +6,25 @@
 [ext_resource type="Texture2D" uid="uid://ceqtqdvf00mu0" path="res://sprites/items/item_coin.png" id="3_i6d5j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
-size = Vector2(6, 10)
+size = Vector2(6, 11)
 
 [node name="ItemCoin" type="Area2D" groups=["world_item"]]
 scale = Vector2(0.75, 0.75)
 collision_layer = 8
 script = ExtResource("1_5t22k")
 item_data = ExtResource("2_y1fe0")
-bob_height = 2.0
+bob_height = 2.5
 
 [node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(0.33660764, 0.3366076, 0.3366076, 1)
 z_index = -20
-position = Vector2(1.3333334, 0)
 texture = ExtResource("2_5t22k")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -6.59062)
 texture = ExtResource("3_i6d5j")
+offset = Vector2(0, 0.4232015)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5.125)
+position = Vector2(-0.5, -1.5)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_tbgi4")

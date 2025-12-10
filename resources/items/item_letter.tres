@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://1rbuht20eef8"]
+
+[ext_resource type="Texture2D" uid="uid://xvw50k77qkq6" path="res://sprites/icons/icon_letter.png" id="1_wn7pu"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_sqtrf"]
+
+[resource]
+script = ExtResource("2_sqtrf")
+item_name = "Letter"
+world_item_path = "uid://dw8yhs8aobvrr"
+icon = ExtResource("1_wn7pu")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

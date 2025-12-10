@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://hep8km3vxor4"]
+
+[ext_resource type="Script" uid="uid://crvjyuw4pmfhe" path="res://scripts/items/world_item.gd" id="1_d2tck"]
+[ext_resource type="Resource" uid="uid://dmjphtxvhm5gi" path="res://resources/items/item_plank.tres" id="2_d2tck"]
+[ext_resource type="Texture2D" uid="uid://dh4612mwqj6vu" path="res://sprites/items/item_plank_shadow.png" id="3_5mqio"]
+[ext_resource type="Texture2D" uid="uid://c0o2hw01eled5" path="res://sprites/items/item_plank.png" id="4_5jugt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
+size = Vector2(11, 15)
+
+[node name="ItemPlank" type="Area2D" groups=["world_item"]]
+collision_layer = 8
+script = ExtResource("1_d2tck")
+item_data = ExtResource("2_d2tck")
+bob_height = 2.0
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -20
+texture = ExtResource("3_5mqio")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("4_5jugt")
+offset = Vector2(0, 0.75491637)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_tbgi4")

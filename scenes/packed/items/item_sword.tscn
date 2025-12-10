@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://crvjyuw4pmfhe" path="res://scripts/items/world_item.gd" id="1_vbb4y"]
 [ext_resource type="Resource" uid="uid://bw6pgok3utbjt" path="res://resources/items/item_sword.tres" id="2_vbb4y"]
-[ext_resource type="Texture2D" uid="uid://3njgyh23vq1a" path="res://sprites/items/item_shadow.png" id="3_vbb4y"]
+[ext_resource type="Texture2D" uid="uid://hhkqg11jknf8" path="res://sprites/items/item_sword_shadow.png" id="3_vbb4y"]
 [ext_resource type="Texture2D" uid="uid://d0wp7ccgiba3u" path="res://sprites/items/item_sword.png" id="4_vbb4y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
@@ -16,18 +16,15 @@ item_data = ExtResource("2_vbb4y")
 bob_height = 2.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(0.6309206, 0.6309206, 0.6309206, 0.28235295)
 z_index = -20
-position = Vector2(1.3333334, 0)
 texture = ExtResource("3_vbb4y")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -5.0876164)
 texture = ExtResource("4_vbb4y")
-offset = Vector2(1.5, -3)
+offset = Vector2(0, 1.8773663)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, -9.5)
+position = Vector2(-2, -1.5)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_tbgi4")

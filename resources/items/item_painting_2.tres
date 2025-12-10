@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://d055sw8s2hirm"]
+
+[ext_resource type="Texture2D" uid="uid://dbmwui1o5etgx" path="res://sprites/icons/icon_painting_2.png" id="1_aafpo"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_f0khn"]
+
+[resource]
+script = ExtResource("2_f0khn")
+item_name = "Painting"
+world_item_path = "uid://bborthdlrf8a8"
+icon = ExtResource("1_aafpo")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"
