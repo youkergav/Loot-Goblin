@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=68 format=4 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c8ichhqq68qk4" path="res://sprites/tilemaps/grass_tilemap.png" id="2_a8y0u"]
@@ -58,6 +58,7 @@
 [ext_resource type="PackedScene" uid="uid://dmghmk5eb375g" path="res://scenes/packed/items/item_berry_red.tscn" id="46_a82wo"]
 [ext_resource type="PackedScene" uid="uid://hep8km3vxor4" path="res://scenes/packed/items/item_plank.tscn" id="53_gdvew"]
 [ext_resource type="PackedScene" uid="uid://dxd0q3y47hvt5" path="res://scenes/packed/items/item_nail.tscn" id="54_kjtvk"]
+[ext_resource type="PackedScene" uid="uid://bf07qqkt2y7ms" path="res://scenes/packed/items/item_statue.tscn" id="59_tm6hj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dp3eg"]
 normal = Vector2(0, 1)
@@ -527,5 +528,8 @@ world_item_scene = ExtResource("3_ya4ey")
 theme = ExtResource("22_pm3ni")
 
 [node name="Heartbar" parent="UI" instance=ExtResource("18_dp3eg")]
+
+[node name="ItemStatue" parent="." instance=ExtResource("59_tm6hj")]
+position = Vector2(295, 17)
 
 [connection signal="mouse_exited" from="UI/WorldDropZone" to="UI/WorldDropZone" method="_on_mouse_exited"]
