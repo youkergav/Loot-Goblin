@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dgioof3dj2dah"]
+
+[ext_resource type="Texture2D" uid="uid://bfohuk0oyhwfr" path="res://sprites/icons/icon_nail.png" id="1_n4wn2"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_qqjod"]
+
+[resource]
+script = ExtResource("2_qqjod")
+item_name = "Nail"
+world_item_path = "uid://dxd0q3y47hvt5"
+icon = ExtResource("1_n4wn2")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

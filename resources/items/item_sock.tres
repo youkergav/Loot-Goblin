@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dprdit4ir15qv"]
+
+[ext_resource type="Texture2D" uid="uid://dl0bcljjler7k" path="res://sprites/icons/icon_sock.png" id="1_kde51"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_mj8w8"]
+
+[resource]
+script = ExtResource("2_mj8w8")
+item_name = "Sock"
+world_item_path = "uid://bxa5sv81e53cj"
+icon = ExtResource("1_kde51")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

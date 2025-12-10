@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dew2c5yjaao1d"]
+
+[ext_resource type="Script" uid="uid://crvjyuw4pmfhe" path="res://scripts/items/world_item.gd" id="1_ggnpj"]
+[ext_resource type="Resource" uid="uid://d4f7u1xj5d7jp" path="res://resources/items/item_crown.tres" id="2_ggnpj"]
+[ext_resource type="Texture2D" uid="uid://dhujk2gseytgs" path="res://sprites/items/item_crown_shadow.png" id="3_rymws"]
+[ext_resource type="Texture2D" uid="uid://degitk2bth3dr" path="res://sprites/items/item_crown.png" id="4_hru8a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
+size = Vector2(9, 9)
+
+[node name="ItemCrown" type="Area2D" groups=["world_item"]]
+collision_layer = 8
+script = ExtResource("1_ggnpj")
+item_data = ExtResource("2_ggnpj")
+bob_height = 2.0
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -20
+texture = ExtResource("3_rymws")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("4_hru8a")
+offset = Vector2(0, 1.2332202)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_tbgi4")

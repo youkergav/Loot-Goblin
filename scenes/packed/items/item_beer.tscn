@@ -6,27 +6,24 @@
 [ext_resource type="Texture2D" uid="uid://bdrdltj3lvsko" path="res://sprites/items/item_beer.png" id="4_ht74g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
-size = Vector2(8, 11.025)
+size = Vector2(7, 11.000001)
 
 [node name="ItemBeer" type="Area2D" groups=["world_item"]]
-scale = Vector2(0.75, 0.75)
 collision_layer = 8
 script = ExtResource("1_vvelr")
 item_data = ExtResource("2_vvelr")
-bob_height = 1.5
+bob_height = 2.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(0.33660764, 0.3366076, 0.3366076, 1)
 z_index = -20
-position = Vector2(1.3333334, 0)
 texture = ExtResource("3_vvelr")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -6.7551236)
 texture = ExtResource("4_ht74g")
+offset = Vector2(0, 0.54548234)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6)
+position = Vector2(0, -2)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_tbgi4")

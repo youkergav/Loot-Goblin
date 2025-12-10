@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://x7avsx4hnxcm"]
+
+[ext_resource type="Script" uid="uid://crvjyuw4pmfhe" path="res://scripts/items/world_item.gd" id="1_vnxj3"]
+[ext_resource type="Resource" uid="uid://vc8h73isx7y5" path="res://resources/items/item_button_blue.tres" id="2_vnxj3"]
+[ext_resource type="Texture2D" uid="uid://h3gtwvx5txt5" path="res://sprites/items/item_button_blue_shadow.png" id="3_vnxj3"]
+[ext_resource type="Texture2D" uid="uid://cyivfcr3cfyay" path="res://sprites/items/item_button_blue.png" id="4_7x2te"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
+size = Vector2(5, 9)
+
+[node name="ItemButtonBlue" type="Area2D" groups=["world_item"]]
+collision_layer = 8
+script = ExtResource("1_vnxj3")
+item_data = ExtResource("2_vnxj3")
+bob_height = 2.0
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -20
+texture = ExtResource("3_vnxj3")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("4_7x2te")
+offset = Vector2(0, 1.5887151)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_tbgi4")

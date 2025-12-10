@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dqn5ygvswfrvi"]
+
+[ext_resource type="Texture2D" uid="uid://lobnw2xqfpsa" path="res://sprites/icons/icon_ring_ruby.png" id="1_iegdr"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_rynwq"]
+
+[resource]
+script = ExtResource("2_rynwq")
+item_name = "Ruby Ring"
+world_item_path = "uid://bbco8qhoxqevv"
+icon = ExtResource("1_iegdr")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

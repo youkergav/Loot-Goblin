@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://6b8poxwmw7un"]
+
+[ext_resource type="Texture2D" uid="uid://dut4cjsw6yqnc" path="res://sprites/icons/icon_necklace_diamond.png" id="1_8rotj"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_fsucb"]
+
+[resource]
+script = ExtResource("2_fsucb")
+item_name = "Diamond Necklace"
+world_item_path = "uid://bsj4fm6uovabv"
+icon = ExtResource("1_8rotj")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

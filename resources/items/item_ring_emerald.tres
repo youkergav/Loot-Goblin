@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://ps1j2hmgq20n"]
+
+[ext_resource type="Texture2D" uid="uid://g7lqcfgeyja3" path="res://sprites/icons/icon_ring_emerald.png" id="1_m5col"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_5icap"]
+
+[resource]
+script = ExtResource("2_5icap")
+item_name = "Emerald Ring"
+world_item_path = "uid://7xw86evlll13"
+icon = ExtResource("1_m5col")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

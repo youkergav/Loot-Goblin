@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cy313igwwixrm"]
+
+[ext_resource type="Texture2D" uid="uid://16uwsbq6cn6h" path="res://sprites/icons/icon_ring_diamond.png" id="1_88hex"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_6owcu"]
+
+[resource]
+script = ExtResource("2_6owcu")
+item_name = "Diamond Ring"
+world_item_path = "uid://cirj78gw35mrg"
+icon = ExtResource("1_88hex")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

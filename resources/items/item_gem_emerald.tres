@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bgmwckmmndbl7"]
+
+[ext_resource type="Texture2D" uid="uid://bkyd2ylosgbsj" path="res://sprites/icons/icon_gem_emerald.png" id="1_fbf7f"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_njhxk"]
+
+[resource]
+script = ExtResource("2_njhxk")
+item_name = "Emerald"
+world_item_path = "uid://ytgcro6s0cmu"
+icon = ExtResource("1_fbf7f")
+is_stackable = true
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

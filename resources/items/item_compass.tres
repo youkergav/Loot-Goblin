@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://b78sbb7q6va01"]
+
+[ext_resource type="Texture2D" uid="uid://cb4c46jnr53tt" path="res://sprites/icons/icon_compass.png" id="1_wjcb6"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_pwmpc"]
+
+[resource]
+script = ExtResource("2_pwmpc")
+item_name = "Compass"
+world_item_path = "uid://da5fanth1qkbr"
+icon = ExtResource("1_wjcb6")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

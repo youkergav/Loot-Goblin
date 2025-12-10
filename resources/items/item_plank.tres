@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dmjphtxvhm5gi"]
+
+[ext_resource type="Texture2D" uid="uid://dkc7aqu11cu2h" path="res://sprites/icons/icon_plank.png" id="1_j33i6"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_fbksi"]
+
+[resource]
+script = ExtResource("2_fbksi")
+item_name = "Plank"
+world_item_path = "uid://hep8km3vxor4"
+icon = ExtResource("1_j33i6")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

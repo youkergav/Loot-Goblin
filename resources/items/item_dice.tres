@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://doo7ncs8h2gnt"]
+
+[ext_resource type="Texture2D" uid="uid://ckmqnraijt7dm" path="res://sprites/icons/icon_dice.png" id="1_ek4sq"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_ceisv"]
+
+[resource]
+script = ExtResource("2_ceisv")
+item_name = "Dice"
+world_item_path = "uid://n062t3k5m7sc"
+icon = ExtResource("1_ek4sq")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

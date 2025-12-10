@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8rmsjna4x64j"]
+
+[ext_resource type="Script" uid="uid://crvjyuw4pmfhe" path="res://scripts/items/world_item.gd" id="1_eera0"]
+[ext_resource type="Resource" uid="uid://blkluo60dbmvw" path="res://resources/items/item_gem_diamond.tres" id="2_e4vcx"]
+[ext_resource type="Texture2D" uid="uid://d20p4ai0rcq8j" path="res://sprites/items/item_gem_diamond_shadow.png" id="2_eera0"]
+[ext_resource type="Texture2D" uid="uid://dpehnloswc10r" path="res://sprites/items/item_gem_diamond.png" id="3_e4vcx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
+size = Vector2(7, 10)
+
+[node name="ItemGemDiamond" type="Area2D" groups=["world_item"]]
+collision_layer = 8
+script = ExtResource("1_eera0")
+item_data = ExtResource("2_e4vcx")
+bob_height = 1.5
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -20
+texture = ExtResource("2_eera0")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_e4vcx")
+offset = Vector2(0, -1.2314695)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_tbgi4")

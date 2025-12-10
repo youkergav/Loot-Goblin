@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://b8gjmwj01n604"]
+
+[ext_resource type="Texture2D" uid="uid://cad707bhsdoyu" path="res://sprites/icons/icon_map.png" id="1_xu835"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_1itwh"]
+
+[resource]
+script = ExtResource("2_1itwh")
+item_name = "Map"
+world_item_path = "uid://bkboarx5oshf3"
+icon = ExtResource("1_xu835")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

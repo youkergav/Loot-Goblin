@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dn7g0ywty32ls"]
+
+[ext_resource type="Texture2D" uid="uid://4v7glbjxapc8" path="res://sprites/icons/icon_thread_red.png" id="1_suhy3"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_ahsu4"]
+
+[resource]
+script = ExtResource("2_ahsu4")
+item_name = "Thread"
+world_item_path = "uid://d024ew5wtakd4"
+icon = ExtResource("1_suhy3")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

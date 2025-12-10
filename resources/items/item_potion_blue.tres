@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bs4icgm2futdu"]
+
+[ext_resource type="Texture2D" uid="uid://c104qqxnucdv4" path="res://sprites/icons/icon_potion_blue.png" id="1_wv10i"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_0a3b3"]
+
+[resource]
+script = ExtResource("2_0a3b3")
+item_name = "Potion"
+world_item_path = "uid://dexn07knvfjyr"
+icon = ExtResource("1_wv10i")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

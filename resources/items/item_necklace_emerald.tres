@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://jxceggkiabjk"]
+
+[ext_resource type="Texture2D" uid="uid://dos4a2id28qp6" path="res://sprites/icons/icon_necklace_emerald.png" id="1_p4e6t"]
+[ext_resource type="Script" uid="uid://bw1c3cg2tfuvh" path="res://scripts/items/item_data.gd" id="2_nivc5"]
+
+[resource]
+script = ExtResource("2_nivc5")
+item_name = "Emerald Necklace"
+world_item_path = "uid://c8aen7ktao7cj"
+icon = ExtResource("1_p4e6t")
+metadata/_custom_type_script = "uid://bw1c3cg2tfuvh"

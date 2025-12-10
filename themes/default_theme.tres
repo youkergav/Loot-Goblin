@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://dckml7ouee555"]
 
-[ext_resource type="FontFile" uid="uid://cyvj6qae48av4" path="res://cc_red_alert.ttf" id="1_mlkpy"]
+[ext_resource type="FontFile" uid="uid://cyvj6qae48av4" path="res://fonts/cc_red_alert.ttf" id="1_mlkpy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlkpy"]
 content_margin_left = 2.0
