@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=70 format=4 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c8ichhqq68qk4" path="res://sprites/tilemaps/grass_tilemap.png" id="2_a8y0u"]
@@ -58,7 +58,8 @@
 [ext_resource type="PackedScene" uid="uid://dmghmk5eb375g" path="res://scenes/packed/items/item_berry_red.tscn" id="46_a82wo"]
 [ext_resource type="PackedScene" uid="uid://hep8km3vxor4" path="res://scenes/packed/items/item_plank.tscn" id="53_gdvew"]
 [ext_resource type="PackedScene" uid="uid://dxd0q3y47hvt5" path="res://scenes/packed/items/item_nail.tscn" id="54_kjtvk"]
-[ext_resource type="PackedScene" uid="uid://bf07qqkt2y7ms" path="res://scenes/packed/items/item_statue.tscn" id="59_tm6hj"]
+[ext_resource type="PackedScene" uid="uid://caaq72p5ek4qx" path="res://scenes/packed/props/prop_statue.tscn" id="55_kf5aa"]
+[ext_resource type="Shader" uid="uid://d0lnv87776o6f" path="res://shaders/color_grading.gdshader" id="56_kf5aa"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dp3eg"]
 normal = Vector2(0, 1)
@@ -142,12 +143,22 @@ void fragment() {
     }
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_augu2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kf5aa"]
 resource_local_to_scene = true
 shader = SubResource("Shader_eb6dy")
 shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
 shader_parameter/outline_width = 6.8400003249
 shader_parameter/show_outline = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t5ykj"]
+shader = ExtResource("56_kf5aa")
+shader_parameter/saturation = 0.950000045125
+shader_parameter/brightness = 1.150000054625
+shader_parameter/contrast = 0.950000045125
+shader_parameter/tint_color = Color(0.6812718, 0.25309205, 0.3933856, 1)
+shader_parameter/tint_strength = 0.2000000095
+shader_parameter/vignette_strength = 0.400000019
+shader_parameter/vignette_radius = 0.70000003325
 
 [node name="Main" type="Node2D"]
 
@@ -243,7 +254,7 @@ tile_map_data = PackedByteArray("AAD///7/AQAHAAAAAAD/////AQAMAAAAAAD//wAAAQACAAA
 tile_set = SubResource("TileSet_jkv2x")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
-material = SubResource("ShaderMaterial_augu2")
+material = SubResource("ShaderMaterial_kf5aa")
 position = Vector2(30, 28)
 move_speed = 70.0
 
@@ -510,7 +521,15 @@ position = Vector2(641, 23)
 [node name="ItemNail" parent="World" instance=ExtResource("54_kjtvk")]
 position = Vector2(650, 25)
 
+[node name="PropStatue" parent="World" instance=ExtResource("55_kf5aa")]
+position = Vector2(429, 48)
+
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ColorFilter" type="ColorRect" parent="UI"]
+material = SubResource("ShaderMaterial_t5ykj")
+offset_right = 320.0
+offset_bottom = 180.0
 
 [node name="WorldDropZone" type="Control" parent="UI" groups=["player"]]
 layout_mode = 3
@@ -528,8 +547,5 @@ world_item_scene = ExtResource("3_ya4ey")
 theme = ExtResource("22_pm3ni")
 
 [node name="Heartbar" parent="UI" instance=ExtResource("18_dp3eg")]
-
-[node name="ItemStatue" parent="." instance=ExtResource("59_tm6hj")]
-position = Vector2(295, 17)
 
 [connection signal="mouse_exited" from="UI/WorldDropZone" to="UI/WorldDropZone" method="_on_mouse_exited"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bklogbnb5trtb"
-path="res://.godot/imported/item_statue.png-46d74ea38753e341d88713e81c93eebc.ctex"
+uid="uid://bqa2a4jmyk3e0"
+path="res://.godot/imported/prop_statue.png-0d9bdf2c3bafc13b763382a5094a2739.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/items/item_statue.png"
-dest_files=["res://.godot/imported/item_statue.png-46d74ea38753e341d88713e81c93eebc.ctex"]
+source_file="res://sprites/props/prop_statue.png"
+dest_files=["res://.godot/imported/prop_statue.png-0d9bdf2c3bafc13b763382a5094a2739.ctex"]
 
 [params]
 

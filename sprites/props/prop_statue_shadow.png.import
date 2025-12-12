@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgn4rwe836yp0"
-path="res://.godot/imported/icon_statue.png-bdfe5797ed6f483d1a82ca4609e984a4.ctex"
+uid="uid://c8ivfqolxwx8i"
+path="res://.godot/imported/prop_statue_shadow.png-7b988467d18eba473c7c7f0f77bb43eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/icons/icon_statue.png"
-dest_files=["res://.godot/imported/icon_statue.png-bdfe5797ed6f483d1a82ca4609e984a4.ctex"]
+source_file="res://sprites/props/prop_statue_shadow.png"
+dest_files=["res://.godot/imported/prop_statue_shadow.png-7b988467d18eba473c7c7f0f77bb43eb.ctex"]
 
 [params]
 
