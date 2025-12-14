@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=75 format=4 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c8ichhqq68qk4" path="res://sprites/tilemaps/grass_tilemap.png" id="2_a8y0u"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b6c0437xdr4dq" path="res://scenes/packed/characters/enemy.tscn" id="7_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://ivgm86b4arbt" path="res://scenes/packed/ui/hotbar.tscn" id="8_jbj1t"]
 [ext_resource type="Script" uid="uid://d207eahu4wqa3" path="res://scripts/world_drop_zone.gd" id="9_muem4"]
+[ext_resource type="Texture2D" uid="uid://cmf3kpbyirr7q" path="res://sprites/particles/leaves.png" id="9_t5ykj"]
 [ext_resource type="PackedScene" uid="uid://dyc23nln5hmqk" path="res://scenes/packed/props/prop_tree.tscn" id="17_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://ytgcro6s0cmu" path="res://scenes/packed/items/item_gem_emerald.tscn" id="17_jscy8"]
 [ext_resource type="PackedScene" uid="uid://6d6wdo8felvi" path="res://scenes/packed/ui/heartbar.tscn" id="18_dp3eg"]
@@ -58,7 +59,7 @@
 [ext_resource type="PackedScene" uid="uid://dmghmk5eb375g" path="res://scenes/packed/items/item_berry_red.tscn" id="46_a82wo"]
 [ext_resource type="PackedScene" uid="uid://hep8km3vxor4" path="res://scenes/packed/items/item_plank.tscn" id="53_gdvew"]
 [ext_resource type="PackedScene" uid="uid://dxd0q3y47hvt5" path="res://scenes/packed/items/item_nail.tscn" id="54_kjtvk"]
-[ext_resource type="PackedScene" uid="uid://caaq72p5ek4qx" path="res://scenes/packed/props/prop_statue.tscn" id="55_kf5aa"]
+[ext_resource type="PackedScene" path="res://scenes/packed/props/prop_statue.tscn" id="55_kf5aa"]
 [ext_resource type="Shader" uid="uid://d0lnv87776o6f" path="res://shaders/color_grading.gdshader" id="56_kf5aa"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dp3eg"]
@@ -106,6 +107,34 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_a8y0u")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e755i"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_ro3en"]
+offsets = PackedFloat32Array(0, 0.35650223, 0.55381167, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_od4ux"]
+gradient = SubResource("Gradient_ro3en")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kf5aa"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 200, 1)
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 59.99998
+gravity = Vector3(0, 10, 0)
+scale_min = 0.59999996
+scale_max = 1.1999999
+color_ramp = SubResource("GradientTexture1D_od4ux")
+anim_offset_max = 1.0
+
 [sub_resource type="Shader" id="Shader_eb6dy"]
 code = "shader_type canvas_item;
 
@@ -143,7 +172,7 @@ void fragment() {
     }
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kf5aa"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e755i"]
 resource_local_to_scene = true
 shader = SubResource("Shader_eb6dy")
 shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
@@ -177,6 +206,7 @@ collision_layer = 4
 collision_mask = 3
 
 [node name="BoundryTop" type="CollisionShape2D" parent="World/WorldBoundries"]
+position = Vector2(0, 2)
 shape = SubResource("WorldBoundaryShape2D_dp3eg")
 
 [node name="BoundryBottom" type="CollisionShape2D" parent="World/WorldBoundries"]
@@ -253,8 +283,19 @@ position = Vector2(-4, 19)
 tile_map_data = PackedByteArray("AAD///7/AQAHAAAAAAD/////AQAMAAAAAAD//wAAAQACAAAAAAD//wEAAQABAAAAAAD//wIAAQAJAAAAAAAAAP7/AQACAAAAAAAAAP//AQANAAAAAAAAAAAAAQAFAAAAAAAAAAEAAQANAAAAAAAAAAIAAQAAAAAAAAABAP7/AQAJAAAAAAABAP//AQAHAAAAAAABAAAAAQANAAAAAAABAAEAAQAFAAAAAAABAAIAAQANAAAAAAACAP7/AQAPAAAAAAACAP//AQADAAAAAAACAAAAAQAAAAAAAAACAAEAAQANAAAAAAACAAIAAQAHAAAAAAADAP7/AQACAAAAAAADAP//AQAAAAAAAAADAAAAAQAJAAAAAAADAAEAAQAJAAAAAAADAAIAAQAAAAAAAAAEAP7/AQAPAAAAAAAEAP//AQAPAAAAAAAEAAAAAQABAAAAAAAEAAEAAQAOAAAAAAAEAAIAAQAAAAAAAAAFAP7/AQABAAAAAAAFAP//AQAAAAAAAAAFAAAAAQANAAAAAAAFAAEAAQAOAAAAAAAFAAIAAQANAAAAAAAGAP7/AQAPAAAAAAAGAP//AQAFAAAAAAAGAAAAAQAPAAAAAAAGAAEAAQAEAAAAAAAGAAIAAQADAAAAAAAHAP7/AQANAAAAAAAHAP//AQAJAAAAAAAHAAAAAQAHAAAAAAAHAAEAAQANAAAAAAAHAAIAAQAMAAAAAAAIAP7/AQABAAAAAAAIAP//AQAJAAAAAAAIAAAAAQACAAAAAAAIAAEAAQANAAAAAAAIAAIAAQABAAAAAAAJAP7/AQAHAAAAAAAJAP//AQABAAAAAAAJAAAAAQAAAAAAAAAJAAEAAQAKAAAAAAAJAAIAAQAOAAAAAAAKAP7/AQAJAAAAAAAKAP//AQAMAAAAAAAKAAAAAQANAAAAAAAKAAEAAQAJAAAAAAAKAAIAAQAAAAAAAAALAP7/AQAFAAAAAAALAP//AQAMAAAAAAALAAAAAQAHAAAAAAALAAEAAQANAAAAAAALAAIAAQAGAAAAAAAMAP7/AQANAAAAAAAMAP//AQAOAAAAAAAMAAAAAQANAAAAAAAMAAEAAQAKAAAAAAAMAAIAAQADAAAAAAANAP7/AQAMAAAAAAANAP//AQAAAAAAAAANAAAAAQAOAAAAAAANAAEAAQAJAAAAAAANAAIAAQANAAAAAAAOAP7/AQAJAAAAAAAOAP//AQACAAAAAAAOAAAAAQAEAAAAAAAOAAEAAQAJAAAAAAAOAAIAAQACAAAAAAAPAP7/AQAJAAAAAAAPAP//AQAOAAAAAAAPAAAAAQAHAAAAAAAPAAEAAQACAAAAAAAPAAIAAQAPAAAAAAAQAP7/AQAFAAAAAAAQAP//AQAMAAAAAAAQAAAAAQABAAAAAAAQAAEAAQAAAAAAAAAQAAIAAQAJAAAAAAARAP7/AQAHAAAAAAARAP//AQAAAAAAAAARAAAAAQAOAAAAAAARAAEAAQAHAAAAAAARAAIAAQAPAAAAAAASAP7/AQAHAAAAAAASAP//AQAJAAAAAAASAAAAAQAMAAAAAAASAAEAAQAMAAAAAAASAAIAAQAJAAAAAAATAP7/AQANAAAAAAATAP//AQACAAAAAAATAAAAAQAHAAAAAAATAAEAAQANAAAAAAATAAIAAQAOAAAAAAAUAP7/AQANAAAAAAAUAP//AQAFAAAAAAAUAAAAAQANAAAAAAAUAAEAAQACAAAAAAAUAAIAAQAKAAAAAAA=")
 tile_set = SubResource("TileSet_jkv2x")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="World"]
+z_index = 10
+material = SubResource("CanvasItemMaterial_e755i")
+position = Vector2(335, 0)
+amount = 30
+texture = ExtResource("9_t5ykj")
+lifetime = 2.0
+randomness = 0.3
+visibility_rect = Rect2(-350, -150, 700, 300)
+process_material = SubResource("ParticleProcessMaterial_kf5aa")
+
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
-material = SubResource("ShaderMaterial_kf5aa")
+material = SubResource("ShaderMaterial_e755i")
 position = Vector2(30, 28)
 move_speed = 70.0
 
