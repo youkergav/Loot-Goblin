@@ -9,7 +9,7 @@ class_name Player
 @export_group("Health")
 @export var damage_recovery_time_limit: float = 2.0
 
-@onready var sprite: Sprite2D = $Sprites/Body
+@onready var sprite: AnimatedSprite2D = $Sprites/Body
 @onready var hotbar: Hotbar = get_tree().get_first_node_in_group("hotbar")
 @onready var hurtbox: Area2D = $HurtBox
 

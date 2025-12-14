@@ -1,7 +1,65 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyc23nln5hmqk"]
+[gd_scene load_steps=13 format=3 uid="uid://dyc23nln5hmqk"]
 
 [ext_resource type="Texture2D" uid="uid://db3kuv4wlev3d" path="res://sprites/props/prop_tree.png" id="1_k61fv"]
+[ext_resource type="Script" uid="uid://dnpstnskbspcg" path="res://scripts/characters/randomize_idle.gd" id="1_o6iql"]
 [ext_resource type="Texture2D" uid="uid://gnyxmyj1bgbd" path="res://sprites/props/prop_tree_shadow.png" id="2_moydc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moydc"]
+atlas = ExtResource("1_k61fv")
+region = Rect2(0, 0, 55, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6iql"]
+atlas = ExtResource("1_k61fv")
+region = Rect2(55, 0, 55, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2uys"]
+atlas = ExtResource("1_k61fv")
+region = Rect2(110, 0, 55, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsu4d"]
+atlas = ExtResource("1_k61fv")
+region = Rect2(165, 0, 55, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjoa3"]
+atlas = ExtResource("1_k61fv")
+region = Rect2(220, 0, 55, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_183qd"]
+atlas = ExtResource("1_k61fv")
+region = Rect2(275, 0, 55, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmblb"]
+atlas = ExtResource("1_k61fv")
+region = Rect2(330, 0, 55, 87)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_36al1"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_moydc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6iql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2uys")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_wsu4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjoa3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_183qd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmblb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uh3yy"]
 size = Vector2(14, 5)
@@ -12,12 +70,17 @@ collision_mask = 3
 
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -20
+position = Vector2(3, -1)
 texture = ExtResource("2_moydc")
 offset = Vector2(2.7, 3.15)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_k61fv")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_36al1")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.995211
 offset = Vector2(3, -37)
+script = ExtResource("1_o6iql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 1.5)

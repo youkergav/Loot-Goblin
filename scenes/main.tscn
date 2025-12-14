@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cchxiaq7nqpff" path="res://sprites/backgrounds/background1.png" id="5_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://d1xn5whcus62d" path="res://sprites/backgrounds/foreground2.png" id="6_0ld40"]
 [ext_resource type="Texture2D" uid="uid://bj3uxajacs3wl" path="res://sprites/backgrounds/foreground1.png" id="6_dp3eg"]
-[ext_resource type="PackedScene" uid="uid://b6c0437xdr4dq" path="res://scenes/packed/characters/enemy.tscn" id="7_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://b6c0437xdr4dq" path="res://scenes/packed/characters/shroomite.tscn" id="7_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://ivgm86b4arbt" path="res://scenes/packed/ui/hotbar.tscn" id="8_jbj1t"]
 [ext_resource type="Script" uid="uid://d207eahu4wqa3" path="res://scripts/world_drop_zone.gd" id="9_muem4"]
 [ext_resource type="Texture2D" uid="uid://cmf3kpbyirr7q" path="res://sprites/particles/leaves.png" id="9_t5ykj"]
@@ -59,7 +59,7 @@
 [ext_resource type="PackedScene" uid="uid://dmghmk5eb375g" path="res://scenes/packed/items/item_berry_red.tscn" id="46_a82wo"]
 [ext_resource type="PackedScene" uid="uid://hep8km3vxor4" path="res://scenes/packed/items/item_plank.tscn" id="53_gdvew"]
 [ext_resource type="PackedScene" uid="uid://dxd0q3y47hvt5" path="res://scenes/packed/items/item_nail.tscn" id="54_kjtvk"]
-[ext_resource type="PackedScene" path="res://scenes/packed/props/prop_statue.tscn" id="55_kf5aa"]
+[ext_resource type="PackedScene" uid="uid://caaq72p5ek4qx" path="res://scenes/packed/props/prop_statue.tscn" id="55_kf5aa"]
 [ext_resource type="Shader" uid="uid://d0lnv87776o6f" path="res://shaders/color_grading.gdshader" id="56_kf5aa"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dp3eg"]
