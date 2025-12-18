@@ -67,9 +67,11 @@ script = ExtResource("4_npltq")
 [node name="PlayerDetectionZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionZone"]
+visible = false
 shape = SubResource("CircleShape2D_d80uj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_d80uj")
 

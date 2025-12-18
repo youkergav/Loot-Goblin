@@ -56,7 +56,7 @@ offset = Vector2(0, -12)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_8di1q")
 autoplay = "default"
-frame_progress = 0.9418321
+frame_progress = 0.0031336357
 offset = Vector2(0, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -83,7 +83,6 @@ shape = SubResource("CircleShape2D_m6pdb")
 [node name="HurtBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-visible = false
 position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_0c560")
 debug_color = Color(0.8057586, 0.41635647, 0, 0.41960785)
