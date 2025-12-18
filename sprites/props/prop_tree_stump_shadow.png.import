@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1eoo1gh6iw6p"
-path="res://.godot/imported/rock3_shadow.png-2f9db983d5fad10386996ae41b0e6a1f.ctex"
+uid="uid://dnlt3emripujb"
+path="res://.godot/imported/prop_tree_stump_shadow.png-54ffb311bd27445c3ddb999ca9caf746.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/props/rock3_shadow.png"
-dest_files=["res://.godot/imported/rock3_shadow.png-2f9db983d5fad10386996ae41b0e6a1f.ctex"]
+source_file="res://sprites/props/prop_tree_stump_shadow.png"
+dest_files=["res://.godot/imported/prop_tree_stump_shadow.png-54ffb311bd27445c3ddb999ca9caf746.ctex"]
 
 [params]
 

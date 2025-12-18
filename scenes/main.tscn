@@ -435,9 +435,11 @@ position = Vector2(661, -26)
 
 [node name="ItemSword" parent="World" instance=ExtResource("25_og1vs")]
 position = Vector2(133, 12)
+scale = Vector2(1, 1)
 
 [node name="ItemShield" parent="World" instance=ExtResource("26_2wyq8")]
 position = Vector2(373, -7)
+scale = Vector2(1, 1)
 
 [node name="ItemWand" parent="World" instance=ExtResource("24_yq6so")]
 position = Vector2(609, 15)
@@ -446,10 +448,10 @@ position = Vector2(609, 15)
 position = Vector2(170, -33)
 
 [node name="ItemBeer2" parent="World" instance=ExtResource("28_2f3dj")]
-position = Vector2(296, -13)
+position = Vector2(296, -12)
 
 [node name="ItemMap" parent="World" instance=ExtResource("26_qkpxi")]
-position = Vector2(101, -1)
+position = Vector2(119, 1)
 
 [node name="ItemPainting1" parent="World" instance=ExtResource("27_5q0nq")]
 position = Vector2(526, -35)

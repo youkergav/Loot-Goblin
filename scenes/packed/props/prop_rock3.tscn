@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://miq5biuvfuab"]
 
-[ext_resource type="Texture2D" uid="uid://d1eoo1gh6iw6p" path="res://sprites/props/rock3_shadow.png" id="1_rqnwp"]
-[ext_resource type="Texture2D" uid="uid://b0jcbg030s5mx" path="res://sprites/props/rock3.png" id="1_u34ga"]
+[ext_resource type="Texture2D" uid="uid://c3ir6d2drg4hn" path="res://sprites/props/prop_rock3_shadow.png" id="1_rqnwp"]
+[ext_resource type="Texture2D" uid="uid://bncoj6ovkabkg" path="res://sprites/props/prop_rock3.png" id="2_rqnwp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uh3yy"]
 size = Vector2(25, 4.75)
@@ -13,11 +13,11 @@ collision_mask = 3
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -10
 texture = ExtResource("1_rqnwp")
-offset = Vector2(1, 4.5)
+offset = Vector2(0, -0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_u34ga")
-offset = Vector2(0, -1)
+texture = ExtResource("2_rqnwp")
+offset = Vector2(0, -0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.625)

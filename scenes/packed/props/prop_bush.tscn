@@ -1,28 +1,35 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3wjpww4ht0ni"]
+[gd_scene load_steps=9 format=3 uid="uid://c3wjpww4ht0ni"]
 
 [ext_resource type="Texture2D" uid="uid://xs6jtpb5wnne" path="res://sprites/props/bush_shadow.png" id="1_fwknk"]
 [ext_resource type="Script" uid="uid://dnpstnskbspcg" path="res://scripts/characters/randomize_idle.gd" id="1_raafb"]
 [ext_resource type="Texture2D" uid="uid://dehokb840lsh0" path="res://sprites/props/bush.png" id="2_raafb"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qebyh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_raafb"]
 atlas = ExtResource("2_raafb")
 region = Rect2(0, 0, 23, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o3ma7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qebyh"]
 atlas = ExtResource("2_raafb")
 region = Rect2(23, 0, 23, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vfigr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3ma7"]
 atlas = ExtResource("2_raafb")
 region = Rect2(46, 0, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfigr"]
+atlas = ExtResource("2_raafb")
+region = Rect2(69, 0, 23, 21)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iekhh"]
 animations = [{
 "frames": [{
 "duration": 2.0,
-"texture": SubResource("AtlasTexture_qebyh")
+"texture": SubResource("AtlasTexture_raafb")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qebyh")
+}, {
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_o3ma7")
 }, {
 "duration": 1.0,
@@ -44,6 +51,6 @@ offset = Vector2(2, 3.5)
 sprite_frames = SubResource("SpriteFrames_iekhh")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.049808852
+frame_progress = 0.54694647
 offset = Vector2(0, -4)
 script = ExtResource("1_raafb")
