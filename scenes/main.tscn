@@ -186,8 +186,8 @@ shader_parameter/brightness = 1.150000054625
 shader_parameter/contrast = 0.950000045125
 shader_parameter/tint_color = Color(0.6812718, 0.25309205, 0.3933856, 1)
 shader_parameter/tint_strength = 0.2000000095
-shader_parameter/vignette_strength = 0.400000019
-shader_parameter/vignette_radius = 0.70000003325
+shader_parameter/vignette_strength = 0.50000002375
+shader_parameter/vignette_radius = 0.750000035625
 
 [node name="Main" type="Node2D"]
 
