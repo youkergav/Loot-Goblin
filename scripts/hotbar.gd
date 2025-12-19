@@ -8,6 +8,8 @@ class_name Hotbar
 @onready var slot_container = $ScrollContainer/SlotContainer
 @onready var player = get_tree().get_first_node_in_group("player")
 
+var total_item_count: int = 0
+
 func _ready() -> void:
     update_equipped_item()
 
@@ -24,6 +26,7 @@ func add_item(item_data: ItemData) -> void:
             if item_slot.item_data == item_data:
                 item_data.stack_count += 1
                 item_slot.update_ui()
+                update_item_count()
                 return
                 
     if item_data.is_stackable and item_data.stack_count == 0:
@@ -35,6 +38,7 @@ func add_item(item_data: ItemData) -> void:
             item_slot.item_data = item_data
             item_slot.update_ui()
             update_equipped_item()
+            update_item_count()
             return
 
     # No empty slot found, create a new one
@@ -44,6 +48,16 @@ func add_item(item_data: ItemData) -> void:
         new_slot.item_data = item_data
         new_slot.update_ui()
         update_equipped_item()
+        update_item_count()
+
+func update_item_count() -> void:
+    total_item_count = 0
+    for item_slot in slot_container.get_children():
+        if item_slot.item_data != null:
+            if item_slot.item_data.is_stackable:
+                total_item_count += item_slot.item_data.stack_count
+            else:
+                total_item_count += 1
 
 func get_equipped_item_texture_rect() -> TextureRect:
     return slot_container.get_children()[0]

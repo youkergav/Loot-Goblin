@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dj1c5h2cw1g4m"]
+[gd_scene load_steps=15 format=3 uid="uid://dj1c5h2cw1g4m"]
 
 [ext_resource type="Script" uid="uid://faivtna4spb3" path="res://scripts/characters/player.gd" id="1_dx721"]
 [ext_resource type="Texture2D" uid="uid://dsaottt0utchj" path="res://sprites/characters/player_shadow.png" id="2_m6pdb"]
@@ -12,6 +12,22 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("3_m6pdb")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8di1q"]
+atlas = ExtResource("3_m6pdb")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b1aq"]
+atlas = ExtResource("3_m6pdb")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwts4"]
+atlas = ExtResource("3_m6pdb")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db6ud"]
+atlas = ExtResource("3_m6pdb")
+region = Rect2(32, 64, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8di1q"]
 animations = [{
 "frames": [{
@@ -22,55 +38,83 @@ animations = [{
 "texture": SubResource("AtlasTexture_yae0h")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle1",
+"speed": 1.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8di1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b1aq")
+}],
+"loop": true,
+"name": &"idle2",
+"speed": 1.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwts4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db6ud")
+}],
+"loop": true,
+"name": &"idle3",
 "speed": 1.5
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhmt7"]
-size = Vector2(13, 3)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dx721"]
-size = Vector2(18, 8)
+size = Vector2(6, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0c560"]
+size = Vector2(6.5, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhmt7"]
+size = Vector2(15, 3)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m6pdb"]
 radius = 65.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0c560"]
-size = Vector2(15, 1)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 4
 script = ExtResource("1_dx721")
 min_magnetic_strength = 350.0
 
-[node name="Sprites" type="Node2D" parent="."]
+[node name="FlipNode" type="Node2D" parent="."]
 
-[node name="Shadow" type="Sprite2D" parent="Sprites"]
+[node name="Shadow" type="Sprite2D" parent="FlipNode"]
 z_index = -20
 texture_filter = 1
 position = Vector2(1, 0)
 texture = ExtResource("2_m6pdb")
 offset = Vector2(0, -12)
 
-[node name="Body" type="AnimatedSprite2D" parent="Sprites"]
+[node name="Body" type="AnimatedSprite2D" parent="FlipNode"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_8di1q")
-autoplay = "default"
-frame_progress = 0.0031336357
+animation = &"idle1"
+autoplay = "idle1"
+frame_progress = 0.99953544
 offset = Vector2(0, -12)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0.5, 1.5)
-shape = SubResource("RectangleShape2D_mhmt7")
-
-[node name="ItemPickupZone" type="Area2D" parent="."]
+[node name="ItemPickupZone" type="Area2D" parent="FlipNode"]
+position = Vector2(-4, -14.5)
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickupZone"]
-visible = false
-position = Vector2(0, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipNode/ItemPickupZone"]
 shape = SubResource("RectangleShape2D_dx721")
+
+[node name="HurtBox" type="Area2D" parent="FlipNode"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipNode/HurtBox"]
+position = Vector2(2.5, 1)
+shape = SubResource("RectangleShape2D_0c560")
+debug_color = Color(0.8057586, 0.41635647, 0, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_mhmt7")
 
 [node name="ItemMagnetZone" type="Area2D" parent="."]
 collision_mask = 8
@@ -80,14 +124,7 @@ visible = false
 position = Vector2(0, -12)
 shape = SubResource("CircleShape2D_m6pdb")
 
-[node name="HurtBox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-0.5, 1.5)
-shape = SubResource("RectangleShape2D_0c560")
-debug_color = Color(0.8057586, 0.41635647, 0, 0.41960785)
-
-[connection signal="area_entered" from="ItemPickupZone" to="." method="_on_item_pickup_zone_area_entered"]
+[connection signal="area_entered" from="FlipNode/ItemPickupZone" to="." method="_on_item_pickup_zone_area_entered"]
+[connection signal="area_entered" from="FlipNode/HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_entered" from="ItemMagnetZone" to="." method="_on_item_magnet_zone_area_entered"]
 [connection signal="area_exited" from="ItemMagnetZone" to="." method="_on_item_magnet_zone_area_exited"]
-[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

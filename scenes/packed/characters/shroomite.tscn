@@ -27,14 +27,14 @@ animations = [{
 "speed": 1.5
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltwr7"]
+size = Vector2(6, 17)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_d80uj"]
 radius = 150.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d80uj"]
 size = Vector2(16, 7)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltwr7"]
-size = Vector2(6, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2hml"]
 size = Vector2(28, 6)
@@ -47,15 +47,15 @@ move_speed = 90.0
 move_acceleration = 800.0
 move_friction = 600.0
 
-[node name="Sprites" type="Node2D" parent="."]
+[node name="FlipNode" type="Node2D" parent="."]
 scale = Vector2(-1, 1)
 
-[node name="Shadow" type="Sprite2D" parent="Sprites"]
+[node name="Shadow" type="Sprite2D" parent="FlipNode"]
 z_index = -20
 texture = ExtResource("2_d80uj")
 offset = Vector2(-4.5, 0.5)
 
-[node name="Body" type="AnimatedSprite2D" parent="Sprites"]
+[node name="Body" type="AnimatedSprite2D" parent="FlipNode"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_th6l7")
 animation = &"idle"
@@ -63,6 +63,16 @@ autoplay = "idle"
 frame_progress = 0.1535432
 offset = Vector2(0, -12)
 script = ExtResource("4_npltq")
+
+[node name="HitBoxTorch" type="Area2D" parent="FlipNode" groups=["hit"]]
+position = Vector2(0, 0.5)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipNode/HitBoxTorch"]
+position = Vector2(-10, -7)
+shape = SubResource("RectangleShape2D_ltwr7")
+debug_color = Color(0.9999998, 0.014054468, 0.037908163, 0.41960785)
 
 [node name="PlayerDetectionZone" type="Area2D" parent="."]
 
@@ -74,14 +84,6 @@ shape = SubResource("CircleShape2D_d80uj")
 visible = false
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_d80uj")
-
-[node name="HitBoxTorch" type="Area2D" parent="." groups=["hit"]]
-position = Vector2(0, 0.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxTorch"]
-position = Vector2(-10, -7)
-shape = SubResource("RectangleShape2D_ltwr7")
-debug_color = Color(0.9999998, 0.014054468, 0.037908163, 0.41960785)
 
 [node name="HurtBox" type="Area2D" parent="." groups=["hurtbox_enemy"]]
 
