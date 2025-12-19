@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=74 format=4 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c8ichhqq68qk4" path="res://sprites/tilemaps/grass_tilemap.png" id="2_a8y0u"]
@@ -59,7 +59,6 @@
 [ext_resource type="PackedScene" uid="uid://dmghmk5eb375g" path="res://scenes/packed/items/item_berry_red.tscn" id="46_a82wo"]
 [ext_resource type="PackedScene" uid="uid://hep8km3vxor4" path="res://scenes/packed/items/item_plank.tscn" id="53_gdvew"]
 [ext_resource type="PackedScene" uid="uid://dxd0q3y47hvt5" path="res://scenes/packed/items/item_nail.tscn" id="54_kjtvk"]
-[ext_resource type="PackedScene" uid="uid://caaq72p5ek4qx" path="res://scenes/packed/props/prop_statue.tscn" id="55_kf5aa"]
 [ext_resource type="Shader" uid="uid://d0lnv87776o6f" path="res://shaders/color_grading.gdshader" id="56_kf5aa"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dp3eg"]
@@ -172,7 +171,7 @@ void fragment() {
     }
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e755i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kf5aa"]
 resource_local_to_scene = true
 shader = SubResource("Shader_eb6dy")
 shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
@@ -186,8 +185,8 @@ shader_parameter/brightness = 1.150000054625
 shader_parameter/contrast = 0.950000045125
 shader_parameter/tint_color = Color(0.6812718, 0.25309205, 0.3933856, 1)
 shader_parameter/tint_strength = 0.2000000095
-shader_parameter/vignette_strength = 0.400000019
-shader_parameter/vignette_radius = 0.70000003325
+shader_parameter/vignette_strength = 0.50000002375
+shader_parameter/vignette_radius = 0.750000035625
 
 [node name="Main" type="Node2D"]
 
@@ -295,7 +294,7 @@ visibility_rect = Rect2(-350, -150, 700, 300)
 process_material = SubResource("ParticleProcessMaterial_kf5aa")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
-material = SubResource("ShaderMaterial_e755i")
+material = SubResource("ShaderMaterial_kf5aa")
 position = Vector2(30, 28)
 move_speed = 70.0
 
@@ -433,11 +432,16 @@ position = Vector2(423, -19)
 [node name="PropBush4" parent="World" instance=ExtResource("20_y6deb")]
 position = Vector2(661, -26)
 
+[node name="PropBush5" parent="World" instance=ExtResource("20_y6deb")]
+position = Vector2(403, 37)
+
 [node name="ItemSword" parent="World" instance=ExtResource("25_og1vs")]
 position = Vector2(133, 12)
+scale = Vector2(1, 1)
 
 [node name="ItemShield" parent="World" instance=ExtResource("26_2wyq8")]
 position = Vector2(373, -7)
+scale = Vector2(1, 1)
 
 [node name="ItemWand" parent="World" instance=ExtResource("24_yq6so")]
 position = Vector2(609, 15)
@@ -446,10 +450,10 @@ position = Vector2(609, 15)
 position = Vector2(170, -33)
 
 [node name="ItemBeer2" parent="World" instance=ExtResource("28_2f3dj")]
-position = Vector2(296, -13)
+position = Vector2(296, -12)
 
 [node name="ItemMap" parent="World" instance=ExtResource("26_qkpxi")]
-position = Vector2(101, -1)
+position = Vector2(119, 1)
 
 [node name="ItemPainting1" parent="World" instance=ExtResource("27_5q0nq")]
 position = Vector2(526, -35)
@@ -561,9 +565,6 @@ position = Vector2(641, 23)
 
 [node name="ItemNail" parent="World" instance=ExtResource("54_kjtvk")]
 position = Vector2(650, 25)
-
-[node name="PropStatue" parent="World" instance=ExtResource("55_kf5aa")]
-position = Vector2(429, 48)
 
 [node name="UI" type="CanvasLayer" parent="."]
 

@@ -9,21 +9,14 @@ class_name Character
 @export_group("Health")
 @export var health_max: int = 5
 
+@onready var flip_node: Node2D = $FlipNode
 @onready var world = get_tree().get_first_node_in_group("world")
 
-var sprites: Node2D
-var shadow: Sprite2D
 var isalive: bool = true 
 var health: int 
 
 func _ready() -> void:
     health = health_max
-    
-    if sprites == null:
-        sprites = get_node("Sprites") if has_node("Sprites") else null
-        
-    if shadow == null:
-        shadow = get_node("Shadow") if has_node("Shadow") else null
 
 func _physics_process(delta):
     var direction = get_movement_direction()
@@ -50,10 +43,8 @@ func apply_movement(direction: Vector2, delta: float):
     move_and_slide()
 
 func update_sprite_direction(horizontal_direction: float) -> void:
-    if sprites != null and horizontal_direction != 0:
-        sprites.scale.x = -1 if horizontal_direction < 0 else 1
-
-
+    if flip_node != null and horizontal_direction != 0:
+        flip_node.scale.x = -1 if horizontal_direction < 0 else 1
 
 func spawn_world_item(world_item_data: Variant, item_position: Vector2) -> void:
     print("Spawning item off char")

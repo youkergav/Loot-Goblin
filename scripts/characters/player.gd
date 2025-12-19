@@ -9,9 +9,9 @@ class_name Player
 @export_group("Health")
 @export var damage_recovery_time_limit: float = 2.0
 
-@onready var sprite: AnimatedSprite2D = $Sprites/Body
+@onready var sprite: AnimatedSprite2D = $FlipNode/Body
 @onready var hotbar: Hotbar = get_tree().get_first_node_in_group("hotbar")
-@onready var hurtbox: Area2D = $HurtBox
+@onready var hurtbox: Area2D = $FlipNode/HurtBox
 
 var magnet_attracted_items: Array = []
 
@@ -41,9 +41,7 @@ func _on_item_magnet_zone_area_entered(area: Area2D) -> void:
         magnet_attracted_items.append(area)
         area.is_being_magnetized = true
         area.modulate.a = 0.5  # Make item 50% transparent
-        
-        if shadow:
-            shadow.visible = false
+        area.get_node("Shadow").visible = false
 
 func _on_item_magnet_zone_area_exited(area: Area2D) -> void:
     magnet_attracted_items.erase(area)
@@ -63,7 +61,9 @@ func pull_magnetized_items(delta):
             pull_item_towards_player(item, delta)
 
 func pull_item_towards_player(item, delta):
-    var direction = global_position - item.global_position
+    # Pull towards the bag opening instead of player origin
+    var target_position = $FlipNode/ItemPickupZone.global_position
+    var direction = target_position - item.global_position
     var distance = direction.length()
 
     if distance > 0:
@@ -84,6 +84,15 @@ func pull_item_towards_player(item, delta):
 func pickup_item(item_data: ItemData) -> void:
     hotbar.add_item(item_data)
     print("Picked up: ", item_data.item_name)
+    
+    # Play idle animation based on how many items the player has
+    print("Item Count: " + str(hotbar.total_item_count))
+    if hotbar.total_item_count < 10:
+        sprite.play("idle1")
+    elif hotbar.total_item_count < 20:
+        sprite.play("idle2")
+    else:
+        sprite.play("idle3")
 
 func update_player_color() -> void:
     if equipped_item_data.is_equippable:
