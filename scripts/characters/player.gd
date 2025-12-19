@@ -10,6 +10,7 @@ class_name Player
 @export var damage_recovery_time_limit: float = 2.0
 
 @onready var sprite: AnimatedSprite2D = $FlipNode/Body
+@onready var shadow: AnimatedSprite2D = $FlipNode/Shadow
 @onready var hotbar: Hotbar = get_tree().get_first_node_in_group("hotbar")
 @onready var hurtbox: Area2D = $FlipNode/HurtBox
 
@@ -89,10 +90,13 @@ func pickup_item(item_data: ItemData) -> void:
     print("Item Count: " + str(hotbar.total_item_count))
     if hotbar.total_item_count < 10:
         sprite.play("idle1")
+        shadow.play("idle1")
     elif hotbar.total_item_count < 20:
         sprite.play("idle2")
+        shadow.play("idle2")
     else:
         sprite.play("idle3")
+        shadow.play("idle3")
 
 func update_player_color() -> void:
     if equipped_item_data.is_equippable:

@@ -1,8 +1,47 @@
-[gd_scene load_steps=15 format=3 uid="uid://dj1c5h2cw1g4m"]
+[gd_scene load_steps=19 format=3 uid="uid://dj1c5h2cw1g4m"]
 
 [ext_resource type="Script" uid="uid://faivtna4spb3" path="res://scripts/characters/player.gd" id="1_dx721"]
 [ext_resource type="Texture2D" uid="uid://dsaottt0utchj" path="res://sprites/characters/player_shadow.png" id="2_m6pdb"]
 [ext_resource type="Texture2D" uid="uid://bgbiodtualhk0" path="res://sprites/characters/player.png" id="3_m6pdb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emcfl"]
+atlas = ExtResource("2_m6pdb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy3ju"]
+atlas = ExtResource("2_m6pdb")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmbc6"]
+atlas = ExtResource("2_m6pdb")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2pqn7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emcfl")
+}],
+"loop": true,
+"name": &"idle1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy3ju")
+}],
+"loop": true,
+"name": &"idle2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmbc6")
+}],
+"loop": true,
+"name": &"idle3",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0c560"]
 atlas = ExtResource("3_m6pdb")
@@ -83,11 +122,13 @@ min_magnetic_strength = 350.0
 
 [node name="FlipNode" type="Node2D" parent="."]
 
-[node name="Shadow" type="Sprite2D" parent="FlipNode"]
+[node name="Shadow" type="AnimatedSprite2D" parent="FlipNode"]
 z_index = -20
 texture_filter = 1
 position = Vector2(1, 0)
-texture = ExtResource("2_m6pdb")
+sprite_frames = SubResource("SpriteFrames_2pqn7")
+animation = &"idle3"
+autoplay = "idle1"
 offset = Vector2(0, -12)
 
 [node name="Body" type="AnimatedSprite2D" parent="FlipNode"]
