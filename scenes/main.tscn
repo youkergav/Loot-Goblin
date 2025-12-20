@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://dhn1m5at7ahu5"]
+[gd_scene load_steps=75 format=4 uid="uid://dhn1m5at7ahu5"]
 
 [ext_resource type="Script" uid="uid://cko32lxgqmhue" path="res://scripts/camera.gd" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://c8ichhqq68qk4" path="res://sprites/tilemaps/grass_tilemap.png" id="2_a8y0u"]
@@ -60,6 +60,7 @@
 [ext_resource type="PackedScene" uid="uid://hep8km3vxor4" path="res://scenes/packed/items/item_plank.tscn" id="53_gdvew"]
 [ext_resource type="PackedScene" uid="uid://dxd0q3y47hvt5" path="res://scenes/packed/items/item_nail.tscn" id="54_kjtvk"]
 [ext_resource type="Shader" uid="uid://d0lnv87776o6f" path="res://shaders/color_grading.gdshader" id="56_kf5aa"]
+[ext_resource type="PackedScene" uid="uid://crbhd34g0gfg8" path="res://scenes/packed/props/light_shaft.tscn" id="56_t5ykj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dp3eg"]
 normal = Vector2(0, 1)
@@ -171,7 +172,7 @@ void fragment() {
     }
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kf5aa"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e755i"]
 resource_local_to_scene = true
 shader = SubResource("Shader_eb6dy")
 shader_parameter/outline_color = Color(0.5560702, 0.5560701, 0, 1)
@@ -199,6 +200,12 @@ script = ExtResource("1_85g3d")
 
 [node name="World" type="Node2D" parent="." groups=["world"]]
 y_sort_enabled = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="World"]
+color = Color(0.71907645, 0.71907645, 0.71907645, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="World"]
+energy = 0.3
 
 [node name="WorldBoundries" type="StaticBody2D" parent="World"]
 collision_layer = 4
@@ -294,7 +301,7 @@ visibility_rect = Rect2(-350, -150, 700, 300)
 process_material = SubResource("ParticleProcessMaterial_kf5aa")
 
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
-material = SubResource("ShaderMaterial_kf5aa")
+material = SubResource("ShaderMaterial_e755i")
 position = Vector2(30, 28)
 move_speed = 70.0
 
@@ -435,17 +442,6 @@ position = Vector2(661, -26)
 [node name="PropBush5" parent="World" instance=ExtResource("20_y6deb")]
 position = Vector2(403, 37)
 
-[node name="ItemSword" parent="World" instance=ExtResource("25_og1vs")]
-position = Vector2(133, 12)
-scale = Vector2(1, 1)
-
-[node name="ItemShield" parent="World" instance=ExtResource("26_2wyq8")]
-position = Vector2(373, -7)
-scale = Vector2(1, 1)
-
-[node name="ItemWand" parent="World" instance=ExtResource("24_yq6so")]
-position = Vector2(609, 15)
-
 [node name="ItemBeer" parent="World" instance=ExtResource("28_2f3dj")]
 position = Vector2(170, -33)
 
@@ -565,6 +561,28 @@ position = Vector2(641, 23)
 
 [node name="ItemNail" parent="World" instance=ExtResource("54_kjtvk")]
 position = Vector2(650, 25)
+
+[node name="LightShaft" parent="World" instance=ExtResource("56_t5ykj")]
+
+[node name="ItemSword" parent="World/LightShaft" instance=ExtResource("25_og1vs")]
+position = Vector2(133, 12)
+scale = Vector2(1, 1)
+
+[node name="LightShaft2" parent="World" instance=ExtResource("56_t5ykj")]
+position = Vector2(507, -19)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+
+[node name="ItemShield" parent="World/LightShaft2" instance=ExtResource("26_2wyq8")]
+position = Vector2(134, 12.000011)
+rotation = -3.1415925
+scale = Vector2(1, -1)
+
+[node name="LightShaft3" parent="World" instance=ExtResource("56_t5ykj")]
+position = Vector2(475, 2)
+
+[node name="ItemWand" parent="World/LightShaft3" instance=ExtResource("24_yq6so")]
+position = Vector2(134, 13)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
