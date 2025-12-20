@@ -20,9 +20,10 @@ z_index = -20
 texture = ExtResource("3_vbb4y")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+light_mask = 2
 texture_filter = 1
 texture = ExtResource("4_vbb4y")
-offset = Vector2(0, 1.8773663)
+offset = Vector2(0, 0.07641351)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -1.5)

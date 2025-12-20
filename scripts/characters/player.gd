@@ -1,6 +1,7 @@
 extends Character
 class_name Player
 
+
 @export_group("Magnetic Pull")
 @export var magnetic_strength: float = 1500.0
 @export var min_magnetic_strength: float = 125.0
@@ -14,6 +15,10 @@ class_name Player
 @onready var hotbar: Hotbar = get_tree().get_first_node_in_group("hotbar")
 @onready var hurtbox: Area2D = $FlipNode/HurtBox
 
+@onready var base_move_speed: float = move_speed
+@onready var base_move_acceleration: float = move_acceleration
+@onready var base_move_friction: float = move_friction
+
 var magnet_attracted_items: Array = []
 
 var equipped_item_data: ItemData = null
@@ -23,6 +28,7 @@ var hearts_list : Array[TextureRect]
 
 var is_invulnerable : bool = false
 var damage_recovery_timer : float
+
 
 func _physics_process(delta: float) -> void:
     pull_magnetized_items(delta)
@@ -36,9 +42,15 @@ func _on_item_pickup_zone_area_entered(area: Area2D) -> void:
         pickup_item(area.item_data)
         area.queue_free()
         magnet_attracted_items.erase(area)
+        
 
 func _on_item_magnet_zone_area_entered(area: Area2D) -> void:
     if area.is_in_group("world_item"):
+        # Remove light shaft if exists
+        var parent = area.get_parent()
+        if parent is LightShaft:
+            parent.fade_out(1.0)
+            
         magnet_attracted_items.append(area)
         area.is_being_magnetized = true
         area.modulate.a = 0.5  # Make item 50% transparent
@@ -88,21 +100,32 @@ func pickup_item(item_data: ItemData) -> void:
     
     # Play idle animation based on how many items the player has
     print("Item Count: " + str(hotbar.total_item_count))
-    if hotbar.total_item_count < 10:
+    if hotbar.total_item_count < 15:
         sprite.play("idle1")
         shadow.play("idle1")
-    elif hotbar.total_item_count < 20:
+    elif hotbar.total_item_count < 40:
         sprite.play("idle2")
         shadow.play("idle2")
+        
+        reduce_speed_by_percent(0.30)
     else:
         sprite.play("idle3")
         shadow.play("idle3")
+        
+        reduce_speed_by_percent(0.50)
 
 func update_player_color() -> void:
     if equipped_item_data.is_equippable:
         sprite.modulate = equipped_item_data.color
     else:
         sprite.modulate = Color.WHITE
+
+func reduce_speed_by_percent(percent: float) -> void:
+    var speed_multiplier = 1.0 - percent
+    
+    move_speed = base_move_speed * speed_multiplier
+    move_acceleration = base_move_acceleration * speed_multiplier
+    move_friction = base_move_friction * speed_multiplier
 
 func equip_item(item_data: ItemData) -> void:
     #use this to generically update the equip slot

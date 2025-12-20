@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://crbhd34g0gfg8"]
+
+[ext_resource type="Script" uid="uid://canjlvi8lqh7q" path="res://scripts/light_shaft.gd" id="1_fku65"]
+[ext_resource type="Texture2D" uid="uid://b51caq3v1fgqy" path="res://sprites/props/light_shaft.png" id="2_ywtsc"]
+
+[node name="LightShaft" type="Node2D"]
+script = ExtResource("1_fku65")
+
+[node name="BasePointLight2D" type="PointLight2D" parent="."]
+position = Vector2(123, -58)
+color = Color(1, 0.7647059, 0.57254905, 1)
+energy = 0.4
+range_z_min = -1000
+texture = ExtResource("2_ywtsc")
+
+[node name="AnimatedPointLight2D" type="Node2D" parent="."]
+
+[node name="PointLight2D1" type="PointLight2D" parent="AnimatedPointLight2D"]
+position = Vector2(126, -55)
+color = Color(1, 0.7647059, 0.57254905, 1)
+energy = 0.15
+range_z_min = -1000
+texture = ExtResource("2_ywtsc")
+
+[node name="PointLight2D2" type="PointLight2D" parent="AnimatedPointLight2D"]
+position = Vector2(120, -55)
+color = Color(1, 0.7647059, 0.57254905, 1)
+energy = 0.15
+range_z_min = -1000
+texture = ExtResource("2_ywtsc")
+
+[node name="PointLight2D3" type="PointLight2D" parent="AnimatedPointLight2D"]
+position = Vector2(117, -52)
+color = Color(1, 0.7647059, 0.57254905, 1)
+energy = 0.15
+range_z_min = -1000
+texture = ExtResource("2_ywtsc")
+
+[node name="PointLight2D4" type="PointLight2D" parent="AnimatedPointLight2D"]
+position = Vector2(129, -52)
+color = Color(1, 0.7647059, 0.57254905, 1)
+energy = 0.15
+range_z_min = -1000
+texture = ExtResource("2_ywtsc")
