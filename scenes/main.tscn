@@ -395,7 +395,7 @@ position = Vector2(531, 62)
 position = Vector2(582, -26)
 
 [node name="ItemEmerald" parent="World" instance=ExtResource("17_jscy8")]
-position = Vector2(63, -42)
+position = Vector2(81, -37)
 
 [node name="ItemEmerald2" parent="World" instance=ExtResource("17_jscy8")]
 position = Vector2(203, 49)
@@ -449,7 +449,7 @@ position = Vector2(170, -33)
 position = Vector2(296, -12)
 
 [node name="ItemMap" parent="World" instance=ExtResource("26_qkpxi")]
-position = Vector2(119, 1)
+position = Vector2(182, 29)
 
 [node name="ItemPainting1" parent="World" instance=ExtResource("27_5q0nq")]
 position = Vector2(526, -35)

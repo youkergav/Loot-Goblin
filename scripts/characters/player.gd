@@ -107,12 +107,12 @@ func pickup_item(item_data: ItemData) -> void:
         sprite.play("idle2")
         shadow.play("idle2")
         
-        reduce_speed_by_percent(0.30)
+        reduce_speed_by_percent(0.25)
     else:
         sprite.play("idle3")
         shadow.play("idle3")
         
-        reduce_speed_by_percent(0.50)
+        reduce_speed_by_percent(0.45)
 
 func update_player_color() -> void:
     if equipped_item_data.is_equippable:
@@ -133,6 +133,9 @@ func equip_item(item_data: ItemData) -> void:
 
     #check if the new equipment is the same as the old
     if item_data == equipped_item_data:
+        return
+        
+    if not item_data:
         return
 
     #start by clearing out the old equipment
