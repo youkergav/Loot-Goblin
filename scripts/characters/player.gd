@@ -38,14 +38,14 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_item_pickup_zone_area_entered(area: Area2D) -> void:
-    if area.is_in_group("world_item"):
+    if area.is_in_group("world_item") and area.can_be_picked_up:
         pickup_item(area.item_data)
         area.queue_free()
         magnet_attracted_items.erase(area)
         
 
 func _on_item_magnet_zone_area_entered(area: Area2D) -> void:
-    if area.is_in_group("world_item"):
+    if area.is_in_group("world_item") and area.can_be_picked_up:
         # Remove light shaft if exists
         var parent = area.get_parent()
         if parent is LightShaft:
@@ -53,14 +53,14 @@ func _on_item_magnet_zone_area_entered(area: Area2D) -> void:
             
         magnet_attracted_items.append(area)
         area.is_being_magnetized = true
-        area.modulate.a = 0.5  # Make item 50% transparent
+        area.modulate.a = 0.5
         area.get_node("Shadow").visible = false
 
 func _on_item_magnet_zone_area_exited(area: Area2D) -> void:
     magnet_attracted_items.erase(area)
     if is_instance_valid(area):
         area.is_being_magnetized = false
-        area.modulate.a = 1.0  # Restore full opacity
+        area.modulate.a = 1.0
 
 func get_movement_direction() -> Vector2:
     var direction = Vector2.ZERO
@@ -164,6 +164,14 @@ func remove_equipment() -> void:
         self.call_deferred("reset_cleanup_flag")
         equipment.queue_free()
         
+func spawn_world_item(item_data, item_position) -> WorldItem:
+    var world_item = await super.spawn_world_item(item_data, item_position)
+    
+    if is_instance_valid(world_item):
+        magnet_attracted_items.append(world_item)
+        world_item.is_being_magnetized = true
+    
+    return world_item
 
 func drop_equipped_item() -> void:
     #remove player equipment
@@ -171,7 +179,7 @@ func drop_equipped_item() -> void:
 
     #clean up item data and send a copy to the world
     if equipped_item_data != null:
-        super.spawn_world_item(equipped_item_data, self.position)
+        spawn_world_item(equipped_item_data, self.position)
         equipped_item_data = null
 
     #update the hotbar last

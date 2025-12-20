@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://crbhd34g0gfg8"]
 
 [ext_resource type="Script" uid="uid://canjlvi8lqh7q" path="res://scripts/light_shaft.gd" id="1_fku65"]
-[ext_resource type="Texture2D" uid="uid://b51caq3v1fgqy" path="res://sprites/props/light_shaft.png" id="2_ywtsc"]
+[ext_resource type="Texture2D" uid="uid://b51caq3v1fgqy" path="res://sprites/props/prop_light_shaft.png" id="2_ywtsc"]
 
 [node name="LightShaft" type="Node2D"]
 script = ExtResource("1_fku65")

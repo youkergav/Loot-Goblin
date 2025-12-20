@@ -60,7 +60,7 @@
 [ext_resource type="PackedScene" uid="uid://hep8km3vxor4" path="res://scenes/packed/items/item_plank.tscn" id="53_gdvew"]
 [ext_resource type="PackedScene" uid="uid://dxd0q3y47hvt5" path="res://scenes/packed/items/item_nail.tscn" id="54_kjtvk"]
 [ext_resource type="Shader" uid="uid://d0lnv87776o6f" path="res://shaders/color_grading.gdshader" id="56_kf5aa"]
-[ext_resource type="PackedScene" uid="uid://crbhd34g0gfg8" path="res://scenes/packed/props/light_shaft.tscn" id="56_t5ykj"]
+[ext_resource type="PackedScene" uid="uid://crbhd34g0gfg8" path="res://scenes/packed/props/prop_light_shaft.tscn" id="56_t5ykj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dp3eg"]
 normal = Vector2(0, 1)

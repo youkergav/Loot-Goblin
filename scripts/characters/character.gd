@@ -46,7 +46,7 @@ func update_sprite_direction(horizontal_direction: float) -> void:
     if flip_node != null and horizontal_direction != 0:
         flip_node.scale.x = -1 if horizontal_direction < 0 else 1
 
-func spawn_world_item(world_item_data: Variant, item_position: Vector2) -> void:
+func spawn_world_item(world_item_data: Variant, item_position: Vector2) -> WorldItem:
     print("Spawning item off char")
     print(world_item_data)
     # Create the world item
@@ -54,9 +54,17 @@ func spawn_world_item(world_item_data: Variant, item_position: Vector2) -> void:
     var new_item = world_item_scene.instantiate()
     new_item.item_data = world_item_data
     new_item.global_position = item_position
+    new_item.can_be_picked_up = false  # Block initially
     print("new item: ")
     print(new_item)
     world.call_deferred("add_child", new_item)
+    
+    # Wait 1 second before allowing pickup
+    await get_tree().create_timer(1.0).timeout
+    if is_instance_valid(new_item):
+        new_item.can_be_picked_up = true
+    
+    return new_item
 
 func take_damage() -> void:
     if health > 0:

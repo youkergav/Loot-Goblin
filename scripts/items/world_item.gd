@@ -1,5 +1,6 @@
 @tool
 extends Area2D
+class_name WorldItem
 
 
 @export var item_data: ItemData
@@ -11,6 +12,7 @@ extends Area2D
         if Engine.is_editor_hint() and not value and sprite:
             # Reset offset when disabling preview
             sprite.offset.y = 0
+            
 @export var bob_height: float = 4.0
 @export var bob_speed: float = 1.5
 
@@ -18,6 +20,7 @@ extends Area2D
 @onready var time_offset: float = randf() * TAU
 
 var is_being_magnetized: bool = false
+var can_be_picked_up: bool = true 
 
 func _process(_delta: float) -> void:
     if not sprite:
