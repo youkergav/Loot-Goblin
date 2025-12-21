@@ -15,6 +15,7 @@ class_name Player
 @onready var hurtbox: Area2D = $FlipNode/HurtBox
 
 var last_direction: String = "right"
+var animation_prefix: String = "base"
 
 var magnet_attracted_items: Array = []
 
@@ -95,12 +96,6 @@ func pickup_item(item_data: ItemData) -> void:
     hotbar.add_item(item_data)
     print("Picked up: ", item_data.item_name)
 
-func update_player_color() -> void:
-    if equipped_item_data.is_equippable:
-        sprite.modulate = equipped_item_data.color
-    else:
-        sprite.modulate = Color.WHITE
-
 func equip_item(item_data: ItemData) -> void:
     #use this to generically update the equip slot
     #regardless of if it is equipment or not
@@ -126,7 +121,6 @@ func equip_item(item_data: ItemData) -> void:
         
     
     print("equipping " + equipped_item_data.item_name)
-    update_player_color()
 
 func reset_cleanup_flag() -> void:
     is_cleanup_queued = false
@@ -153,6 +147,7 @@ func spawn_world_item(item_data, item_position) -> WorldItem:
 func drop_equipped_item() -> void:
     #remove player equipment
     remove_equipment()
+    animation_prefix = "base"
 
     #clean up item data and send a copy to the world
     if equipped_item_data != null:
@@ -215,6 +210,9 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
         print("Hit!")
         take_damage()
 
+func set_animation_prefix(prefix: String) -> void:
+    animation_prefix = prefix
+
 func update_animation(animation_state: String, direction: Vector2) -> void:
     # Determine direction suffix based on movement or last known direction
     var direction_suffix = last_direction
@@ -226,7 +224,7 @@ func update_animation(animation_state: String, direction: Vector2) -> void:
         direction_suffix = "left"
         last_direction = "left"
     
-    var animation_name = animation_state + "_" + direction_suffix
+    var animation_name = animation_prefix + "_" + animation_state + "_" + direction_suffix
     
     if sprite.animation != animation_name:
         sprite.play(animation_name)

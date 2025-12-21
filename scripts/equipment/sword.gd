@@ -1,10 +1,13 @@
 extends Node
 
+@onready var player = get_tree().get_first_node_in_group("player")
 @onready var hitBox: Area2D = $HitBox
 @onready var hitBoxTrigger: Area2D = $HitBoxTrigger
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+    player.set_animation_prefix("sword")
+    
     if is_trigger_active():
         attack()
     
