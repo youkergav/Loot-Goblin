@@ -303,7 +303,6 @@ process_material = SubResource("ParticleProcessMaterial_kf5aa")
 [node name="Player" parent="World" groups=["player"] instance=ExtResource("2_choun")]
 material = SubResource("ShaderMaterial_e755i")
 position = Vector2(30, 28)
-move_speed = 70.0
 
 [node name="Enemy" parent="World" instance=ExtResource("7_jkv2x")]
 position = Vector2(210, -14)

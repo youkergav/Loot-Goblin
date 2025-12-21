@@ -34,13 +34,19 @@ func apply_movement(direction: Vector2, delta: float):
         velocity.x = move_toward(velocity.x, move_speed * direction.x, move_acceleration * delta)
         velocity.y = move_toward(velocity.y, move_speed * direction.y, move_acceleration * delta)
         
-        # Flip sprite based on horizontal direction
         update_sprite_direction(direction.x)
+        update_animation("walk", direction)
     else:
         velocity.x = move_toward(velocity.x, 0, move_friction * delta)
         velocity.y = move_toward(velocity.y, 0, move_friction * delta)
+        
+        update_animation("idle", Vector2.ZERO)
     
     move_and_slide()
+
+# Override in child classes to handle animations
+func update_animation(_animation_state: String, _direction: Vector2) -> void:
+    pass
 
 func update_sprite_direction(horizontal_direction: float) -> void:
     if flip_node != null and horizontal_direction != 0:

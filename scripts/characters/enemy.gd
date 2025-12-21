@@ -10,6 +10,7 @@ class_name Enemy
 
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var detection_zone = $PlayerDetectionZone
+@onready var sprite = $FlipNode/Body
 
 var player_in_range: bool = false
 var reaction_timer: float = 0.0
@@ -81,3 +82,8 @@ func update_movement_variation(delta: float) -> void:
 func take_damage() -> void:
     print(self.name + " killing self")
     self.queue_free()
+
+func update_animation(_animation_state: String, _direction: Vector2) -> void:
+    # Enemies only have idle for now
+    if sprite.animation != "idle":
+        sprite.play("idle")
