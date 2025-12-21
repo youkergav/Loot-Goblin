@@ -10,14 +10,11 @@ class_name Player
 @export_group("Health")
 @export var damage_recovery_time_limit: float = 2.0
 
-@onready var sprite: AnimatedSprite2D = $FlipNode/Body
-@onready var shadow: AnimatedSprite2D = $FlipNode/Shadow
+@onready var sprite: AnimatedSprite2D = $Body
 @onready var hotbar: Hotbar = get_tree().get_first_node_in_group("hotbar")
 @onready var hurtbox: Area2D = $FlipNode/HurtBox
 
-@onready var base_move_speed: float = move_speed
-@onready var base_move_acceleration: float = move_acceleration
-@onready var base_move_friction: float = move_friction
+var last_direction: String = "right"
 
 var magnet_attracted_items: Array = []
 
@@ -97,35 +94,12 @@ func pull_item_towards_player(item, delta):
 func pickup_item(item_data: ItemData) -> void:
     hotbar.add_item(item_data)
     print("Picked up: ", item_data.item_name)
-    
-    # Play idle animation based on how many items the player has
-    print("Item Count: " + str(hotbar.total_item_count))
-    if hotbar.total_item_count < 15:
-        sprite.play("idle1")
-        shadow.play("idle1")
-    elif hotbar.total_item_count < 40:
-        sprite.play("idle2")
-        shadow.play("idle2")
-        
-        reduce_speed_by_percent(0.25)
-    else:
-        sprite.play("idle3")
-        shadow.play("idle3")
-        
-        reduce_speed_by_percent(0.45)
 
 func update_player_color() -> void:
     if equipped_item_data.is_equippable:
         sprite.modulate = equipped_item_data.color
     else:
         sprite.modulate = Color.WHITE
-
-func reduce_speed_by_percent(percent: float) -> void:
-    var speed_multiplier = 1.0 - percent
-    
-    move_speed = base_move_speed * speed_multiplier
-    move_acceleration = base_move_acceleration * speed_multiplier
-    move_friction = base_move_friction * speed_multiplier
 
 func equip_item(item_data: ItemData) -> void:
     #use this to generically update the equip slot
@@ -196,6 +170,8 @@ func _ready() -> void:
         hearts_list.append(child)
     print (hearts_list)
     super._ready()
+    
+    print(move_speed)
 
 func check_invulnerability(delta):
     damage_recovery_timer += delta
@@ -238,3 +214,19 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
     if area.is_in_group("hit"):
         print("Hit!")
         take_damage()
+
+func update_animation(animation_state: String, direction: Vector2) -> void:
+    # Determine direction suffix based on movement or last known direction
+    var direction_suffix = last_direction
+    
+    if direction.x > 0:
+        direction_suffix = "right"
+        last_direction = "right"
+    elif direction.x < 0:
+        direction_suffix = "left"
+        last_direction = "left"
+    
+    var animation_name = animation_state + "_" + direction_suffix
+    
+    if sprite.animation != animation_name:
+        sprite.play(animation_name)
