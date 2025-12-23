@@ -347,13 +347,6 @@ move_speed = 50.0
 move_acceleration = 560.0
 move_friction = 490.0
 
-[node name="Shadow" type="Sprite2D" parent="."]
-z_index = -20
-texture_filter = 1
-position = Vector2(1, 0)
-texture = ExtResource("2_m6pdb")
-offset = Vector2(0, -12)
-
 [node name="Body" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_8di1q")
@@ -362,6 +355,13 @@ autoplay = "base_idle_right"
 offset = Vector2(0, -12)
 
 [node name="FlipNode" type="Node2D" parent="."]
+
+[node name="Shadow" type="Sprite2D" parent="FlipNode"]
+z_index = -20
+texture_filter = 1
+position = Vector2(1, 0)
+texture = ExtResource("2_m6pdb")
+offset = Vector2(0, -12)
 
 [node name="ItemPickupZone" type="Area2D" parent="FlipNode"]
 position = Vector2(-4, -14.5)
