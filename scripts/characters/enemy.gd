@@ -8,9 +8,24 @@ class_name Enemy
 @export var pause_chance: float = 0.02
 @export var pause_duration: float = 0.5
 
+@export var pause_time_min: float = 0.3
+@export var pause_time_max: float = 0.5
+@export var chase_time_min: float = 0.5
+@export var chase_time_max: float = 3.5
+
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var detection_zone = $PlayerDetectionZone
 @onready var sprite = $FlipNode/Body
+
+enum CharacterState {
+    Idle, 
+    Chasing, 
+    Pause,
+    Attacking,
+    Hurt,
+    Stunned,
+    Dead
+}
 
 var player_in_range: bool = false
 var reaction_timer: float = 0.0
@@ -20,58 +35,86 @@ var offset_timer: float = 0.0
 var is_paused: bool = false
 var pause_timer: float = 0.0
 
+var action_timer: float = 0.0
+
+var enemy_state: CharacterState = CharacterState.Idle
+
+
+
 
 func _ready() -> void:
     super._ready()
     randomize_movement_speed()
 
 func _physics_process(delta: float) -> void:
-    update_pause_state(delta)
-    update_chase_state(delta)
+    update_enemy_state(delta)    
+    # update_pause_state(delta)
+    # update_chase_state(delta)
     update_movement_variation(delta)
     
     super._physics_process(delta)
 
+
+    #after implementing states, remove in_range flag
 func _on_player_detection_zone_body_entered(body: Node2D) -> void:
     if body.is_in_group("player"):
         player_in_range = true
+        enemy_state = CharacterState.Chasing
 
 func _on_player_detection_zone_body_exited(body: Node2D) -> void:
     if body.is_in_group("player"):
         player_in_range = false
+        enemy_state = CharacterState.Idle
 
 func get_movement_direction() -> Vector2:
-    if is_paused or not should_chase:
-        return Vector2.ZERO
-    
-    var target_pos = player.global_position + movement_offset
-    var distance_to_target = global_position.distance_to(target_pos)
-    
-    if distance_to_target > stop_distance:
-        return (target_pos - global_position).normalized()
-    
+    match enemy_state:
+        CharacterState.Idle, CharacterState.Pause:
+            return Vector2.ZERO
+
+        CharacterState.Chasing:
+            var target_pos = player.global_position + movement_offset  
+            var distance_to_target = global_position.distance_to(target_pos)
+            
+            if distance_to_target > stop_distance:
+                return (target_pos - global_position).normalized()
+
     return Vector2.ZERO
 
 func randomize_movement_speed() -> void:
     move_speed *= randf_range(0.8, 1.2)
 
-func update_pause_state(delta: float) -> void:
-    if is_paused:
-        pause_timer -= delta
-        if pause_timer <= 0:
-            is_paused = false
-    elif should_chase and randf() < pause_chance:
-        is_paused = true
-        pause_timer = randf_range(0.3, pause_duration)
+func update_enemy_state(delta: float) -> void:
+    match enemy_state:
+        CharacterState.Chasing:
+            action_timer -= delta
+            if action_timer <= 0:
+                #reset action timer
+                enemy_state = CharacterState.Pause
+                action_timer = randf_range(pause_time_min, pause_time_max)
+        CharacterState.Pause:
+            action_timer -= delta
+            if action_timer <= 0:
+                #reset action timer
+                enemy_state = CharacterState.Chasing
+                action_timer = randf_range(chase_time_min, chase_time_max)
 
-func update_chase_state(delta: float) -> void:
-    if player_in_range and not should_chase:
-        reaction_timer += delta
-        if reaction_timer >= reaction_time:
-            should_chase = true
-    elif not player_in_range:
-        should_chase = false
-        reaction_timer = 0.0
+# func update_pause_state(delta: float) -> void:
+#     if is_paused:
+#         pause_timer -= delta
+#         if pause_timer <= 0:
+#             is_paused = false
+#     elif should_chase and randf() < pause_chance:
+#         is_paused = true
+#         pause_timer = randf_range(0.3, pause_duration)
+
+# func update_chase_state(delta: float) -> void:
+#     if player_in_range and not should_chase:
+#         reaction_timer += delta
+#         if reaction_timer >= reaction_time:
+#             should_chase = true
+#     elif not player_in_range:
+#         should_chase = false
+#         reaction_timer = 0.0
 
 func update_movement_variation(delta: float) -> void:
     offset_timer += delta
