@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3wjpww4ht0ni"]
+[gd_scene load_steps=11 format=3 uid="uid://c3wjpww4ht0ni"]
 
 [ext_resource type="Texture2D" uid="uid://xs6jtpb5wnne" path="res://sprites/props/bush_shadow.png" id="1_fwknk"]
 [ext_resource type="Script" path="res://scripts/characters/randomize_idle.gd" id="1_raafb"]
-[ext_resource type="Material" uid="uid://djwwgakejt085" path="res://materials/player_cutout.tres" id="2_o3ma7"]
 [ext_resource type="Script" uid="uid://bo7ecr4wdqjhi" path="res://scripts/props/prop_transparency.gd" id="2_qebyh"]
 [ext_resource type="Texture2D" uid="uid://dehokb840lsh0" path="res://sprites/props/bush.png" id="2_raafb"]
 
@@ -53,7 +52,6 @@ texture = ExtResource("1_fwknk")
 offset = Vector2(2, 3.5)
 
 [node name="Leaves" type="Area2D" parent="."]
-material = ExtResource("2_o3ma7")
 script = ExtResource("2_qebyh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Leaves"]
