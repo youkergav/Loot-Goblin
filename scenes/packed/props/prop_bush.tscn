@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3wjpww4ht0ni"]
+[gd_scene load_steps=12 format=3 uid="uid://c3wjpww4ht0ni"]
 
 [ext_resource type="Texture2D" uid="uid://xs6jtpb5wnne" path="res://sprites/props/bush_shadow.png" id="1_fwknk"]
-[ext_resource type="Script" uid="uid://dnpstnskbspcg" path="res://scripts/characters/randomize_idle.gd" id="1_raafb"]
+[ext_resource type="Script" path="res://scripts/characters/randomize_idle.gd" id="1_raafb"]
 [ext_resource type="Material" uid="uid://djwwgakejt085" path="res://materials/player_cutout.tres" id="2_o3ma7"]
-[ext_resource type="Script" uid="uid://bo7ecr4wdqjhi" path="res://scripts/props/player_cutout.gd" id="2_qebyh"]
+[ext_resource type="Script" uid="uid://bo7ecr4wdqjhi" path="res://scripts/props/prop_transparency.gd" id="2_qebyh"]
 [ext_resource type="Texture2D" uid="uid://dehokb840lsh0" path="res://sprites/props/bush.png" id="2_raafb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_raafb"]
@@ -42,6 +42,9 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_o3ma7"]
+radius = 13.0
+
 [node name="PropBush" type="Node2D"]
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -49,14 +52,18 @@ z_index = -10
 texture = ExtResource("1_fwknk")
 offset = Vector2(2, 3.5)
 
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
+[node name="Leaves" type="Area2D" parent="."]
 material = ExtResource("2_o3ma7")
 script = ExtResource("2_qebyh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasGroup"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Leaves"]
 sprite_frames = SubResource("SpriteFrames_iekhh")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.54694647
 offset = Vector2(0, -4)
 script = ExtResource("1_raafb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leaves"]
+position = Vector2(-0.5, -5)
+shape = SubResource("CircleShape2D_o3ma7")

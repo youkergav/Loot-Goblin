@@ -1,10 +1,9 @@
 [gd_scene load_steps=16 format=3 uid="uid://dyc23nln5hmqk"]
 
-[ext_resource type="Script" uid="uid://dnpstnskbspcg" path="res://scripts/characters/randomize_idle.gd" id="1_o6iql"]
-[ext_resource type="Material" uid="uid://djwwgakejt085" path="res://materials/player_cutout.tres" id="2_bjoa3"]
+[ext_resource type="Script" path="res://scripts/characters/randomize_idle.gd" id="1_o6iql"]
 [ext_resource type="Texture2D" uid="uid://gnyxmyj1bgbd" path="res://sprites/props/prop_tree_shadow.png" id="2_moydc"]
 [ext_resource type="Texture2D" uid="uid://cvm14b3p00o3w" path="res://sprites/props/prop_tree_trunk.png" id="2_x2uys"]
-[ext_resource type="Script" uid="uid://bo7ecr4wdqjhi" path="res://scripts/props/player_cutout.gd" id="3_wsu4d"]
+[ext_resource type="Script" uid="uid://bo7ecr4wdqjhi" path="res://scripts/props/prop_transparency.gd" id="3_wsu4d"]
 [ext_resource type="Texture2D" uid="uid://dxyggec3d6wos" path="res://sprites/props/prop_tree_leaves.png" id="3_x2uys"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wsu4d"]
@@ -64,6 +63,9 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_x2uys"]
+radius = 31.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uh3yy"]
 size = Vector2(14, 5)
 
@@ -77,17 +79,20 @@ position = Vector2(3, -1)
 texture = ExtResource("2_moydc")
 offset = Vector2(2.7, 3.15)
 
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
-material = ExtResource("2_bjoa3")
+[node name="Leaves" type="Area2D" parent="."]
 script = ExtResource("3_wsu4d")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasGroup"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Leaves"]
 sprite_frames = SubResource("SpriteFrames_36al1")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.995211
 offset = Vector2(3, -37)
 script = ExtResource("1_o6iql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leaves"]
+position = Vector2(1, -54)
+shape = SubResource("CircleShape2D_x2uys")
 
 [node name="Trunk" type="Sprite2D" parent="."]
 texture = ExtResource("2_x2uys")
