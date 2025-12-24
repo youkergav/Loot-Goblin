@@ -40,7 +40,7 @@ func _on_item_pickup_zone_area_entered(area: Area2D) -> void:
         pickup_item(area.item_data)
         area.queue_free()
         magnet_attracted_items.erase(area)
-        
+
 
 func _on_item_magnet_zone_area_entered(area: Area2D) -> void:
     if area.is_in_group("world_item") and area.can_be_picked_up:
@@ -48,7 +48,7 @@ func _on_item_magnet_zone_area_entered(area: Area2D) -> void:
         var parent = area.get_parent()
         if parent is LightShaft:
             parent.fade_out(1.0)
-            
+
         magnet_attracted_items.append(area)
         area.is_being_magnetized = true
         area.modulate.a = 0.5
@@ -103,7 +103,7 @@ func equip_item(item_data: ItemData) -> void:
     #check if the new equipment is the same as the old
     if item_data == equipped_item_data:
         return
-        
+
     if not item_data:
         return
 
@@ -111,15 +111,15 @@ func equip_item(item_data: ItemData) -> void:
     remove_equipment()
 
     equipped_item_data = item_data
-    
+
     #if the item is equippable then set the equipment
     if equipped_item_data.is_equippable:
         #create new equpment and make it a child of player
         print("adding new child")
         equipment = equipped_item_data.equipment_scene.instantiate()
         self.call_deferred("add_child", equipment)
-        
-    
+
+
     print("equipping " + equipped_item_data.item_name)
 
 func reset_cleanup_flag() -> void:
@@ -134,14 +134,14 @@ func remove_equipment() -> void:
         is_cleanup_queued = true
         self.call_deferred("reset_cleanup_flag")
         equipment.queue_free()
-        
+
 func spawn_world_item(item_data, item_position) -> WorldItem:
     var world_item = await super.spawn_world_item(item_data, item_position)
-    
+
     if is_instance_valid(world_item):
         magnet_attracted_items.append(world_item)
         world_item.is_being_magnetized = true
-    
+
     return world_item
 
 func drop_equipped_item() -> void:
@@ -159,13 +159,13 @@ func drop_equipped_item() -> void:
 
 
 
-func _ready() -> void: 
+func _ready() -> void:
     var hearts_parent = $"../../UI/Heartbar/HBoxContainer"
     for child in hearts_parent.get_children():
         hearts_list.append(child)
     print (hearts_list)
     super._ready()
-    
+
     print(move_speed)
 
 func check_invulnerability(delta):
@@ -175,7 +175,7 @@ func check_invulnerability(delta):
         damage_recovery_timer = 0
         if has_overlapping_hit():
             take_damage()
-        
+
 
 func take_damage() -> void:
     if is_invulnerable:
@@ -193,18 +193,18 @@ func take_damage() -> void:
         pass
     elif health <= 0:
         isalive = false
-        #end screen 
+        #end screen
         #death() #dath Animation
         return
     is_invulnerable = true
     damage_recovery_timer = 0
-    
+
 func has_overlapping_hit() -> bool:
     for overlap_area in hurtbox.get_overlapping_areas():
         if overlap_area.is_in_group("hit"):
             return true
     return false
-    
+
 func _on_hurt_box_area_entered(area: Area2D) -> void:
     if area.is_in_group("hit"):
         print("Hit!")
@@ -216,15 +216,15 @@ func set_animation_prefix(prefix: String) -> void:
 func update_animation(animation_state: String, direction: Vector2) -> void:
     # Determine direction suffix based on movement or last known direction
     var direction_suffix = last_direction
-    
+
     if direction.x > 0:
         direction_suffix = "right"
         last_direction = "right"
     elif direction.x < 0:
         direction_suffix = "left"
         last_direction = "left"
-    
+
     var animation_name = animation_prefix + "_" + animation_state + "_" + direction_suffix
-    
+
     if sprite.animation != animation_name:
         sprite.play(animation_name)
